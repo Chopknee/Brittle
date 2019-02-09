@@ -1,0 +1,90 @@
+
+skeleton.png
+size: 6264,2383
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Kiesel_0000_face
+  rotate: false
+  xy: 1901, 46
+  size: 224, 175
+  orig: 224, 175
+  offset: 0, 0
+  index: -1
+Kiesel_0001_head
+  rotate: false
+  xy: 5464, 288
+  size: 664, 948
+  orig: 664, 948
+  offset: 0, 0
+  index: -1
+Kiesel_0002_hair
+  rotate: true
+  xy: 2, 125
+  size: 2256, 1897
+  orig: 2256, 1897
+  offset: 0, 0
+  index: -1
+Kiesel_0003_handL
+  rotate: false
+  xy: 3883, 1101
+  size: 899, 1280
+  orig: 899, 1280
+  offset: 0, 0
+  index: -1
+Kiesel_0004_armL
+  rotate: false
+  xy: 4784, 1385
+  size: 678, 996
+  orig: 678, 996
+  offset: 0, 0
+  index: -1
+Kiesel_0005_buttons
+  rotate: true
+  xy: 5464, 2
+  size: 284, 622
+  orig: 284, 622
+  offset: 0, 0
+  index: -1
+Kiesel_0006_shirt
+  rotate: true
+  xy: 1901, 223
+  size: 2158, 1296
+  orig: 2158, 1296
+  offset: 0, 0
+  index: -1
+Kiesel_0007_pants
+  rotate: true
+  xy: 3199, 544
+  size: 1837, 682
+  orig: 1837, 682
+  offset: 0, 0
+  index: -1
+Kiesel_0008_legL
+  rotate: false
+  xy: 4030, 85
+  size: 735, 1014
+  orig: 735, 1014
+  offset: 0, 0
+  index: -1
+Kiesel_0009_legR
+  rotate: false
+  xy: 4767, 91
+  size: 695, 1008
+  orig: 695, 1008
+  offset: 0, 0
+  index: -1
+Kiesel_0010_handR
+  rotate: false
+  xy: 5464, 1238
+  size: 798, 1143
+  orig: 798, 1143
+  offset: 0, 0
+  index: -1
+Kiesel_0011_armR
+  rotate: true
+  xy: 3199, 161
+  size: 381, 829
+  orig: 381, 829
+  offset: 0, 0
+  index: -1
