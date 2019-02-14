@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
     public GameObject followTarget;
     [Range(0.01f, 1)]
     public float followSpeed = 0.95f;
-
+    public bool drawBoundsGizmo = true;
 	// Use this for initialization
 	void Start () {
         if (followTarget == null) {
@@ -36,4 +36,16 @@ public class CameraFollow : MonoBehaviour {
             transform.position = diff;//Finally set the position of the camera!
         }
 	}
+
+    private void OnDrawGizmos() {
+        if (drawBoundsGizmo) {
+            Gizmos.color = new Color(0, 0, 255);
+            //Upper line
+            Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(maxPosition.x, minPosition.y));
+            Gizmos.DrawLine(new Vector2(minPosition.x, maxPosition.y), new Vector2(maxPosition.x, maxPosition.y));
+
+            Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(minPosition.x, maxPosition.y));
+            Gizmos.DrawLine(new Vector2(maxPosition.x, minPosition.y), new Vector2(maxPosition.x, maxPosition.y));
+        }
+    }
 }
