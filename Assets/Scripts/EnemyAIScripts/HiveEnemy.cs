@@ -8,7 +8,7 @@ public class HiveEnemy : MonoBehaviour {
     public float chaseRange;
     public float hiveRange;
     public float speed;
-
+    public bool drawRangeGizmo = true;
 	// Use this for initialization
 	void Start () {
 		
@@ -37,6 +37,13 @@ public class HiveEnemy : MonoBehaviour {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
 
             transform.Translate(Vector3.up * Time.deltaTime * speed);
+        }
+    }
+
+    public void OnDrawGizmos() {
+        if (drawRangeGizmo) {
+            Gizmos.color = new Color(255, 0, 0);
+            Gizmos.DrawWireSphere(transform.position, chaseRange/2);
         }
     }
 }

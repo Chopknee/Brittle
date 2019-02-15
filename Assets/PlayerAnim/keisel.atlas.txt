@@ -1,0 +1,90 @@
+
+keisel_sprite.png
+size: 3835,1796
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 10
+  rotate: true
+  xy: 3367, 778
+  size: 1016, 400
+  orig: 1016, 400
+  offset: 0, 0
+  index: -1
+Layer 11
+  rotate: false
+  xy: 1258, 785
+  size: 1175, 1009
+  orig: 1175, 1009
+  offset: 0, 0
+  index: -1
+Layer 12
+  rotate: true
+  xy: 2, 633
+  size: 1161, 1254
+  orig: 1161, 1254
+  offset: 0, 0
+  index: -1
+Layer 13
+  rotate: false
+  xy: 2842, 14
+  size: 428, 716
+  orig: 428, 716
+  offset: 0, 0
+  index: -1
+Layer 14
+  rotate: true
+  xy: 2, 134
+  size: 497, 640
+  orig: 497, 640
+  offset: 0, 0
+  index: -1
+Layer 3
+  rotate: false
+  xy: 2435, 732
+  size: 930, 1062
+  orig: 930, 1062
+  offset: 0, 0
+  index: -1
+Layer 4
+  rotate: false
+  xy: 2312, 233
+  size: 528, 497
+  orig: 528, 497
+  offset: 0, 0
+  index: -1
+Layer 5
+  rotate: false
+  xy: 924, 67
+  size: 308, 564
+  orig: 308, 564
+  offset: 0, 0
+  index: -1
+Layer 6
+  rotate: true
+  xy: 2026, 84
+  size: 699, 284
+  orig: 699, 284
+  offset: 0, 0
+  index: -1
+Layer 7
+  rotate: false
+  xy: 3367, 2
+  size: 466, 774
+  orig: 466, 774
+  offset: 0, 0
+  index: -1
+Layer 8
+  rotate: true
+  xy: 644, 60
+  size: 571, 278
+  orig: 571, 278
+  offset: 0, 0
+  index: -1
+Layer 9
+  rotate: true
+  xy: 1258, 106
+  size: 677, 766
+  orig: 677, 766
+  offset: 0, 0
+  index: -1
