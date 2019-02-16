@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 70550399273713680}
   - component: {fileID: 95564473240472816}
   - component: {fileID: 114466114370549590}
+  - component: {fileID: 114608913466003990}
   m_Layer: 0
   m_Name: keisel
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838000440046118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.9759, y: -3.99, z: -0.17000008}
+  m_LocalPosition: {x: -2.83, y: -10.98, z: -0.17000008}
   m_LocalScale: {x: 0.06302948, y: 0.063029476, z: 0.063029476}
   m_Children:
   - {fileID: 4580057633261378}
@@ -69,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584765065806352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.07, z: 0}
+  m_LocalPosition: {x: 0.07, y: 4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4489059902447994}
@@ -90,7 +91,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: afd178bf671942e48ba117b06cf1ebaf, type: 2}
+  - {fileID: 2100000, guid: c7186c83779322e48b064f4a729fac1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,12 +146,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1838000440046118}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9f5598fb946dc5045bdb5c969217a380, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5149165, y: 14.3}
-  m_Size: {x: 11.9, y: 22.3}
+  m_Offset: {x: 0, y: 14.28}
+  m_Size: {x: 13.167044, y: 29.042038}
   m_Direction: 0
 --- !u!95 &95564473240472816
 Animator:
@@ -161,10 +162,10 @@ Animator:
   m_GameObject: {fileID: 1838000440046118}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8142dada18ba9ff449ae85a30dc19224, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -181,15 +182,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d636f998119a1c246b98ceede909cfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
+  HorizontalAxis: Horizontal
+  JumpButton: Jump
+  playerSpeed: 6.75
   facingRight: 1
   playerJH: 1250
   moveX: 0
   groundCheck: {fileID: 4580057633261378}
-  groundCheckRadius: 0
+  groundCheckRadius: 0.42
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  grounded: 0
+  drawGroundCheckGizmo: 1
+--- !u!114 &114608913466003990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838000440046118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fe9e7610ddbf7469dfbc3857db0874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpeed: 0
+  verticalSpeed: 0
+  runSpeedMultiplier: 0.085
+  jumpAnimationSpeed: 1.3
+  animationState: idle
+  loopState: 1
+  falling: 0
+  grounded: 0
+  jumping: 0
+  stateOverride: 0
+  timeScale: 1
+  runAnimationName: run
+  idleAnimationName: idle
+  jumpAnimationName: jump
+  fallingAnimationName: idle
+  lastAnimationState: 
 --- !u!114 &114733393486134504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: ab7eaaffa49f1c64eb7fa3d001ff3dc0, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 3a2118b2d407de3419699adeb1419e7e, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -215,8 +247,7 @@ MonoBehaviour:
   singleSubmesh: 0
   addNormals: 0
   calculateTangents: 0
-  logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: 
-  loop: 0
+  _animationName: idle
+  loop: 1
   timeScale: 1

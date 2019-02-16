@@ -14,17 +14,17 @@ public class KieselControl : MonoBehaviour {
     public float groundCheckRadius;
     public LayerMask whatIsGround;
     public bool grounded;
-    private SkeletonAnimation skeletonAnimation;
     private Rigidbody2D rb;
     public bool drawGroundCheckGizmo;
+    Keisel_AnimationController kam;
 
-    public Vector2 lastVelocity;
-    private bool setAnimationState = false;
-    public bool jump = false;
+    private bool jumped = false;
+
     public void Start() {
-        skeletonAnimation = GetComponent<SkeletonAnimation>();
+        
         rb = GetComponent<Rigidbody2D>();
-        lastVelocity = rb.velocity;
+        kam = GetComponent<Keisel_AnimationController>();
+
     }
 
     
@@ -34,51 +34,42 @@ public class KieselControl : MonoBehaviour {
 
     public void FixedUpdate() {
         //Checking if the character is on the ground
-        if (!jump) {
-            grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-        }
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        kam.grounded = grounded;
     }
 
     private void PlayerMove() {
-        moveX = Input.GetAxis(HorizontalAxis);
+        
         if (Input.GetButtonDown(JumpButton) && grounded) {
             Jump();
         }
-        //Controling the direction which the sprite faces
+        //Controling the direction the sprite faces
+        moveX = Input.GetAxis(HorizontalAxis);
         if (moveX < 0.0 && facingRight == true) {
-            FlipSprite();
+            facingRight = false;
+            kam.FlipDirection((int)(moveX/Mathf.Abs(moveX)));
         } else if (moveX > 0.0f && facingRight == false) {
-            FlipSprite();
+            facingRight = true;
+            kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
         }
         //Setting the velocity of the character
         rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
 
-        if (rb.velocity != lastVelocity && jump == false) {
-            //The velocity has changed
-            if (Mathf.Abs(rb.velocity.x) > 0 && grounded) {//Running animation
-                skeletonAnimation.AnimationState.SetAnimation(0, "run", true);
-            }
-
-            if (Mathf.Abs(rb.velocity.x) < 0.01 && grounded) {//Idle animation
-                skeletonAnimation.AnimationState.SetAnimation(0, "idle", true);
-            }
-        }
-
-        lastVelocity = rb.velocity;
+        kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
+        kam.verticalSpeed = rb.velocity.y;
     }
 
     private void Jump() {
-        jump = true;
-        rb.AddForce(Vector2.up * playerJH);
-        skeletonAnimation.AnimationState.SetAnimation(0, "jump", false);
-        Invoke("JumpDel", 0.1f);
+        kam.Jump();
+        if (!jumped) {
+            Invoke("JumpForce", 0.2f);
+            jumped = true;
+        }
     }
 
-    private void FlipSprite() {
-        facingRight = !facingRight;
-        Vector2 localScale = gameObject.transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
+    public void JumpForce() {
+        jumped = false;
+        rb.AddForce(Vector2.up * playerJH);
     }
 
     public void OnDrawGizmos() {
@@ -86,9 +77,5 @@ public class KieselControl : MonoBehaviour {
             Gizmos.color = new Color(0, 0, 255);
             Gizmos.DrawWireSphere(groundCheck.transform.position, groundCheckRadius);
         }
-    }
-
-    public void JumpDel() {
-        jump = false;
     }
 }

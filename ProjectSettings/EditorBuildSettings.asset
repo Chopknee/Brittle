@@ -15,5 +15,6 @@ EditorBuildSettings:
     path: Assets/Levels/options.unity
     guid: c6c808439a9084b4bb5a3a9a6b5c65c2
   - enabled: 1
-    path: Assets/Levels/walktest.unity
-    guid: 2816d04c15003964c819f2ecac65c708
+    path: Assets/Levels/levelOne.unity
+    guid: 30829bd30d231734284ef9a68bcdb725
+  m_configObjects: {}

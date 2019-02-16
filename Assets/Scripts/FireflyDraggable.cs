@@ -31,7 +31,7 @@ public class FireflyDraggable : MonoBehaviour {
             //Create a normalized vector (we aren't worried about the distance from the mouse cursor, only the direction) pointing in the direction of the cursor
             Vector2 directionVector = (mouseWorldPos - (Vector2)transform.position).normalized;
             //Apply it as a force and multiply it to get a visible result
-            rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y));
+            rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y) * Time.deltaTime);
         }
 	}
 
