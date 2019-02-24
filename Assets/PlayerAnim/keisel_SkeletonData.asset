@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: keisel_spineData
+  m_Name: keisel_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: ec31b9ef20ed90947bedd2e6ab0d1d7f, type: 2}
+  - {fileID: 11400000, guid: 6c39b85e8b6bddb4184632efef544105, type: 2}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: 07f77d65132b5f44d905fcbd92b97951, type: 3}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []
-  defaultMix: 0
-  controller: {fileID: 9100000, guid: 8142dada18ba9ff449ae85a30dc19224, type: 2}
+  defaultMix: 0.2
+  controller: {fileID: 0}

@@ -7867,6 +7867,32 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 23530972787947328, guid: c7b1edfb906620c4aa812b36c4f355f3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89aa8291dddf4d745b5d1ce45d381f6f, type: 2}
+    - target: {fileID: 114733393486134504, guid: c7b1edfb906620c4aa812b36c4f355f3,
+        type: 2}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ee31963a43a593428bdfb3629742fd4,
+        type: 2}
+    - target: {fileID: 114608913466003990, guid: c7b1edfb906620c4aa812b36c4f355f3,
+        type: 2}
+      propertyPath: jumpAnimationName
+      value: jumpstart
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608913466003990, guid: c7b1edfb906620c4aa812b36c4f355f3,
+        type: 2}
+      propertyPath: fallingAnimationName
+      value: jumpair
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608913466003990, guid: c7b1edfb906620c4aa812b36c4f355f3,
+        type: 2}
+      propertyPath: jumpAnimationSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b1edfb906620c4aa812b36c4f355f3, type: 2}
   m_IsPrefabAsset: 0

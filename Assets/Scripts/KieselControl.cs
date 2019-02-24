@@ -9,6 +9,7 @@ public class KieselControl : MonoBehaviour {
     public float playerSpeed = 10;
     public bool facingRight = true;
     public float playerJH = 1250;
+    public float jumpForceDelay = 0.2f;
     public float moveX;
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -17,6 +18,7 @@ public class KieselControl : MonoBehaviour {
     private Rigidbody2D rb;
     public bool drawGroundCheckGizmo;
     Keisel_AnimationController kam;
+    
 
     private bool jumped = false;
 
@@ -62,7 +64,7 @@ public class KieselControl : MonoBehaviour {
     private void Jump() {
         kam.Jump();
         if (!jumped) {
-            Invoke("JumpForce", 0.2f);
+            Invoke("JumpForce", jumpForceDelay);
             jumped = true;
         }
     }
