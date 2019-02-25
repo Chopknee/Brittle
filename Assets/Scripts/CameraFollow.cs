@@ -17,15 +17,12 @@ public class CameraFollow : MonoBehaviour {
     private Vector2 transitionMaxPosition = new Vector2();
     private float boundsTransitionTimeCount = 0;
 
-    private bool sizeTransitioning = false;
-    private float targetZoom = 0;
-    private float transitionTime = 0;
-    private float transitionTimeCount = 0;
-    private AnimationCurve sizeTransitionCurve;
-    private float currentSize = 0;
+    
     private Camera cam;
     private GameObject background;
     private Vector3 oldBgScale;
+    private bool zooming = false;
+    SmoothTransition zoomTransition;
     
     // Use this for initialization
     void Start () {
@@ -33,8 +30,9 @@ public class CameraFollow : MonoBehaviour {
             followTarget = GameObject.FindGameObjectWithTag("Player");
         }
         cam = GetComponent<Camera>();
-        currentSize = cam.orthographicSize;
         background = transform.GetChild(0).gameObject;//Always the first child?
+        zoomTransition = new SmoothTransition(0, 0, null, 0);
+        zoomTransition.OnFinish += OnZoomFinish;
     }
 	
 	// Update is called once per frame
@@ -74,22 +72,14 @@ public class CameraFollow : MonoBehaviour {
             }
             transform.position = new Vector3(diff.x, diff.y, transform.position.z);//Finally we can set the position of the camera!
 
-            if (sizeTransitioning) {
-                float sz = 0;
-                sz = Mathf.Lerp(currentSize, targetZoom, sizeTransitionCurve.Evaluate(transitionTimeCount / transitionTime));
-                cam.orthographicSize = sz;
-                transitionTimeCount += Time.deltaTime;
+            if (zooming) {
+                float cz = zoomTransition.DriveForward();
+                cam.orthographicSize = cz;
                 background.transform.localScale = new Vector3(
-                    oldBgScale.x * sz / currentSize,
-                    oldBgScale.y * sz / currentSize,
-                    oldBgScale.z * sz / currentSize
+                    (oldBgScale.x * cz) / zoomTransition.start,
+                    (oldBgScale.y * cz) / zoomTransition.start,
+                    (oldBgScale.z * cz) / zoomTransition.start
                     );
-                if (transitionTimeCount >= transitionTime) {
-                    currentSize = targetZoom;
-                    cam.orthographicSize = targetZoom;
-                    transitionTimeCount = 0;
-                    sizeTransitioning = false;
-                }
             }
         }
 	}
@@ -102,11 +92,13 @@ public class CameraFollow : MonoBehaviour {
     }
 
     public void SetZoom(float newSize, AnimationCurve transitionCurve, float transitionTime) {
-        sizeTransitioning = true;
-        targetZoom = newSize;
-        this.transitionTime = transitionTime;
-        sizeTransitionCurve = transitionCurve;
+        zooming = true;
+        zoomTransition.Begin(cam.orthographicSize, newSize, transitionCurve, transitionTime);
         oldBgScale = background.transform.localScale;
+    }
+
+    public void OnZoomFinish() {
+        zooming = false;
     }
 
     private void OnDrawGizmos() {
