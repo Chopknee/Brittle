@@ -37,6 +37,7 @@ public class FireflyDraggable : MonoBehaviour {
 
     private void OnMouseDown() {
         dragging = true;
+
     }
 
     private void OnMouseUp() {

@@ -9,9 +9,10 @@ public class HiveEnemy : MonoBehaviour {
     public float hiveRange;
     public float speed;
     public bool drawRangeGizmo = true;
+    AudioSource AudioSource;
 	// Use this for initialization
 	void Start () {
-		
+        AudioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +28,8 @@ public class HiveEnemy : MonoBehaviour {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, r, 360);
 
             transform.Translate(Vector3.up * Time.deltaTime * speed);
+
+            AudioSource.Play();
         }
 
         else
@@ -37,6 +40,8 @@ public class HiveEnemy : MonoBehaviour {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 360);
 
             transform.Translate(Vector3.up * Time.deltaTime * speed);
+
+            AudioSource.Stop();
         }
     }
 
