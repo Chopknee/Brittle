@@ -13,9 +13,15 @@ public class CameraFollow : MonoBehaviour {
     [Range(0.5f, 4), Tooltip("Controls how far from the center of the camera the target can get.")]
     public float multiplier = 1;
     // Use this for initialization
+    public Camera cam;
+
     void Start () {
         if (followTarget == null) {
             followTarget = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        if (cam == null) {
+            cam = GetComponent<Camera>();
         }
     }
 	
@@ -42,17 +48,36 @@ public class CameraFollow : MonoBehaviour {
             transform.position = diff;//Finally we can set the position of the camera!
         }
 	}
-
     private void OnDrawGizmos() {
         //Visualizes the boundaries of where the camera is able to travel.
         if (drawBoundsGizmo) {
+            if (cam == null) {
+                cam = GetComponent<Camera>();
+            }
+            float asp = (float)Screen.width / Screen.height;
+            float orthoWidth = cam.orthographicSize * asp;
+            float orthoHeight = cam.orthographicSize;
+
             Gizmos.color = new Color(0, 0, 255);
             //Upper line
-            Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(maxPosition.x, minPosition.y));
-            Gizmos.DrawLine(new Vector2(minPosition.x, maxPosition.y), new Vector2(maxPosition.x, maxPosition.y));
-
-            Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(minPosition.x, maxPosition.y));
-            Gizmos.DrawLine(new Vector2(maxPosition.x, minPosition.y), new Vector2(maxPosition.x, maxPosition.y));
+            Vector3 cornerA = new Vector3(minPosition.x, maxPosition.y, transform.position.z);
+            Vector3 cornerB = new Vector3(minPosition.x, minPosition.y, transform.position.z);
+            Vector3 cornerC = new Vector3(maxPosition.x, minPosition.y, transform.position.z);
+            Vector3 cornerD = new Vector3(maxPosition.x, maxPosition.y, transform.position.z);
+            DrawGizmoBox(cornerA, cornerB, cornerC, cornerD);
+            Gizmos.color = new Color(255, 0, 0);
+            cornerA = new Vector3(minPosition.x - orthoWidth, maxPosition.y + orthoHeight, transform.position.z);
+            cornerB = new Vector3(minPosition.x - orthoWidth, minPosition.y - orthoHeight, transform.position.z);
+            cornerC = new Vector3(maxPosition.x + orthoWidth, minPosition.y - orthoHeight, transform.position.z);
+            cornerD = new Vector3(maxPosition.x + orthoWidth, maxPosition.y + orthoHeight, transform.position.z);
+            DrawGizmoBox(cornerA, cornerB, cornerC, cornerD);
         }
+    }
+
+    public void DrawGizmoBox(Vector3 cornerA, Vector3 cornerB, Vector3 cornerC, Vector3 cornerD) {
+        Gizmos.DrawLine(cornerA, cornerB);
+        Gizmos.DrawLine(cornerB, cornerC);
+        Gizmos.DrawLine(cornerC, cornerD);
+        Gizmos.DrawLine(cornerD, cornerA);
     }
 }
