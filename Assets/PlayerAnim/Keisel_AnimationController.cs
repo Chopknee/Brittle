@@ -22,8 +22,8 @@ public class Keisel_AnimationController : MonoBehaviour {
 
     public string runAnimationName = "run";
     public string idleAnimationName = "idle";
-    public string jumpAnimationName = "jump";
-    public string fallingAnimationName = "idle";
+    public string jumpAnimationName = "jumpstart";
+    public string fallingAnimationName = "jumpair";
 
     public string lastAnimationState = "";
 
