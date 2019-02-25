@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 70283621990031326}
   - component: {fileID: 114313241705733974}
   - component: {fileID: 50912558020744268}
+  - component: {fileID: 61505895179630562}
   m_Layer: 8
   m_Name: shroom
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1285939928040782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.5, y: -5.59, z: 0}
+  m_LocalPosition: {x: 0.68, y: -0.47, z: 0}
   m_LocalScale: {x: 0.29795143, y: 0.29795143, z: 0.29795143}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,20 +64,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &70283621990031326
-CapsuleCollider2D:
+--- !u!61 &61505895179630562
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1285939928040782}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ce2af8fa301b75c46958a07dbc926011, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.3594512}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9.17, y: 10.92}
+    newSize: {x: 9.17, y: 10.92}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.17, y: 4.760868}
+  m_EdgeRadius: 0
+--- !u!70 &70283621990031326
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285939928040782}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ce2af8fa301b75c46958a07dbc926011, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.18, y: 0}
-  m_Size: {x: 8.84, y: 3.45}
+  m_Size: {x: 6.52, y: 3.45}
   m_Direction: 0
 --- !u!114 &114313241705733974
 MonoBehaviour:
@@ -91,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   dragging: 0
-  multiplier: 325
+  multiplier: 32500
   maxAltitude: 5
   altitudeApproachCurve:
     serializedVersion: 2
