@@ -6,50 +6,46 @@ public class MouseSound : MonoBehaviour
 {
 
     AudioSource audioSource;
-    public float FadeTime;
+    public float fadeTime;
+    [Range(0, 1)]
     public float targetVolume;
-    private float modify = 0;
-    private float t = 0;
-
+    SmoothTransition transition;
+    bool transitioning = false;
+    public AnimationCurve fadeCurve;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.Play();
+        //audioSource.Play();
+        transition = new SmoothTransition();
+        transition.OnFinish += OnTransitionEnd;
     }
 
     void Update()
     {
-        //Fade out
-        if (modify < 0)
-        {
-            t += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(targetVolume, 0, t / FadeTime);
-            if (t >= FadeTime)
-            {
-                modify = 0;
-                t = 0;
-            }
-            //Fade in
-        }
-        else if (modify > 0)
-        {
-            t += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(0, targetVolume, t / FadeTime);
-            if (t >= FadeTime)
-            {
-                modify = 0;
-                t = 0;
-            }
+        if (transitioning) {
+            audioSource.volume = transition.DriveForward();
         }
     }
 
     void OnMouseDown()
     {
-        modify = 1;
+        audioSource.Play();
+        transitioning = true;
+        transition.Begin(0, targetVolume, fadeCurve, fadeTime);
     }
 
     void OnMouseUp()
     {
-        modify = -1;
+        transitioning = true;
+        transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+    }
+
+    void OnTransitionEnd() {
+
+        transitioning = false;
+
+        if (audioSource.volume == 0) {
+            audioSource.Stop();
+        }
     }
 }

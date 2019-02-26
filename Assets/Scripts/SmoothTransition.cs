@@ -17,6 +17,14 @@ public class SmoothTransition {
 
     public float outNumber = 0;
 
+    public SmoothTransition() {
+        curve = new AnimationCurve();
+        //Set up a linear curve by default
+        float tan45 = Mathf.Tan(Mathf.Deg2Rad * 45);
+        curve.AddKey(new Keyframe(0, 0, tan45, tan45));
+        curve.AddKey(new Keyframe(1, 1, tan45, tan45));
+    }
+
     public SmoothTransition(float startNumber, float endNumber, AnimationCurve curve, float duration) {
         start = startNumber;
         end = endNumber;
@@ -34,7 +42,9 @@ public class SmoothTransition {
         start = startNumber;
         end = endNumber;
         this.duration = duration;
-        this.curve = curve;
+        if (curve != null) {
+            this.curve = curve;
+        }
         Begin();
     }
 
