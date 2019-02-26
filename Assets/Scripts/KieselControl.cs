@@ -13,7 +13,7 @@ public class KieselControl : MonoBehaviour {
     public float moveX;
     public Transform groundCheck;
     public float groundCheckRadius;
-    public LayerMask whatIsGround;
+    public LayerMask[] whatIsGround;
     public bool grounded;
     private Rigidbody2D rb;
     public bool drawGroundCheckGizmo;
@@ -36,7 +36,10 @@ public class KieselControl : MonoBehaviour {
 
     public void FixedUpdate() {
         //Checking if the character is on the ground
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        foreach (LayerMask groundMask in whatIsGround) {
+            grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+            if (grounded) { break; }
+        }
         kam.grounded = grounded;
     }
 

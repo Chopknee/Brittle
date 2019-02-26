@@ -35,6 +35,11 @@ public class FireflyDraggable : MonoBehaviour {
         }
 	}
 
+    private void OnMouseOver() {
+        //Create the halo object
+        
+    }
+
     private void OnMouseDown() {
         dragging = true;
 
