@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61359876631002488}
   - component: {fileID: 114598796039278748}
   m_Layer: 0
-  m_Name: CameraBoundsChangeTrigger2
+  m_Name: CenimaticTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,6 +80,16 @@ MonoBehaviour:
   minPosition: {x: -0.93, y: -6.68}
   maxPosition: {x: 32.83, y: 20.08}
   drawBoundsGizmo: 1
-  cf: {fileID: 0}
-  triggered: 0
-  disabledOnTrigger: 0
+  changeBounds: 0
+  mainCamera: {fileID: 0}
+  boundsTransitionTime: 0
+  changeZoom: 0
+  cameraSize: 0
+  sizeTransitionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  zoomTransitionTime: 0
+  disableAfterTrigger: 1
