@@ -2024,28 +2024,6 @@ Transform:
   m_Father: {fileID: 32439147}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1245866537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1285939928040782, guid: c57a789f76c37db428e284c476f12c6c,
-    type: 2}
-  m_PrefabInternal: {fileID: 2095082417}
---- !u!114 &1245866545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1245866537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  glowColor: {r: 1, g: 0.8489026, b: 0, a: 1}
-  glowBrightness: 2.91
-  outlineWidth: 5
-  alphaThreshold: 0.777
-  drawOutside: 0
-  enableInstancing: 0
 --- !u!1001 &1278834651
 Prefab:
   m_ObjectHideFlags: 0
@@ -4348,6 +4326,11 @@ Prefab:
       propertyPath: m_Points.m_Paths.Array.data[1].Array.data[12].y
       value: -1.23
       objectReference: {fileID: 0}
+    - target: {fileID: 212066493786071728, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
   m_IsPrefabAsset: 0
@@ -6185,18 +6168,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1285939928040782, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
-      propertyPath: m_Name
-      value: Rock
-      objectReference: {fileID: 0}
     - target: {fileID: 212066493786071728, guid: c57a789f76c37db428e284c476f12c6c,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1285939928040782, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
-      propertyPath: m_Layer
-      value: 5
+      propertyPath: m_Name
+      value: Rock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
