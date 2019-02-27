@@ -7,14 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ObjectGlow
-  m_Shader: {fileID: 4800000, guid: c20308b0e23b78d4c85098af31f19cb4, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA PIXELSNAP_ON _ALPHAPREMULTIPLY_ON _COLORADDSUBDIFF_ON
-    _EMISSION _ISOUTLINEENABLED_ON
-  m_LightmapFlags: 2
+  m_Shader: {fileID: 210, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: EFFECT_BUMP ETC1_EXTERNAL_ALPHA PIXELSNAP_ON _ALPHABLEND_ON _COLORADDSUBDIFF_ON
+    _ISOUTLINEENABLED_ON
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -74,11 +75,11 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortionBlend: 0.46
-    - _DistortionEnabled: 0
+    - _DistortionBlend: 0.358
+    - _DistortionEnabled: 1
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0.1
-    - _DstBlend: 10
+    - _DstBlend: 1
     - _EmissionEnabled: 0
     - _EnableExternalAlpha: 0
     - _FlipbookMode: 0
@@ -89,7 +90,7 @@ Material:
     - _IsOutlineEnabled: 1
     - _LightingEnabled: 1
     - _Metallic: 0
-    - _Mode: 3
+    - _Mode: 4
     - _OcclusionStrength: 1
     - _OperationBlend_Fade_1: 0.398
     - _OutlineSize: 3.69
@@ -100,7 +101,7 @@ Material:
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
     - _SpriteFade: 0.417
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -110,7 +111,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 127.999985, g: 127.999985, b: 127.999985, a: 1}
+    - _Color: {r: 0, g: 11.87573, b: 13.389072, a: 1}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _EmissionColor: {r: 0.7607842, g: 0.7607842, b: 0.7607842, a: 1}

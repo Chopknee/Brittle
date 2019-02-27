@@ -15,12 +15,25 @@ public class FireflyDraggable : MonoBehaviour {
 
     private Rigidbody2D rb;
 
+    public GameObject highlightSprite;
+
+    public SmoothTransition highlight;
+    public float highlightTime = 1;
+
+    public bool mouseOver = false;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         if (mainCamera == null) {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
+
+        if (highlightSprite == null) {
+            highlightSprite = transform.GetChild(0).gameObject;
+        }
+
+        highlight = new SmoothTransition(0, 1, null, highlightTime);
     }
 	
 	// Update is called once per frame
@@ -33,11 +46,30 @@ public class FireflyDraggable : MonoBehaviour {
             //Apply it as a force and multiply it to get a visible result
             rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y) * Time.deltaTime);
         }
+
+        if (highlight.running) {
+            highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
+        }
 	}
 
     private void OnMouseOver() {
+        mouseOver = true;
         //Create the halo object
-        
+        if (highlightSprite != null) {
+            highlight.start = highlight.outNumber;
+            highlight.end = 1;
+            highlight.Begin();
+        }
+    }
+
+    private void OnMouseExit() {
+        mouseOver = false;
+
+        if (highlightSprite != null && !dragging) {
+            highlight.start = highlight.outNumber;
+            highlight.end = 0;
+            highlight.Begin();
+        }
     }
 
     private void OnMouseDown() {
@@ -47,5 +79,12 @@ public class FireflyDraggable : MonoBehaviour {
 
     private void OnMouseUp() {
         dragging = false;
+        if (!mouseOver) {
+            if (highlightSprite != null) {
+                highlight.start = highlight.outNumber;
+                highlight.end = 0;
+                highlight.Begin();
+            }
+        }
     }
 }

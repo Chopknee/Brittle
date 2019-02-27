@@ -18,7 +18,7 @@ public class KieselControl : MonoBehaviour {
     private Rigidbody2D rb;
     public bool drawGroundCheckGizmo;
     Keisel_AnimationController kam;
-    
+    public string currentGroundType;
 
     private bool jumped = false;
 
@@ -37,7 +37,15 @@ public class KieselControl : MonoBehaviour {
     public void FixedUpdate() {
         //Checking if the character is on the ground
         foreach (LayerMask groundMask in whatIsGround) {
-            grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+            Collider2D result;
+            result = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+            if (result != null) {
+                currentGroundType = result.gameObject.tag;
+                grounded = true;
+            } else {
+                currentGroundType = "";
+                grounded = false;
+            }
             if (grounded) { break; }
         }
         kam.grounded = grounded;
@@ -58,7 +66,9 @@ public class KieselControl : MonoBehaviour {
             kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
         }
         //Setting the velocity of the character
-        rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
+        if (grounded) {
+            rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
+        }
 
         kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
         kam.verticalSpeed = rb.velocity.y;
