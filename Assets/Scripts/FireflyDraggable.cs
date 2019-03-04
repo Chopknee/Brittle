@@ -22,6 +22,11 @@ public class FireflyDraggable : MonoBehaviour {
 
     public bool mouseOver = false;
 
+    public float highlightRadius = 10f;
+    public LayerMask playerMask;
+
+    public bool lastInside = false;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -50,41 +55,53 @@ public class FireflyDraggable : MonoBehaviour {
         if (highlight.running) {
             highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
         }
+
+        bool currentInside = Physics2D.OverlapCircle(transform.position, highlightRadius, playerMask);
+        if (currentInside != lastInside) {
+            lastInside = currentInside;
+            Debug.Log("Status changed!");
+            if (currentInside) {
+                if (highlightSprite != null) {
+                    highlight.start = highlight.outNumber;
+                    highlight.end = 1;
+                    highlight.Begin();
+                }
+            } else {
+                if (highlightSprite != null) {
+                    highlight.start = highlight.outNumber;
+                    highlight.end = 0;
+                    highlight.Begin();
+                }
+            }
+        }
+
 	}
 
     private void OnMouseOver() {
         mouseOver = true;
         //Create the halo object
-        if (highlightSprite != null) {
-            highlight.start = highlight.outNumber;
-            highlight.end = 1;
-            highlight.Begin();
-        }
+
     }
 
     private void OnMouseExit() {
         mouseOver = false;
-
-        if (highlightSprite != null && !dragging) {
-            highlight.start = highlight.outNumber;
-            highlight.end = 0;
-            highlight.Begin();
+        if (!dragging) {
+            highlightSprite.GetComponent<ParticleSystem>().Stop();
         }
     }
 
     private void OnMouseDown() {
         dragging = true;
-
+        highlightSprite.GetComponent<ParticleSystem>().Play();
     }
 
     private void OnMouseUp() {
         dragging = false;
-        if (!mouseOver) {
-            if (highlightSprite != null) {
-                highlight.start = highlight.outNumber;
-                highlight.end = 0;
-                highlight.Begin();
-            }
-        }
+        highlightSprite.GetComponent<ParticleSystem>().Stop();
+    }
+
+    public void OnDrawGizmos() {
+        Gizmos.color = new Color(255, 0, 0);
+        Gizmos.DrawWireSphere(transform.position, highlightRadius);
     }
 }

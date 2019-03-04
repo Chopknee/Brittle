@@ -75,8 +75,8 @@ public class KieselControl : MonoBehaviour {
     }
 
     private void Jump() {
-        kam.Jump();
-        if (!jumped) {
+        if (!jumped && grounded) {
+            kam.Jump();
             Invoke("JumpForce", jumpForceDelay);
             jumped = true;
         }
