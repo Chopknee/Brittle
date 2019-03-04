@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 82561740307298406}
   m_Layer: 0
   m_Name: keisel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2.03
-  m_LinearDrag: 1
+  m_LinearDrag: 0.1
   m_AngularDrag: 0
   m_GravityScale: 1.96
   m_Material: {fileID: 0}
@@ -473,18 +473,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalAxis: Horizontal
   JumpButton: Jump
-  playerSpeed: 6.75
+  horizontalForce: 250
+  verticalForce: 500
+  maxVelocity: {x: 5, y: 10}
   facingRight: 1
-  playerJH: 1250
-  jumpForceDelay: 0.2
   moveX: 0
   groundCheck: {fileID: 4580057633261378}
   groundCheckRadius: 0.42
   whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
+  - serializedVersion: 2
+    m_Bits: 0
+  - serializedVersion: 2
+    m_Bits: 0
   grounded: 0
   drawGroundCheckGizmo: 1
+  currentGroundType: 
+  ground_physicsMaterial: {fileID: 6200000, guid: 9f5598fb946dc5045bdb5c969217a380,
+    type: 2}
+  airborne_physicsMaterial: {fileID: 6200000, guid: 92262a8fae739a8448fb0331f6e9fed3,
+    type: 2}
 --- !u!114 &114543640357875446
 MonoBehaviour:
   m_ObjectHideFlags: 1

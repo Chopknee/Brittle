@@ -23,9 +23,12 @@ public class FireflyDraggable : MonoBehaviour {
     public bool mouseOver = false;
 
     public float highlightRadius = 10f;
+    private float highlightRadiusSquared;
     public LayerMask playerMask;
 
     public bool lastInside = false;
+
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +42,11 @@ public class FireflyDraggable : MonoBehaviour {
         }
 
         highlight = new SmoothTransition(0, 1, null, highlightTime);
+
+        if (player == null) {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        highlightRadiusSquared = highlightRadius * highlightRadius;
     }
 	
 	// Update is called once per frame
@@ -56,7 +64,8 @@ public class FireflyDraggable : MonoBehaviour {
             highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
         }
 
-        bool currentInside = Physics2D.OverlapCircle(transform.position, highlightRadius, playerMask);
+        //bool currentInside = Physics2D.OverlapCircle(transform.position, highlightRadius, playerMask);
+        bool currentInside = (transform.position - player.transform.position).sqrMagnitude < highlightRadiusSquared;
         if (currentInside != lastInside) {
             lastInside = currentInside;
             Debug.Log("Status changed!");
