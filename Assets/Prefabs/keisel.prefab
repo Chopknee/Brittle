@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 82561740307298406}
   m_Layer: 0
   m_Name: keisel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -481,10 +481,13 @@ MonoBehaviour:
   groundCheck: {fileID: 4580057633261378}
   groundCheckRadius: 0.42
   whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
+  - serializedVersion: 2
+    m_Bits: 0
+  - serializedVersion: 2
+    m_Bits: 0
   grounded: 0
   drawGroundCheckGizmo: 1
+  currentGroundType: 
 --- !u!114 &114543640357875446
 MonoBehaviour:
   m_ObjectHideFlags: 1
