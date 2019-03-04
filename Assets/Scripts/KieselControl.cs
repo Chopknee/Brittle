@@ -13,12 +13,12 @@ public class KieselControl : MonoBehaviour {
     public float moveX;
     public Transform groundCheck;
     public float groundCheckRadius;
-    public LayerMask whatIsGround;
+    public LayerMask[] whatIsGround;
     public bool grounded;
     private Rigidbody2D rb;
     public bool drawGroundCheckGizmo;
     Keisel_AnimationController kam;
-    
+    public string currentGroundType;
 
     private bool jumped = false;
 
@@ -36,7 +36,18 @@ public class KieselControl : MonoBehaviour {
 
     public void FixedUpdate() {
         //Checking if the character is on the ground
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        foreach (LayerMask groundMask in whatIsGround) {
+            Collider2D result;
+            result = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+            if (result != null) {
+                currentGroundType = result.gameObject.tag;
+                grounded = true;
+            } else {
+                currentGroundType = "";
+                grounded = false;
+            }
+            if (grounded) { break; }
+        }
         kam.grounded = grounded;
     }
 
@@ -55,15 +66,17 @@ public class KieselControl : MonoBehaviour {
             kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
         }
         //Setting the velocity of the character
-        rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
+        if (grounded) {
+            rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
+        }
 
         kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
         kam.verticalSpeed = rb.velocity.y;
     }
 
     private void Jump() {
-        kam.Jump();
-        if (!jumped) {
+        if (!jumped && grounded) {
+            kam.Jump();
             Invoke("JumpForce", jumpForceDelay);
             jumped = true;
         }

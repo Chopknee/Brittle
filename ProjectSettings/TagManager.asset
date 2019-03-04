@@ -9,6 +9,10 @@ TagManager:
   - Platform
   - Ladder
   - hive
+  - Grass
+  - Dirt
+  - Stone
+  - Gravel
   layers:
   - Default
   - TransparentFX
@@ -20,7 +24,7 @@ TagManager:
   - 
   - ground
   - player
-  - 
+  - FloatingObject
   - 
   - 
   - 

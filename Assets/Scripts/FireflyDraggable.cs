@@ -15,12 +15,30 @@ public class FireflyDraggable : MonoBehaviour {
 
     private Rigidbody2D rb;
 
+    public GameObject highlightSprite;
+
+    public SmoothTransition highlight;
+    public float highlightTime = 1;
+
+    public bool mouseOver = false;
+
+    public float highlightRadius = 10f;
+    public LayerMask playerMask;
+
+    public bool lastInside = false;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         if (mainCamera == null) {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
+
+        if (highlightSprite == null) {
+            highlightSprite = transform.GetChild(0).gameObject;
+        }
+
+        highlight = new SmoothTransition(0, 1, null, highlightTime);
     }
 	
 	// Update is called once per frame
@@ -33,14 +51,57 @@ public class FireflyDraggable : MonoBehaviour {
             //Apply it as a force and multiply it to get a visible result
             rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y) * Time.deltaTime);
         }
+
+        if (highlight.running) {
+            highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
+        }
+
+        bool currentInside = Physics2D.OverlapCircle(transform.position, highlightRadius, playerMask);
+        if (currentInside != lastInside) {
+            lastInside = currentInside;
+            Debug.Log("Status changed!");
+            if (currentInside) {
+                if (highlightSprite != null) {
+                    highlight.start = highlight.outNumber;
+                    highlight.end = 1;
+                    highlight.Begin();
+                }
+            } else {
+                if (highlightSprite != null) {
+                    highlight.start = highlight.outNumber;
+                    highlight.end = 0;
+                    highlight.Begin();
+                }
+            }
+        }
+
 	}
+
+    private void OnMouseOver() {
+        mouseOver = true;
+        //Create the halo object
+
+    }
+
+    private void OnMouseExit() {
+        mouseOver = false;
+        if (!dragging) {
+            highlightSprite.GetComponent<ParticleSystem>().Stop();
+        }
+    }
 
     private void OnMouseDown() {
         dragging = true;
-
+        highlightSprite.GetComponent<ParticleSystem>().Play();
     }
 
     private void OnMouseUp() {
         dragging = false;
+        highlightSprite.GetComponent<ParticleSystem>().Stop();
+    }
+
+    public void OnDrawGizmos() {
+        Gizmos.color = new Color(255, 0, 0);
+        Gizmos.DrawWireSphere(transform.position, highlightRadius);
     }
 }

@@ -75,7 +75,7 @@ public class Keisel_AnimationController : MonoBehaviour {
         loopState = false;
         timeScale = jumpAnimationSpeed;
         stateOverride = true;
-        Invoke("ResetOverride", 0.25f);
+        Invoke("ResetOverride", 0.7f);
     }
 
     public void FlipDirection(int direction) {
