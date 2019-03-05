@@ -27,6 +27,7 @@ public class FireflyDraggable : MonoBehaviour {
     public LayerMask playerMask;
 
     public bool lastInside = false;
+    public bool DrawRadiusGizmo = false;
 
     private GameObject player;
 
@@ -110,7 +111,9 @@ public class FireflyDraggable : MonoBehaviour {
     }
 
     public void OnDrawGizmos() {
-        Gizmos.color = new Color(255, 0, 0);
-        Gizmos.DrawWireSphere(transform.position, highlightRadius);
+        if (DrawRadiusGizmo) {
+            Gizmos.color = new Color(0, 255, 0);
+            Gizmos.DrawWireSphere(transform.position, highlightRadius);
+        }
     }
 }
