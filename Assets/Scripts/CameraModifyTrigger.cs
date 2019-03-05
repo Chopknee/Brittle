@@ -33,15 +33,17 @@ public class CameraModifyTrigger : MonoBehaviour {
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
-        if (!triggered) {
-            if (disableAfterTrigger) {
-                triggered = true;
-            }
-            if (changeBounds) {
-                cf.SetBounds(minPosition, maxPosition, boundsTransitionTime);
-            }
-            if (changeZoom) {
-                cf.SetZoom(cameraSize, sizeTransitionCurve, zoomTransitionTime);
+        if (collision.gameObject.tag == "Player") {
+            if (!triggered) {
+                if (disableAfterTrigger) {
+                    triggered = true;
+                }
+                if (changeBounds) {
+                    cf.SetBounds(minPosition, maxPosition, boundsTransitionTime);
+                }
+                if (changeZoom) {
+                    cf.SetZoom(cameraSize, sizeTransitionCurve, zoomTransitionTime);
+                }
             }
         }
     }

@@ -6,33 +6,66 @@ using Spine.Unity;
 public class KieselControl : MonoBehaviour {
     public string HorizontalAxis = "Horizontal";
     public string JumpButton = "Jump";
-    public float playerSpeed = 10;
+    public float horizontalForce = 10;
+    public float verticalForce = 100;
+    public Vector2 maxVelocity = new Vector2(5, 10);
     public bool facingRight = true;
-    public float playerJH = 1250;
-    public float jumpForceDelay = 0.2f;
     public float moveX;
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask[] whatIsGround;
     public bool grounded;
     private Rigidbody2D rb;
+    private Collider2D coll;
     public bool drawGroundCheckGizmo;
     Keisel_AnimationController kam;
     public string currentGroundType;
 
     private bool jumped = false;
 
+    public PhysicsMaterial2D ground_physicsMaterial;
+    public PhysicsMaterial2D airborne_physicsMaterial;
+
     public void Start() {
         
         rb = GetComponent<Rigidbody2D>();
         kam = GetComponent<Keisel_AnimationController>();
-
+        coll = GetComponent<Collider2D>();
     }
 
     
     public void Update() {
-        PlayerMove();
+        //Controling the direction the sprite faces
+        moveX = Input.GetAxis(HorizontalAxis);
+        if (moveX < 0.0 && facingRight == true) {
+            facingRight = false;
+            kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
+        } else if (moveX > 0.0f && facingRight == false) {
+            facingRight = true;
+            kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
+        }
+
+
+        //Setting the velocity of the character
+        if (grounded) {
+            if (moveX != 0) {
+                rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalForce, 0));
+            }
+            if (Input.GetButtonDown(JumpButton) && !jumped) {
+                jumped = true;
+                kam.Jump();
+                //Apply the jump velocity.
+                rb.AddForce(new Vector2(moveX, 2) * verticalForce);
+            }
+        }
+
+        rb.velocity = Vector2.Min(Vector2.Max(rb.velocity, -maxVelocity), maxVelocity);
+
+        kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
+        kam.verticalSpeed = rb.velocity.y;
     }
+
+    private bool lastJumped = false;
 
     public void FixedUpdate() {
         //Checking if the character is on the ground
@@ -42,49 +75,18 @@ public class KieselControl : MonoBehaviour {
             if (result != null) {
                 currentGroundType = result.gameObject.tag;
                 grounded = true;
+                coll.sharedMaterial = ground_physicsMaterial;
             } else {
                 currentGroundType = "";
                 grounded = false;
+                coll.sharedMaterial = airborne_physicsMaterial;
             }
             if (grounded) { break; }
         }
         kam.grounded = grounded;
-    }
-
-    private void PlayerMove() {
-        
-        if (Input.GetButtonDown(JumpButton) && grounded) {
-            Jump();
+        if (!grounded && jumped && lastJumped != jumped) {
+            jumped = false;
         }
-        //Controling the direction the sprite faces
-        moveX = Input.GetAxis(HorizontalAxis);
-        if (moveX < 0.0 && facingRight == true) {
-            facingRight = false;
-            kam.FlipDirection((int)(moveX/Mathf.Abs(moveX)));
-        } else if (moveX > 0.0f && facingRight == false) {
-            facingRight = true;
-            kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
-        }
-        //Setting the velocity of the character
-        if (grounded) {
-            rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
-        }
-
-        kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
-        kam.verticalSpeed = rb.velocity.y;
-    }
-
-    private void Jump() {
-        if (!jumped && grounded) {
-            kam.Jump();
-            Invoke("JumpForce", jumpForceDelay);
-            jumped = true;
-        }
-    }
-
-    public void JumpForce() {
-        jumped = false;
-        rb.AddForce(Vector2.up * playerJH);
     }
 
     public void OnDrawGizmos() {
