@@ -48,7 +48,9 @@ public class KieselControl : MonoBehaviour {
 
         //Setting the velocity of the character
         if (grounded) {
-            rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalForce, 0));
+            if (moveX != 0) {
+                rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalForce, 0));
+            }
             if (Input.GetButtonDown(JumpButton) && !jumped) {
                 jumped = true;
                 kam.Jump();
