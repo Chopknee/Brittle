@@ -27,6 +27,8 @@ public class Keisel_AnimationController : MonoBehaviour {
 
     public string lastAnimationState = "";
 
+    public bool freezeAnimations = false;
+
     void Start () {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
 
@@ -35,36 +37,38 @@ public class Keisel_AnimationController : MonoBehaviour {
 	}
 	
 	void Update () {
-        //Update the current animation
-        skeletonAnimation.timeScale = timeScale;
-        if (animationState != lastAnimationState) {
-            skeletonAnimation.AnimationState.SetAnimation(0, animationState, loopState);
-            lastAnimationState = animationState;
-        }
-        //Check if the character is falling.
-        falling = (verticalSpeed < 0 && !grounded) ? true : false;
-        jumping = (verticalSpeed > 0 && !grounded) ? true : false;
-        if (!stateOverride) {
-            //Keep the running animation up to date.
-            if (horizontalSpeed > 0 && (!jumping && !falling)) {//If we are moving and not jumping
-                if (animationState != runAnimationName) {
-                    Run();
-                } else {
-                    skeletonAnimation.timeScale = horizontalSpeed * runSpeedMultiplier;
-                }
+        if (!freezeAnimations) {
+            //Update the current animation
+            skeletonAnimation.timeScale = timeScale;
+            if (animationState != lastAnimationState) {
+                skeletonAnimation.AnimationState.SetAnimation(0, animationState, loopState);
+                lastAnimationState = animationState;
             }
-
-            //If we are not moving, not falling, and on the ground
-            if (horizontalSpeed < 0.01f && !falling && !jumping) {
-                if (animationState != idleAnimationName) {
-                    Idle();
+            //Check if the character is falling.
+            falling = ( verticalSpeed < 0 && !grounded ) ? true : false;
+            jumping = ( verticalSpeed > 0 && !grounded ) ? true : false;
+            if (!stateOverride) {
+                //Keep the running animation up to date.
+                if (horizontalSpeed > 0 && ( !jumping && !falling )) {//If we are moving and not jumping
+                    if (animationState != runAnimationName) {
+                        Run();
+                    } else {
+                        skeletonAnimation.timeScale = horizontalSpeed * runSpeedMultiplier;
+                    }
                 }
-            }
 
-            //If we are falling.
-            if (falling) {
-                if (animationState != fallingAnimationName) {
-                    Falling();
+                //If we are not moving, not falling, and on the ground
+                if (horizontalSpeed < 0.01f && !falling && !jumping) {
+                    if (animationState != idleAnimationName) {
+                        Idle();
+                    }
+                }
+
+                //If we are falling.
+                if (falling) {
+                    if (animationState != fallingAnimationName) {
+                        Falling();
+                    }
                 }
             }
         }

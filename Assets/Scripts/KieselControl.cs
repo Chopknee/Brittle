@@ -10,6 +10,9 @@ public class KieselControl : MonoBehaviour {
     public float verticalForce = 100;
     public Vector2 maxVelocity = new Vector2(5, 10);
     public bool facingRight = true;
+    public bool jumping = false;
+    public bool falling = false;
+    public bool running = false;
     public float moveX;
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -18,7 +21,8 @@ public class KieselControl : MonoBehaviour {
     private Rigidbody2D rb;
     private Collider2D coll;
     public bool drawGroundCheckGizmo;
-    Keisel_AnimationController kam;
+    //Keisel_AnimationController kam;
+    Animator kam;
     public string currentGroundType;
 
     private bool jumped = false;
@@ -26,43 +30,68 @@ public class KieselControl : MonoBehaviour {
     public PhysicsMaterial2D ground_physicsMaterial;
     public PhysicsMaterial2D airborne_physicsMaterial;
 
+    public bool controlsFrozen = false;
+    public bool freezeMovement = false;
+
     public void Start() {
         
         rb = GetComponent<Rigidbody2D>();
-        kam = GetComponent<Keisel_AnimationController>();
+        //kam = GetComponent<Keisel_AnimationController>();
+        kam = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
     }
 
     
     public void Update() {
-        //Controling the direction the sprite faces
-        moveX = Input.GetAxis(HorizontalAxis);
-        if (moveX < 0.0 && facingRight == true) {
-            facingRight = false;
-            kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
-        } else if (moveX > 0.0f && facingRight == false) {
-            facingRight = true;
-            kam.FlipDirection((int)(moveX / Mathf.Abs(moveX)));
-        }
-
-
-        //Setting the velocity of the character
-        if (grounded) {
-            if (moveX != 0) {
-                rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalForce, 0));
+        if (!freezeMovement) {
+            //Controling the direction the sprite faces
+            running = false;
+            if (!controlsFrozen) {
+                moveX = Input.GetAxis(HorizontalAxis);
+                if (moveX < 0.0 && facingRight == true) {
+                    facingRight = false;
+                    transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                    //kam.SetTrigger("Flip");
+                    //kam.SetInteger("FlipDirection", -1);
+                    //kam.FlipDirection((int) ( moveX / Mathf.Abs(moveX) ));
+                } else if (moveX > 0.0f && facingRight == false) {
+                    facingRight = true;
+                    transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                    //kam.SetTrigger("Flip");
+                    //kam.SetInteger("FlipDirection", 1);
+                    //kam.FlipDirection((int) ( moveX / Mathf.Abs(moveX) ));
+                }
             }
-            if (Input.GetButtonDown(JumpButton) && !jumped) {
-                jumped = true;
-                kam.Jump();
-                //Apply the jump velocity.
-                rb.AddForce(new Vector2(moveX, 2) * verticalForce);
+
+
+            //Setting the velocity of the character
+            if (grounded) {
+                if (moveX != 0) {
+                    rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalForce, 0));
+                    running = true;
+                }
+                if (Input.GetButtonDown(JumpButton) && !jumped) {
+                    jumped = true;
+                    kam.SetTrigger("Jump");
+                    //kam.Jump();
+                    //Apply the jump velocity.
+                    rb.AddForce(new Vector2(moveX, 2) * verticalForce);
+                }
             }
+
+            rb.velocity = Vector2.Min(Vector2.Max(rb.velocity, -maxVelocity), maxVelocity);
+
+            falling = ( rb.velocity.y < 0 && !grounded ) ? true : false;
+            jumping = ( rb.velocity.y > 0 && !grounded ) ? true : false;
+
+            kam.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
+            kam.SetFloat("VerticalSpeed", rb.velocity.y);
+            kam.SetBool("Jumping", jumping);
+            kam.SetBool("Falling", falling);
+            kam.SetBool("IsRunning", running);
+            //kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
+            //kam.verticalSpeed = rb.velocity.y;
         }
-
-        rb.velocity = Vector2.Min(Vector2.Max(rb.velocity, -maxVelocity), maxVelocity);
-
-        kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
-        kam.verticalSpeed = rb.velocity.y;
     }
 
     private bool lastJumped = false;
@@ -83,7 +112,8 @@ public class KieselControl : MonoBehaviour {
             }
             if (grounded) { break; }
         }
-        kam.grounded = grounded;
+        //kam.grounded = grounded;
+        kam.SetBool("Grounded", grounded);
         if (!grounded && jumped && lastJumped != jumped) {
             jumped = false;
         }

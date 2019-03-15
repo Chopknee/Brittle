@@ -9,6 +9,7 @@ public class LevelControl : MonoBehaviour {
     public bool drawStartPosition;
     public GameObject player;
     public GameObject mainCamera;
+    public CameraModifyTrigger initialCameraBounds;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,9 @@ public class LevelControl : MonoBehaviour {
 
         if (overrideStartPosition) {
             mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
+            if (initialCameraBounds != null) {
+                mainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
+            }
         } else {
             player.transform.position = keiselStartPosition;
             mainCamera.transform.position = new Vector3(keiselStartPosition.x, keiselStartPosition.y, mainCamera.transform.position.z);

@@ -20,6 +20,5 @@ public class kAnimation : MonoBehaviour {
 		{
 			anim.SetTrigger ("isJumping");
 		}
-
 	}
 }
