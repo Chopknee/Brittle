@@ -21,7 +21,6 @@ public class KieselControl : MonoBehaviour {
     private Rigidbody2D rb;
     private Collider2D coll;
     public bool drawGroundCheckGizmo;
-    //Keisel_AnimationController kam;
     Animator kam;
     public string currentGroundType;
 
@@ -36,8 +35,7 @@ public class KieselControl : MonoBehaviour {
     public void Start() {
         
         rb = GetComponent<Rigidbody2D>();
-        //kam = GetComponent<Keisel_AnimationController>();
-        kam = GetComponent<Animator>();
+        kam = GetComponentInChildren<Animator>();
         coll = GetComponent<Collider2D>();
     }
 
@@ -51,15 +49,9 @@ public class KieselControl : MonoBehaviour {
                 if (moveX < 0.0 && facingRight == true) {
                     facingRight = false;
                     transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-                    //kam.SetTrigger("Flip");
-                    //kam.SetInteger("FlipDirection", -1);
-                    //kam.FlipDirection((int) ( moveX / Mathf.Abs(moveX) ));
                 } else if (moveX > 0.0f && facingRight == false) {
                     facingRight = true;
                     transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-                    //kam.SetTrigger("Flip");
-                    //kam.SetInteger("FlipDirection", 1);
-                    //kam.FlipDirection((int) ( moveX / Mathf.Abs(moveX) ));
                 }
             }
 
@@ -72,8 +64,9 @@ public class KieselControl : MonoBehaviour {
                 }
                 if (Input.GetButtonDown(JumpButton) && !jumped) {
                     jumped = true;
-                    kam.SetTrigger("Jump");
-                    //kam.Jump();
+                    if (kam.gameObject.activeSelf) {
+                        kam.SetTrigger("Jump");
+                    }
                     //Apply the jump velocity.
                     rb.AddForce(new Vector2(moveX, 2) * verticalForce);
                 }
@@ -83,18 +76,15 @@ public class KieselControl : MonoBehaviour {
 
             falling = ( rb.velocity.y < 0 && !grounded ) ? true : false;
             jumping = ( rb.velocity.y > 0 && !grounded ) ? true : false;
-
-            kam.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
-            kam.SetFloat("VerticalSpeed", rb.velocity.y);
-            kam.SetBool("Jumping", jumping);
-            kam.SetBool("Falling", falling);
-            kam.SetBool("IsRunning", running);
-            //kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
-            //kam.verticalSpeed = rb.velocity.y;
+            if (kam.gameObject.activeSelf) {
+                kam.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
+                kam.SetFloat("VerticalSpeed", rb.velocity.y);
+                kam.SetBool("Jumping", jumping);
+                kam.SetBool("Falling", falling);
+                kam.SetBool("IsRunning", running);
+            }
         }
     }
-
-    private bool lastJumped = false;
 
     public void FixedUpdate() {
         //Checking if the character is on the ground
@@ -112,9 +102,12 @@ public class KieselControl : MonoBehaviour {
             }
             if (grounded) { break; }
         }
-        //kam.grounded = grounded;
-        kam.SetBool("Grounded", grounded);
-        if (!grounded && jumped && lastJumped != jumped) {
+
+        if (kam.gameObject.activeSelf) {
+            kam.SetBool("Grounded", grounded);
+        }
+
+        if (!grounded && jumped) {
             jumped = false;
         }
     }
@@ -124,5 +117,13 @@ public class KieselControl : MonoBehaviour {
             Gizmos.color = new Color(0, 0, 255);
             Gizmos.DrawWireSphere(groundCheck.transform.position, groundCheckRadius);
         }
+    }
+
+    public void SetAnimationMode() {
+
+    }
+
+    public void EndAnimationMode() {
+
     }
 }

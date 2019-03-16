@@ -65,11 +65,9 @@ public class FireflyDraggable : MonoBehaviour {
             highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
         }
 
-        //bool currentInside = Physics2D.OverlapCircle(transform.position, highlightRadius, playerMask);
         bool currentInside = (transform.position - player.transform.position).sqrMagnitude < highlightRadiusSquared;
         if (currentInside != lastInside) {
             lastInside = currentInside;
-            Debug.Log("Status changed!");
             if (currentInside) {
                 if (highlightSprite != null) {
                     highlight.start = highlight.outNumber;

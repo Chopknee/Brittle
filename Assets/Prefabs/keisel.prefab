@@ -11,6 +11,25 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1838000440046118}
   m_IsPrefabAsset: 1
+--- !u!1 &1333847452158766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4262042762833558}
+  - component: {fileID: 33420739104355136}
+  - component: {fileID: 23288696469986288}
+  - component: {fileID: 114214654685764984}
+  - component: {fileID: 95587717530569984}
+  m_Layer: 9
+  m_Name: CharacterGraphic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1584765065806352
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,9 +53,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4489059902447994}
-  - component: {fileID: 33560112599464844}
-  - component: {fileID: 23530972787947328}
-  - component: {fileID: 114733393486134504}
   - component: {fileID: 50662353170031956}
   - component: {fileID: 70550399273713680}
   - component: {fileID: 114466114370549590}
@@ -44,7 +60,7 @@ GameObject:
   - component: {fileID: 82639122693217890}
   - component: {fileID: 82549652257028954}
   - component: {fileID: 82561740307298406}
-  - component: {fileID: 95875677587860390}
+  - component: {fileID: 95781863168114738}
   m_Layer: 9
   m_Name: keisel
   m_TagString: Player
@@ -52,16 +68,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4262042762833558
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333847452158766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4489059902447994}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4489059902447994
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838000440046118}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 62.14, y: 10.64, z: -0.17000008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 64.97, y: 8.66, z: -0.17000008}
   m_LocalScale: {x: 0.06302948, y: 0.063029476, z: 0.063029476}
   m_Children:
+  - {fileID: 4262042762833558}
   - {fileID: 4580057633261378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,14 +107,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4489059902447994}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23530972787947328
+--- !u!23 &23288696469986288
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838000440046118}
+  m_GameObject: {fileID: 1333847452158766}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -114,12 +144,12 @@ MeshRenderer:
   m_SortingLayerID: 1051500441
   m_SortingLayer: 2
   m_SortingOrder: 0
---- !u!33 &33560112599464844
+--- !u!33 &33420739104355136
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838000440046118}
+  m_GameObject: {fileID: 1333847452158766}
   m_Mesh: {fileID: 0}
 --- !u!50 &50662353170031956
 Rigidbody2D:
@@ -441,13 +471,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &95875677587860390
+--- !u!95 &95587717530569984
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838000440046118}
+  m_GameObject: {fileID: 1333847452158766}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fa70ebdee7157be4a8b492adae635926, type: 2}
@@ -459,6 +489,53 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95781863168114738
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838000440046118}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114214654685764984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333847452158766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonDataAsset: {fileID: 11400000, guid: 8ee31963a43a593428bdfb3629742fd4, type: 2}
+  initialSkinName: default
+  initialFlipX: 0
+  initialFlipY: 0
+  separatorSlotNames: []
+  zSpacing: 0
+  useClipping: 1
+  immutableTriangles: 0
+  pmaVertexColors: 1
+  clearStateOnDisable: 0
+  tintBlack: 0
+  singleSubmesh: 0
+  addNormals: 0
+  calculateTangents: 0
+  disableRenderingOnOverride: 1
+  _animationName: idle
+  loop: 1
+  timeScale: 1
 --- !u!114 &114466114370549590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,32 +584,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63e2392ec90cc640b530fe6a01567ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114733393486134504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838000440046118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 8ee31963a43a593428bdfb3629742fd4, type: 2}
-  initialSkinName: default
-  initialFlipX: 0
-  initialFlipY: 0
-  separatorSlotNames: []
-  zSpacing: 0
-  useClipping: 1
-  immutableTriangles: 0
-  pmaVertexColors: 1
-  clearStateOnDisable: 0
-  tintBlack: 0
-  singleSubmesh: 0
-  addNormals: 0
-  calculateTangents: 0
-  disableRenderingOnOverride: 1
-  _animationName: idle
-  loop: 1
-  timeScale: 1
