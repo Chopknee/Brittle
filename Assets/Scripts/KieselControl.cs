@@ -7,6 +7,7 @@ public class KieselControl : MonoBehaviour {
     public string HorizontalAxis = "Horizontal";
     public string JumpButton = "Jump";
     public float horizontalForce = 10;
+    public float airHorizontalForce = 5;
     public float verticalForce = 100;
     public Vector2 maxVelocity = new Vector2(5, 10);
     public bool facingRight = true;
@@ -58,10 +59,6 @@ public class KieselControl : MonoBehaviour {
 
             //Setting the velocity of the character
             if (grounded) {
-                if (moveX != 0) {
-                    rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalForce, 0));
-                    running = true;
-                }
                 if (Input.GetButtonDown(JumpButton) && !jumped) {
                     jumped = true;
                     if (kam.gameObject.activeSelf) {
@@ -70,6 +67,15 @@ public class KieselControl : MonoBehaviour {
                     //Apply the jump velocity.
                     rb.AddForce(new Vector2(moveX, 2) * verticalForce);
                 }
+            }
+
+            if (moveX != 0) {
+                float horizontalMultiplier = horizontalForce;
+                if (jumped || !grounded) {
+                    horizontalMultiplier = airHorizontalForce;
+                }
+                rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalMultiplier, 0));
+                running = true;
             }
 
             rb.velocity = Vector2.Min(Vector2.Max(rb.velocity, -maxVelocity), maxVelocity);
@@ -107,7 +113,7 @@ public class KieselControl : MonoBehaviour {
             kam.SetBool("Grounded", grounded);
         }
 
-        if (!grounded && jumped) {
+        if (grounded && jumped) {
             jumped = false;
         }
     }

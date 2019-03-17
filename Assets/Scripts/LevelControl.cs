@@ -7,29 +7,33 @@ public class LevelControl : MonoBehaviour {
     public Vector3 keiselStartPosition;
     public bool overrideStartPosition;
     public bool drawStartPosition;
-    public GameObject player;
-    public GameObject mainCamera;
     public CameraModifyTrigger initialCameraBounds;
+    //Accessible to all objects.
+    public static GameObject Keisel;
+    public static GameObject MainCamera;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
-        if (player == null) {
-            player = GameObject.FindGameObjectWithTag("Player");
+        if (Keisel == null) {
+            Keisel = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (mainCamera == null) {
-            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        if (MainCamera == null) {
+            MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
 
         if (overrideStartPosition) {
-            mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
+            
             if (initialCameraBounds != null) {
-                mainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
+                MainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
+                MainCamera.GetComponent<CameraFollow>().SetZoom(initialCameraBounds.cameraSize, initialCameraBounds.sizeTransitionCurve, initialCameraBounds.zoomTransitionTime);
             }
+            //MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
         } else {
-            player.transform.position = keiselStartPosition;
-            mainCamera.transform.position = new Vector3(keiselStartPosition.x, keiselStartPosition.y, mainCamera.transform.position.z);
+            MainCamera.transform.position = new Vector3(keiselStartPosition.x, keiselStartPosition.y, MainCamera.transform.position.z);
+            Keisel.transform.position = keiselStartPosition;
+            
         }
 	}
 

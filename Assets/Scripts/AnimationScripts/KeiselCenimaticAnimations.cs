@@ -10,6 +10,7 @@ public class KeiselCenimaticAnimations : MonoBehaviour {
 
     public enum KAnimState { IDLE, RUNNING, FALLING, JUMPING };
     public KAnimState currentAnimation;
+    public bool looping = false;
 
     private KAnimState lastAnim;
     private float lastSpd;
@@ -25,10 +26,12 @@ public class KeiselCenimaticAnimations : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (lastAnim != currentAnimation) {
-            skel.AnimationState.SetAnimation(0, getAnimationName(currentAnimation), false);
+            skel.AnimationState.SetAnimation(0, getAnimationName(currentAnimation), looping);
+            lastAnim = currentAnimation;
         }
         if (lastSpd != AnimationSpeed) {
             skel.timeScale = AnimationSpeed;
+            lastSpd = AnimationSpeed;
         }
 	}
 
