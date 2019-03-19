@@ -1,0 +1,529 @@
+fileFormatVersion: 2
+guid: 70be7812702032c4892262e55f6bfa29
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: keisel-(1)_0000_Layer-12
+    21300002: keisel-(1)_0001_Layer-13
+    21300004: keisel-(1)_0002_Layer-14
+    21300006: keisel-(1)_0003_Layer-11
+    21300008: keisel-(1)_0004_Layer-10
+    21300010: keisel-(1)_0005_Layer-9
+    21300012: keisel-(1)_0006_Layer-8
+    21300014: keisel-(1)_0007_Layer-7
+    21300016: keisel-(1)_0008_Layer-6
+    21300018: keisel-(1)_0009_Layer-5
+    21300020: keisel-(1)_0010_Layer-4
+    21300022: keisel-(1)_0011_Layer-3
+    21300024: keisel-(1)_0000_keisel-(1)_0001_Layer-13
+    21300026: keisel-(1)_0002_Layer-11
+    21300028: keisel-(1)_0003_Layer-10
+    21300030: keisel-(1)_0004_Layer-9
+    21300032: keisel-(1)_0005_Layer-8
+    21300034: keisel-(1)_0006_Layer-7
+    21300036: keisel-(1)_0007_Layer-6
+    21300038: keisel-(1)_0009_Layer-4
+    21300040: keisel-(1)_0010_Layer-3
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: keisel-(1)_0000_Layer-12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 1159
+        height: 1252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f2ec9d878d31b419d79567b2c4c040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0001_Layer-13
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 2318
+        width: 714
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b422455340889a645888eb8795585e86
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0002_Layer-14
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 2
+        width: 738
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b65c869b2fd61949bf3cf342a22fd5d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0003_Layer-11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1163
+        width: 1173
+        height: 1017
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 000d2be6103383243a20464cf68bc838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0004_Layer-10
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 2182
+        width: 1014
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ef03420b041074ba42354354fa2f0e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0005_Layer-9
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 433
+        width: 675
+        height: 764
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23b7724c4e2583479fec742a8f2635e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0006_Layer-8
+      rect:
+        serializedVersion: 2
+        x: 1705
+        y: 1665
+        width: 276
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd83e1a23207db40b464793515b2ba5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0007_Layer-7
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 1199
+        width: 772
+        height: 464
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe4deeff2eeb8848b7f42d7a3f7654e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0008_Layer-6
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 2890
+        width: 553
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9770371516d2fd449b28a1f52a421ae1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0009_Layer-5
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 2746
+        width: 306
+        height: 562
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0136886e70e4a6646a8a87f48efdcfe9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0010_Layer-4
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 1665
+        width: 526
+        height: 495
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f2d0a752d79d3842b10977e2576e4d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0011_Layer-3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2182
+        width: 928
+        height: 1060
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1149ff64c8a6bf74a92daf77785c6427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0000_keisel-(1)_0001_Layer-13
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 768
+        width: 555
+        height: 486
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89fc4e141f61c82449a93d436b1e2be5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0002_Layer-11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1256
+        width: 1017
+        height: 1173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b799b3a6ba84973498e72662434f615c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0003_Layer-10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2431
+        width: 1014
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 336e5cfa5bb35b64597fe01b230b88fb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0004_Layer-9
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 2
+        width: 675
+        height: 764
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09718052cf881194aa5b8213436496e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0005_Layer-8
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 768
+        width: 276
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d04e14f23c1b4e4b9d4a99c6ac345dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0006_Layer-7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2831
+        width: 772
+        height: 464
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d00cea31e8d94c4abda6a25a5793f7a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0007_Layer-6
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 2746
+        width: 276
+        height: 553
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a598492d3315e1e44b67414936e18347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0009_Layer-4
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 2831
+        width: 526
+        height: 495
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f3d22a82b4c97d4c82cb585d0a4d34e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keisel-(1)_0010_Layer-3
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 1256
+        width: 928
+        height: 1060
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a1aeec7211f0242ab55fd243789701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f905bd84a38a7ab43bf72e60239b4f56
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

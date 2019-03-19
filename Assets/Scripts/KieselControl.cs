@@ -22,7 +22,8 @@ public class KieselControl : MonoBehaviour {
     private Rigidbody2D rb;
     private Collider2D coll;
     public bool drawGroundCheckGizmo;
-    Animator kam;
+    //Animator kam;
+    Keisel_AnimationController kam;
     public string currentGroundType;
 
     private bool jumped = false;
@@ -36,7 +37,8 @@ public class KieselControl : MonoBehaviour {
     public void Start() {
         
         rb = GetComponent<Rigidbody2D>();
-        kam = GetComponentInChildren<Animator>();
+        //kam = GetComponentInChildren<Animator>();
+        kam = GetComponent<Keisel_AnimationController>();
         coll = GetComponent<Collider2D>();
     }
 
@@ -62,7 +64,8 @@ public class KieselControl : MonoBehaviour {
                 if (Input.GetButtonDown(JumpButton) && !jumped) {
                     jumped = true;
                     if (kam.gameObject.activeSelf) {
-                        kam.SetTrigger("Jump");
+                        //kam.SetTrigger("Jump");
+                        kam.Jump();
                     }
                     //Apply the jump velocity.
                     rb.AddForce(new Vector2(moveX, 2) * verticalForce);
@@ -83,11 +86,14 @@ public class KieselControl : MonoBehaviour {
             falling = ( rb.velocity.y < 0 && !grounded ) ? true : false;
             jumping = ( rb.velocity.y > 0 && !grounded ) ? true : false;
             if (kam.gameObject.activeSelf) {
-                kam.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
-                kam.SetFloat("VerticalSpeed", rb.velocity.y);
-                kam.SetBool("Jumping", jumping);
-                kam.SetBool("Falling", falling);
-                kam.SetBool("IsRunning", running);
+                kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
+                kam.verticalSpeed = rb.velocity.y;
+                //kam.jumpin
+                //kam.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
+                //kam.SetFloat("VerticalSpeed", rb.velocity.y);
+                //kam.SetBool("Jumping", jumping);
+                //kam.SetBool("Falling", falling);
+                //kam.SetBool("IsRunning", running);
             }
         }
     }
@@ -110,7 +116,8 @@ public class KieselControl : MonoBehaviour {
         }
 
         if (kam.gameObject.activeSelf) {
-            kam.SetBool("Grounded", grounded);
+            //kam.SetBool("Grounded", grounded);
+            kam.grounded = grounded;
         }
 
         if (grounded && jumped) {
