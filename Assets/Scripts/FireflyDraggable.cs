@@ -29,7 +29,11 @@ public class FireflyDraggable : MonoBehaviour {
     public bool lastInside = false;
     public bool DrawRadiusGizmo = false;
 
+    public float energyRequirement = 0.1f;
+
     private GameObject player;
+
+    private MouseSound tinkleSound;
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +51,8 @@ public class FireflyDraggable : MonoBehaviour {
         if (player == null) {
             player = GameObject.FindGameObjectWithTag("Player");
         }
+
+        tinkleSound = GetComponent<MouseSound>();
         highlightRadiusSquared = highlightRadius * highlightRadius;
     }
 	
@@ -59,6 +65,13 @@ public class FireflyDraggable : MonoBehaviour {
             Vector2 directionVector = (mouseWorldPos - (Vector2)transform.position).normalized;
             //Apply it as a force and multiply it to get a visible result
             rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y) * Time.deltaTime);
+            Fireflies.Instance.tiredness -= energyRequirement * Time.deltaTime;
+
+            if (Fireflies.Instance.tiredness <= 0) {
+                dragging = false;
+                highlightSprite.GetComponent<ParticleSystem>().Stop();
+                tinkleSound.ForceStop();
+            }
         }
 
         if (highlight.running) {
@@ -81,6 +94,7 @@ public class FireflyDraggable : MonoBehaviour {
                     highlight.Begin();
                 }
             }
+
         }
 
 	}

@@ -12,9 +12,7 @@ public class LevelControl : MonoBehaviour {
     public static GameObject Keisel;
     public static GameObject MainCamera;
 
-    // Use this for initialization
-    void Start () {
-		
+    private void Awake () {
         if (Keisel == null) {
             Keisel = GameObject.FindGameObjectWithTag("Player");
         }
@@ -22,6 +20,10 @@ public class LevelControl : MonoBehaviour {
         if (MainCamera == null) {
             MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+    }
+
+    // Use this for initialization
+    void Start () {
 
         if (overrideStartPosition) {
             

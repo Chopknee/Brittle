@@ -36,8 +36,10 @@ public class MouseSound : MonoBehaviour
 
     void OnMouseUp()
     {
-        transitioning = true;
-        transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+        if (!transitioning && audioSource.volume != 0) {
+            transitioning = true;
+            transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+        }
     }
 
     void OnTransitionEnd() {
@@ -47,5 +49,10 @@ public class MouseSound : MonoBehaviour
         if (audioSource.volume == 0) {
             audioSource.Stop();
         }
+    }
+
+    public void ForceStop() {
+        transitioning = true;
+        transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
     }
 }
