@@ -11,6 +11,13 @@ public class SpriteHighlight : MonoBehaviour {
 
     public bool mouseOver = false;
 
+    public float highlightRadius = 10f;
+    private float highlightRadiusSquared;
+
+    private GameObject player;
+
+    private bool lastInside = false;
+
     // Use this for initialization
     void Start () {
 
@@ -18,8 +25,12 @@ public class SpriteHighlight : MonoBehaviour {
             highlightSprite = transform.GetChild(0).gameObject;
         }
 
-        highlight = new SmoothTransition(0, 1, null, highlightTime);
+        if (player == null) {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
 
+        highlight = new SmoothTransition(0, 1, null, highlightTime);
+        highlightRadiusSquared = highlightRadius * highlightRadius;
     }
 	
 	// Update is called once per frame
@@ -29,17 +40,24 @@ public class SpriteHighlight : MonoBehaviour {
             highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
         }
 
-    }
+        bool currentInside = ( transform.position - player.transform.position ).sqrMagnitude < highlightRadiusSquared;
+        if (currentInside != lastInside) {
+            lastInside = currentInside;
+            if (currentInside) {
+                if (highlightSprite != null) {
+                    highlight.start = highlight.outNumber;
+                    highlight.end = 1;
+                    highlight.Begin();
+                }
+            } else {
+                if (highlightSprite != null) {
+                    highlight.start = highlight.outNumber;
+                    highlight.end = 0;
+                    highlight.Begin();
+                }
+            }
 
-    private void OnMouseOver () {
-        highlight.start = 0;
-        highlight.end = 1;
-        highlight.Begin();
-    }
+        }
 
-    private void OnMouseExit () {
-        highlight.start = 1;
-        highlight.end = 0;
-        highlight.Begin();
     }
 }

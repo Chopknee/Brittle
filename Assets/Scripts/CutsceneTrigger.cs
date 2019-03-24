@@ -29,12 +29,12 @@ public class CutsceneTrigger : MonoBehaviour {
                 triggered = true;
                 if (animateKeisel) {
                     //Make sure keisel is set to the correct animation state.
-                    LevelControl.Keisel.SetActive(false);
+                    LevelControl.Instance.Keisel.SetActive(false);
 
                 }
                 if (cameraTakeover) {
                     //Make sure the camera can be animated.
-                    LevelControl.MainCamera.GetComponent<CameraFollow>().enabled = false;
+                    LevelControl.Instance.MainCamera.GetComponent<CameraFollow>().enabled = false;
                 }
                 director.Play();
             }
@@ -43,12 +43,12 @@ public class CutsceneTrigger : MonoBehaviour {
 
     public void FinishedPlaying(PlayableDirector dir) {
         if (animateKeisel) {
-            LevelControl.Keisel.transform.position = new Vector3(KeiselMoveTo.x+transform.position.x, KeiselMoveTo.y+transform.position.y, LevelControl.Keisel.transform.position.z);
-            LevelControl.Keisel.SetActive(true);
+            LevelControl.Instance.Keisel.transform.position = new Vector3(KeiselMoveTo.x+transform.position.x, KeiselMoveTo.y+transform.position.y, LevelControl.Instance.Keisel.transform.position.z);
+            LevelControl.Instance.Keisel.SetActive(true);
         }
 
         if (cameraTakeover) {
-            LevelControl.MainCamera.GetComponent<CameraFollow>().enabled = true;
+            LevelControl.Instance.MainCamera.GetComponent<CameraFollow>().enabled = true;
         }
 
         foreach (GameObject g in cutsceneObjects) {

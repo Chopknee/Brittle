@@ -33,7 +33,7 @@ public class BgBuildings : MonoBehaviour {
         through = new Vector3();
         startPos = transform.position;
 
-        mainCamera = LevelControl.MainCamera;
+        mainCamera = LevelControl.Instance.MainCamera;
         worldRange = worldPosParalaxStart - worldPosParalaxEnd;
         bgPositionStart = bgPositionStart + transform.localPosition;
         bgPositionEnd = bgPositionEnd + transform.localPosition;
@@ -49,7 +49,7 @@ public class BgBuildings : MonoBehaviour {
         bgPositionEnd = Vector3.Scale(originalbgPositionEnd, transform.parent.localScale);
         bgPositionStart = Vector3.Scale(originalbgPositionStart, transform.parent.localScale);
 
-        through = LevelControl.MainCamera.transform.position - worldPosParalaxEnd;
+        through = LevelControl.Instance.MainCamera.transform.position - worldPosParalaxEnd;
         //through.x = through.x / worldRange.x;
         through.x = ( worldRange.x == 0 ) ? 0 : through.x / worldRange.x;
         through.y = ( worldRange.y == 0 ) ? 0 : through.y / worldRange.y;

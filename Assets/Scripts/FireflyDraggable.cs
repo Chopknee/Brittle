@@ -58,9 +58,21 @@ public class FireflyDraggable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (dragging) {
+
+        if (mouseOver) {
+            if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
+                dragging = true;
+                highlightSprite.GetComponent<ParticleSystem>().Play();
+            }
+        }
+        if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Interact")) {
+            dragging = false;
+            highlightSprite.GetComponent<ParticleSystem>().Stop();
+        }
+
+        if (dragging) {
             //Get the position of the mouse in world space
-            Vector2 mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+            Vector2 mouseWorldPos = new Vector2(LevelControl.Instance.Fireflies.transform.position.x, LevelControl.Instance.Fireflies.transform.position.y);//mainCamera.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             //Create a normalized vector (we aren't worried about the distance from the mouse cursor, only the direction) pointing in the direction of the cursor
             Vector2 directionVector = (mouseWorldPos - (Vector2)transform.position).normalized;
             //Apply it as a force and multiply it to get a visible result
@@ -99,33 +111,23 @@ public class FireflyDraggable : MonoBehaviour {
 
 	}
 
-    private void OnMouseOver() {
-        mouseOver = true;
-        //Create the halo object
-
-    }
-
-    private void OnMouseExit() {
-        mouseOver = false;
-        if (!dragging) {
-            highlightSprite.GetComponent<ParticleSystem>().Stop();
-        }
-    }
-
-    private void OnMouseDown() {
-        dragging = true;
-        highlightSprite.GetComponent<ParticleSystem>().Play();
-    }
-
-    private void OnMouseUp() {
-        dragging = false;
-        highlightSprite.GetComponent<ParticleSystem>().Stop();
-    }
-
     public void OnDrawGizmos() {
         if (DrawRadiusGizmo) {
             Gizmos.color = new Color(0, 255, 0);
             Gizmos.DrawWireSphere(transform.position, highlightRadius);
+        }
+    }
+
+    public void OnTriggerEnter2D ( Collider2D collision ) {
+        
+        if (collision.gameObject.tag == "Fireflies") {
+            mouseOver = true;
+        }
+    }
+
+    public void OnTriggerExit2D ( Collider2D collision ) {
+        if (collision.gameObject.tag == "Fireflies") {
+            mouseOver = true;
         }
     }
 }

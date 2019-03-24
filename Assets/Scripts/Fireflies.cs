@@ -17,6 +17,8 @@ public class Fireflies: MonoBehaviour {
     public Color energeticColor;
     public Color tiredColor;
 
+    private Vector2 local = new Vector2();
+
     public float recoveryAmount = 0.05f;
 
     private void Awake () {
@@ -32,19 +34,45 @@ public class Fireflies: MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        mainCamera = LevelControl.MainCamera.GetComponent<Camera>();
+        mainCamera = LevelControl.Instance.MainCamera.GetComponent<Camera>();
 
         particles = GetComponent<ParticleSystem>();
+
+        if (LevelControl.Instance.JoystickIsUsed) {
+            //Recenter the fireflies to the camera
+            transform.position = new Vector3(LevelControl.Instance.MainCamera.transform.position.x, LevelControl.Instance.MainCamera.transform.position.y, transform.position.z);
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (convertToWorldSpace) {
-            //Basically, converts the screen coordinates to world coordinates. Puts the cursor at that point.
-            transform.position = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane));
+        if (!LevelControl.Instance.JoystickIsUsed) {
+            //Move based on mouse
+            if (convertToWorldSpace) {
+                //Basically, converts the screen coordinates to world coordinates. Puts the cursor at that point.
+                transform.position = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane));
+            } else {
+                //Uses screen space in stead. This is for a UI cursor rather than an in-game cursor.
+                transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+            }
         } else {
-            //Uses screen space in stead. This is for a UI cursor rather than an in-game cursor.
-            transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+            //Move based on joystick axes
+            if (convertToWorldSpace) {
+                //
+                float horiz = Input.GetAxis("RHorizontal") / 10;
+                float vertic = Input.GetAxis("RVertical") / 10;
+                local = local + new Vector2(horiz, vertic);// + (Vector2)LevelControl.Instance.MainCamera.transform.position;
+                transform.position = new Vector3(local.x, local.y, transform.position.z) + LevelControl.Instance.MainCamera.transform.position;
+                //Keeping the camera within the bounds of the visible area
+                transform.position = Vector2.Min(Vector2.Max(transform.position, (Vector2) LevelControl.Instance.MainCamera.transform.position - LevelControl.Instance.MainCameraOrthoSize),
+                    (Vector2) LevelControl.Instance.MainCamera.transform.position + LevelControl.Instance.MainCameraOrthoSize);
+
+                
+                //Then we need to keep them within the camera bounds
+            } else {
+                //Move the fireflies faster in screen space coords
+            }
+
         }
         ParticleSystem.EmissionModule em = particles.emission;
         em.rateOverTime = Mathf.Lerp(4, 90, tiredness);

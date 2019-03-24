@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseSound : MonoBehaviour
-{
+public class MouseSound: MonoBehaviour {
 
     AudioSource audioSource;
     public float fadeTime;
@@ -12,37 +11,36 @@ public class MouseSound : MonoBehaviour
     SmoothTransition transition;
     bool transitioning = false;
     public AnimationCurve fadeCurve;
-    void Start()
-    {
+    public bool canInteract = false;
+    void Start () {
         audioSource = GetComponent<AudioSource>();
         //audioSource.Play();
         transition = new SmoothTransition();
         transition.OnFinish += OnTransitionEnd;
     }
 
-    void Update()
-    {
+    void Update () {
+
+        if (canInteract) {
+            if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
+                audioSource.Play();
+                transitioning = true;
+                transition.Begin(0, targetVolume, fadeCurve, fadeTime);
+            }
+        }
+        if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Interact")) {
+            if (!transitioning && audioSource.volume != 0) {
+                transitioning = true;
+                transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+            }
+        }
+
         if (transitioning) {
             audioSource.volume = transition.DriveForward();
         }
     }
 
-    void OnMouseDown()
-    {
-        audioSource.Play();
-        transitioning = true;
-        transition.Begin(0, targetVolume, fadeCurve, fadeTime);
-    }
-
-    void OnMouseUp()
-    {
-        if (!transitioning && audioSource.volume != 0) {
-            transitioning = true;
-            transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
-        }
-    }
-
-    void OnTransitionEnd() {
+    void OnTransitionEnd () {
 
         transitioning = false;
 
@@ -51,8 +49,20 @@ public class MouseSound : MonoBehaviour
         }
     }
 
-    public void ForceStop() {
+    public void ForceStop () {
         transitioning = true;
         transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+    }
+
+    public void OnTriggerEnter2D ( Collider2D collision ) {
+        if (collision.gameObject.tag == "Fireflies") {
+            canInteract = true;
+        }
+    }
+
+    public void OnTriggerExit2D ( Collider2D collision ) {
+        if (collision.gameObject.tag == "Fireflies") {
+            canInteract = false;
+        }
     }
 }
