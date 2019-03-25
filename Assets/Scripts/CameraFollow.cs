@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour, IPausable {
 
     public Vector2 minPosition = new Vector2(-10, -10);
     public Vector2 maxPosition = new Vector2(10, 10);
@@ -23,6 +23,8 @@ public class CameraFollow : MonoBehaviour {
     private Vector3 oldBgScale;
     private bool zooming = false;
     SmoothTransition zoomTransition;
+
+    private bool paused = false;
     
     // Use this for initialization
     void Start () {
@@ -37,7 +39,7 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (followTarget != null) {
+		if (followTarget != null || !paused) {
             
             //get the difference between the camera and player
             Vector3 diff = followTarget.transform.position - transform.position;
@@ -112,5 +114,15 @@ public class CameraFollow : MonoBehaviour {
             Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(minPosition.x, maxPosition.y));
             Gizmos.DrawLine(new Vector2(maxPosition.x, minPosition.y), new Vector2(maxPosition.x, maxPosition.y));
         }
+    }
+
+    public void OnPause() {
+        //throw new System.NotImplementedException();
+        paused = true;
+    }
+
+    public void OnUnPause() {
+        //throw new System.NotImplementedException();
+        paused = false;
     }
 }

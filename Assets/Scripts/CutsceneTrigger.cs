@@ -38,6 +38,7 @@ public class CutsceneTrigger : MonoBehaviour {
                 }
                 director.Play();
             }
+            LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);
         }
     }
 
@@ -54,7 +55,7 @@ public class CutsceneTrigger : MonoBehaviour {
         foreach (GameObject g in cutsceneObjects) {
             g.SetActive(false);
         }
-        
+        LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(true);
 
         director.stopped -= FinishedPlaying;
     }

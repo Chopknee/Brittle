@@ -21,6 +21,7 @@ public class LogDropActivation : MonoBehaviour {
                         transform.GetChild(0).gameObject.SetActive(false);
                     }
                     triggered = true;
+                    LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);
                 }
             }
         }
@@ -30,6 +31,7 @@ public class LogDropActivation : MonoBehaviour {
         ActivateAfterFinished.SetActive(true);
         dir.stopped -= OnFin;
         Destroy(gameObject);
+        LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(true);
     }
 
     public void OnTriggerEnter2D ( Collider2D collision ) {

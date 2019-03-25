@@ -4,7 +4,7 @@ using UnityEngine;
 using Spine.Unity;
 using Spine;
 
-public class Keisel_AnimationController : MonoBehaviour {
+public class Keisel_AnimationController : MonoBehaviour, IPausable {
 
     private SkeletonAnimation skeletonAnimation;
     public float horizontalSpeed = 0;
@@ -109,5 +109,15 @@ public class Keisel_AnimationController : MonoBehaviour {
 
     private void ResetOverride() {
         stateOverride = false;
+    }
+
+    public void OnPause() {
+        freezeAnimations = true;
+        skeletonAnimation.timeScale = 0;
+    }
+
+    public void OnUnPause() {
+        freezeAnimations = false;
+        skeletonAnimation.timeScale = 1;
     }
 }

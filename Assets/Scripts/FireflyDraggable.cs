@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireflyDraggable : MonoBehaviour {
+public class FireflyDraggable : MonoBehaviour, IPausable {
     [Tooltip("The script automatically looks for an object tagged as main camera. Only set this if you need to use a custom camera.")]
     public Camera mainCamera;
     [Tooltip("True when the object is being dragged.")]
@@ -35,6 +35,8 @@ public class FireflyDraggable : MonoBehaviour {
 
     private MouseSound tinkleSound;
 
+    public bool paused;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -58,57 +60,57 @@ public class FireflyDraggable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (mouseOver) {
-            if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
-                dragging = true;
-                highlightSprite.GetComponent<ParticleSystem>().Play();
+        if (!paused) {
+            if (mouseOver) {
+                if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
+                    dragging = true;
+                    highlightSprite.GetComponent<ParticleSystem>().Play();
+                }
             }
-        }
-        if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Interact")) {
-            dragging = false;
-            highlightSprite.GetComponent<ParticleSystem>().Stop();
-        }
-
-        if (dragging) {
-            //Get the position of the mouse in world space
-            Vector2 mouseWorldPos = new Vector2(LevelControl.Instance.Fireflies.transform.position.x, LevelControl.Instance.Fireflies.transform.position.y);//mainCamera.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-            //Create a normalized vector (we aren't worried about the distance from the mouse cursor, only the direction) pointing in the direction of the cursor
-            Vector2 directionVector = (mouseWorldPos - (Vector2)transform.position).normalized;
-            //Apply it as a force and multiply it to get a visible result
-            rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y) * Time.deltaTime);
-            Fireflies.Instance.tiredness -= energyRequirement * Time.deltaTime;
-
-            if (Fireflies.Instance.tiredness <= 0) {
+            if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Interact")) {
                 dragging = false;
                 highlightSprite.GetComponent<ParticleSystem>().Stop();
-                tinkleSound.ForceStop();
             }
-        }
 
-        if (highlight.running) {
-            highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
-        }
+            if (dragging) {
+                //Get the position of the mouse in world space
+                Vector2 mouseWorldPos = new Vector2(LevelControl.Instance.Fireflies.transform.position.x, LevelControl.Instance.Fireflies.transform.position.y);//mainCamera.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+                                                                                                                                                                //Create a normalized vector (we aren't worried about the distance from the mouse cursor, only the direction) pointing in the direction of the cursor
+                Vector2 directionVector = (mouseWorldPos - (Vector2)transform.position).normalized;
+                //Apply it as a force and multiply it to get a visible result
+                rb.AddForce(directionVector * multiplier * altitudeApproachCurve.Evaluate(maxAltitude - transform.position.y) * Time.deltaTime);
+                Fireflies.Instance.tiredness -= energyRequirement * Time.deltaTime;
 
-        bool currentInside = (transform.position - player.transform.position).sqrMagnitude < highlightRadiusSquared;
-        if (currentInside != lastInside) {
-            lastInside = currentInside;
-            if (currentInside) {
-                if (highlightSprite != null) {
-                    highlight.start = highlight.outNumber;
-                    highlight.end = 1;
-                    highlight.Begin();
-                }
-            } else {
-                if (highlightSprite != null) {
-                    highlight.start = highlight.outNumber;
-                    highlight.end = 0;
-                    highlight.Begin();
+                if (Fireflies.Instance.tiredness <= 0) {
+                    dragging = false;
+                    highlightSprite.GetComponent<ParticleSystem>().Stop();
+                    tinkleSound.ForceStop();
                 }
             }
 
-        }
+            if (highlight.running) {
+                highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
+            }
 
+            bool currentInside = (transform.position - player.transform.position).sqrMagnitude < highlightRadiusSquared;
+            if (currentInside != lastInside) {
+                lastInside = currentInside;
+                if (currentInside) {
+                    if (highlightSprite != null) {
+                        highlight.start = highlight.outNumber;
+                        highlight.end = 1;
+                        highlight.Begin();
+                    }
+                } else {
+                    if (highlightSprite != null) {
+                        highlight.start = highlight.outNumber;
+                        highlight.end = 0;
+                        highlight.Begin();
+                    }
+                }
+
+            }
+        }
 	}
 
     public void OnDrawGizmos() {
@@ -129,5 +131,21 @@ public class FireflyDraggable : MonoBehaviour {
         if (collision.gameObject.tag == "Fireflies") {
             mouseOver = true;
         }
+    }
+
+    Vector3 oldVel = new Vector3();
+
+    public void OnPause() {
+        //throw new System.NotImplementedException();
+        paused = true;
+        oldVel = rb.velocity;
+        rb.isKinematic = true;
+    }
+
+    public void OnUnPause() {
+        //throw new System.NotImplementedException();
+        paused = false;
+        rb.isKinematic = false;
+        rb.velocity = oldVel;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 
-public class KieselControl : MonoBehaviour {
+public class KieselControl : MonoBehaviour, IPausable {
     public string HorizontalAxis = "Horizontal";
     public string JumpButton = "Jump";
     public float horizontalForce = 10;
@@ -132,11 +132,22 @@ public class KieselControl : MonoBehaviour {
         }
     }
 
-    public void SetAnimationMode() {
+    Vector3 oldVel = new Vector3();
 
+    public void OnPause() {
+        //throw new System.NotImplementedException();
+        controlsFrozen = true;
+        freezeMovement = true;
+        oldVel = rb.velocity;
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
     }
 
-    public void EndAnimationMode() {
-
+    public void OnUnPause() {
+        //throw new System.NotImplementedException();
+        controlsFrozen = false;
+        freezeMovement = false;
+        rb.isKinematic = false;
+        rb.velocity = oldVel;
     }
 }

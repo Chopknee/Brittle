@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour {
 
     public bool Paused = false;
 
-    private bool canwork = false;
+    private bool canwork = true;
 
 	// Use this for initialization
 	void Start () {
@@ -30,15 +30,30 @@ public class PauseMenu : MonoBehaviour {
             if (Input.GetButtonDown("Cancel")) {
                 Debug.Log("Pause Presed!");
                 Paused = !Paused;
+                canwork = false;
                 if (Paused) {
                     bookPanelAnimator.SetTrigger("Open");
+                    if (OnPaused != null) {
+                        OnPaused(Paused);
+                    }
                 } else {
                     bookPanelAnimator.SetTrigger("Close");
                 }
-                if (OnPaused != null) {
-                    OnPaused(Paused);
-                }
+                Invoke("UnUnwork", 2);
             }
         }
+    }
+
+    public void UnUnwork() {
+        canwork = true;
+        if (!Paused) {
+            if (OnPaused != null) {
+                OnPaused(Paused);
+            }
+        }
+    }
+
+    public void SetCanPause(bool canPause) {
+        canwork = canPause;
     }
 }
