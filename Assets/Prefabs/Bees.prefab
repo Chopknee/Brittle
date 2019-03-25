@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114048423589686162}
   - component: {fileID: 199235640510866782}
   - component: {fileID: 198527005777177930}
-  - component: {fileID: 82038401420493804}
+  - component: {fileID: 82309631493941692}
   m_Layer: 0
   m_Name: Bees
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097850492109442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.031494, y: 16.046495, z: -0.32}
+  m_LocalPosition: {x: 13.56, y: -7.59, z: -0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!82 &82038401420493804
+--- !u!82 &82309631493941692
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8481e8794698c3d4d8c389fba34497e2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
