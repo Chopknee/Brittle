@@ -62,6 +62,7 @@ public class LevelControl : MonoBehaviour {
         MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
         Debug.Log(MainCameraOrthoSize);
 
+        pausables = new List<IPausable>();
         var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
         foreach (IPausable p in ps) {
             pausables.Add(p);
