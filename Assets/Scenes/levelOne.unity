@@ -893,6 +893,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
   m_IsPrefabAsset: 0
@@ -2105,6 +2110,11 @@ Prefab:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82309631493941692, guid: 3896a7c653734ea4297e0eb394acdf14,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3896a7c653734ea4297e0eb394acdf14, type: 2}
   m_IsPrefabAsset: 0
@@ -3205,6 +3215,11 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: ce2af8fa301b75c46958a07dbc926011, type: 2}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
   m_IsPrefabAsset: 0
@@ -3771,6 +3786,11 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: ce2af8fa301b75c46958a07dbc926011, type: 2}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
   m_IsPrefabAsset: 0
@@ -4066,6 +4086,11 @@ Prefab:
     - target: {fileID: 82309631493941692, guid: 3896a7c653734ea4297e0eb394acdf14,
         type: 2}
       propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82309631493941692, guid: 3896a7c653734ea4297e0eb394acdf14,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11114,6 +11139,11 @@ Prefab:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82309631493941692, guid: 3896a7c653734ea4297e0eb394acdf14,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3896a7c653734ea4297e0eb394acdf14, type: 2}
   m_IsPrefabAsset: 0
@@ -12776,6 +12806,11 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
   m_IsPrefabAsset: 0
@@ -13484,6 +13519,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
@@ -14749,6 +14789,11 @@ Prefab:
     - target: {fileID: 4598374572372384, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
@@ -21153,6 +21198,11 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114313241705733974, guid: c57a789f76c37db428e284c476f12c6c,
+        type: 2}
+      propertyPath: energyRequirement
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57a789f76c37db428e284c476f12c6c, type: 2}
   m_IsPrefabAsset: 0
@@ -22257,6 +22307,11 @@ Prefab:
     - target: {fileID: 82309631493941692, guid: 3896a7c653734ea4297e0eb394acdf14,
         type: 2}
       propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82309631493941692, guid: 3896a7c653734ea4297e0eb394acdf14,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
