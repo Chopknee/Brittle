@@ -15,6 +15,7 @@ TagManager:
   - Gravel
   - Fireflies
   - PauseMenu
+  - WallVines
   layers:
   - Default
   - TransparentFX

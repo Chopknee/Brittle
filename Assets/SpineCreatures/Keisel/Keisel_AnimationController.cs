@@ -16,6 +16,7 @@ public class Keisel_AnimationController : MonoBehaviour, IPausable {
     public bool falling = false;
     public bool grounded = false;
     public bool jumping = false;
+    public bool climbing = false;
     public bool stateOverride = false;
     public float timeScale = 1;
     

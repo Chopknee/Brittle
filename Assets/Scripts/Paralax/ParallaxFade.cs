@@ -52,7 +52,6 @@ public class ParallaxFade : MonoBehaviour {
         foreach (SpriteRenderer rend in sprites) {
             rend.color = new Color(1, 1, 1, t);
         }
-        Debug.Log("Inside the boundaries!" + t);
     }
 
     private void OnDrawGizmosSelected () {

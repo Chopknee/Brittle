@@ -5,6 +5,7 @@ using Spine.Unity;
 
 public class KieselControl : MonoBehaviour, IPausable {
     public string HorizontalAxis = "Horizontal";
+    public string VerticalAxis = "Vertical";
     public string JumpButton = "Jump";
     public float horizontalForce = 10;
     public float airHorizontalForce = 5;
@@ -14,7 +15,9 @@ public class KieselControl : MonoBehaviour, IPausable {
     public bool jumping = false;
     public bool falling = false;
     public bool running = false;
+    public bool climbing = false;
     public float moveX;
+    public float moveY;
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask[] whatIsGround;
@@ -44,11 +47,18 @@ public class KieselControl : MonoBehaviour, IPausable {
 
     
     public void Update() {
+
+        moveX = 0;
+        moveY = 0;
+        running = false;
+
         if (!freezeMovement) {
-            //Controling the direction the sprite faces
-            running = false;
+
             if (!controlsFrozen) {
+
+                //Horizontal or vertical movement
                 moveX = Input.GetAxis(HorizontalAxis);
+                moveY = Input.GetAxis(VerticalAxis);
                 if (moveX < 0.0 && facingRight == true) {
                     facingRight = false;
                     transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -56,23 +66,26 @@ public class KieselControl : MonoBehaviour, IPausable {
                     facingRight = true;
                     transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 }
-            }
-
-
-            //Setting the velocity of the character
-            if (grounded) {
-                if (Input.GetButtonDown(JumpButton) && !jumped) {
-                    jumped = true;
-                    if (kam.gameObject.activeSelf) {
-                        //kam.SetTrigger("Jump");
-                        kam.Jump();
+            
+            
+                if (grounded) {//Jumping
+                    if (Input.GetButtonDown(JumpButton) && !jumped) {
+                        jumped = true;
+                        if (kam.gameObject.activeSelf) {
+                            //kam.SetTrigger("Jump");
+                            kam.Jump();
+                        }
+                        if (climbing) {
+                            StopClimbing();
+                        }
+                        //Apply the jump velocity.
+                        rb.AddForce(new Vector2(moveX, 2) * verticalForce);
                     }
-                    //Apply the jump velocity.
-                    rb.AddForce(new Vector2(moveX, 2) * verticalForce);
                 }
             }
 
-            if (moveX != 0) {
+            //Horizontal jump launch
+            if (moveX != 0 && !climbing) {
                 float horizontalMultiplier = horizontalForce;
                 if (jumped || !grounded) {
                     horizontalMultiplier = airHorizontalForce;
@@ -81,20 +94,21 @@ public class KieselControl : MonoBehaviour, IPausable {
                 running = true;
             }
 
+            if (moveY != 0 && climbing) {
+
+            }
+
+            //Maximum speed control
             rb.velocity = Vector2.Min(Vector2.Max(rb.velocity, -maxVelocity), maxVelocity);
 
+            //Animation controller
             falling = ( rb.velocity.y < 0 && !grounded ) ? true : false;
             jumping = ( rb.velocity.y > 0 && !grounded ) ? true : false;
             if (kam.gameObject.activeSelf) {
                 kam.horizontalSpeed = Mathf.Abs(rb.velocity.x);
                 kam.verticalSpeed = rb.velocity.y;
-                //kam.jumpin
-                //kam.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
-                //kam.SetFloat("VerticalSpeed", rb.velocity.y);
-                //kam.SetBool("Jumping", jumping);
-                //kam.SetBool("Falling", falling);
-                //kam.SetBool("IsRunning", running);
             }
+
         }
     }
 
@@ -113,6 +127,9 @@ public class KieselControl : MonoBehaviour, IPausable {
                 coll.sharedMaterial = airborne_physicsMaterial;
             }
             if (grounded) { break; }
+        }
+        if (climbing) {
+            grounded = true;
         }
 
         if (kam.gameObject.activeSelf) {
@@ -149,5 +166,31 @@ public class KieselControl : MonoBehaviour, IPausable {
         freezeMovement = false;
         rb.isKinematic = false;
         rb.velocity = oldVel;
+    }
+
+    public void OnTriggerEnter2D ( Collider2D collision ) {
+        //
+        if (collision.tag == "WallVines") {
+            BeginClimbing();
+        }
+    }
+
+    public void OnTriggerExit2D ( Collider2D collision ) {
+        if (collision.tag == "WallVines") {
+            //Eh?
+        }
+    }
+
+    private float grav = 0;
+    public void BeginClimbing() {
+        climbing = true;
+        grav = rb.gravityScale;
+        rb.gravityScale = 0;
+        rb.velocity = Vector3.zero;
+    }
+
+    public void StopClimbing() {
+        rb.gravityScale = grav;
+        climbing = false;
     }
 }
