@@ -16,6 +16,7 @@ TagManager:
   - Fireflies
   - PauseMenu
   - WallVines
+  - ClimbDismount
   layers:
   - Default
   - TransparentFX

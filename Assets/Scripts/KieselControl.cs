@@ -10,6 +10,7 @@ public class KieselControl : MonoBehaviour, IPausable {
     public float horizontalForce = 10;
     public float airHorizontalForce = 5;
     public float verticalForce = 100;
+    public float climbSpeedMultiplier = 10;
     public Vector2 maxVelocity = new Vector2(5, 10);
     public bool facingRight = true;
     public bool jumping = false;
@@ -94,8 +95,12 @@ public class KieselControl : MonoBehaviour, IPausable {
                 running = true;
             }
 
-            if (moveY != 0 && climbing) {
+            if (climbing) {
+                rb.velocity = Vector2.zero;
+            }
 
+            if (moveY != 0 && climbing) {
+                rb.velocity = new Vector3(0, moveY, 0) * climbSpeedMultiplier;
             }
 
             //Maximum speed control
@@ -171,26 +176,33 @@ public class KieselControl : MonoBehaviour, IPausable {
     public void OnTriggerEnter2D ( Collider2D collision ) {
         //
         if (collision.tag == "WallVines") {
-            BeginClimbing();
+            BeginClimbing(collision.gameObject);
         }
     }
 
     public void OnTriggerExit2D ( Collider2D collision ) {
         if (collision.tag == "WallVines") {
             //Eh?
+            if (climbing) {
+                StopClimbing();
+            }
         }
     }
 
     private float grav = 0;
-    public void BeginClimbing() {
+    public void BeginClimbing(GameObject vine) {
         climbing = true;
         grav = rb.gravityScale;
         rb.gravityScale = 0;
         rb.velocity = Vector3.zero;
+        transform.parent = vine.transform;
+        transform.localRotation = Quaternion.identity;
     }
 
     public void StopClimbing() {
         rb.gravityScale = grav;
         climbing = false;
+        transform.parent = null;
+        transform.localRotation = Quaternion.identity;
     }
 }
