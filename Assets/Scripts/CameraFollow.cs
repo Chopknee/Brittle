@@ -19,8 +19,9 @@ public class CameraFollow : MonoBehaviour, IPausable {
 
     
     private Camera cam;
-    private GameObject background;
-    private Vector3 oldBgScale;
+    //private GameObject[] background;
+    //private Vector3 oldBgScale;
+    private Vector3[] oldBgScales;
     private bool zooming = false;
     SmoothTransition zoomTransition;
 
@@ -32,7 +33,11 @@ public class CameraFollow : MonoBehaviour, IPausable {
             followTarget = GameObject.FindGameObjectWithTag("Player");
         }
         cam = GetComponent<Camera>();
-        background = transform.GetChild(0).gameObject;//Always the first child?
+        //background = transform.child.gameObject;//Always the first child?
+        oldBgScales = new Vector3[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++) {
+            oldBgScales[i] = transform.GetChild(i).localScale;
+        }
         zoomTransition = new SmoothTransition(0, 0, null, 0);
         zoomTransition.OnFinish += OnZoomFinish;
     }
@@ -77,11 +82,14 @@ public class CameraFollow : MonoBehaviour, IPausable {
             if (zooming) {
                 float cz = zoomTransition.DriveForward();
                 cam.orthographicSize = cz;
-                background.transform.localScale = new Vector3(
-                    (oldBgScale.x * cz) / zoomTransition.start,
-                    (oldBgScale.y * cz) / zoomTransition.start,
-                    (oldBgScale.z * cz) / zoomTransition.start
-                    );
+                for (int i = 0; i < transform.childCount; i++) {
+                    GameObject background = transform.GetChild(i).gameObject;
+                    background.transform.localScale = new Vector3(
+                        ( oldBgScales[i].x * cz ) / zoomTransition.start,
+                        ( oldBgScales[i].y * cz ) / zoomTransition.start,
+                        ( oldBgScales[i].z * cz ) / zoomTransition.start
+                        );
+                }
             }
         }
 	}
@@ -96,7 +104,9 @@ public class CameraFollow : MonoBehaviour, IPausable {
     public void SetZoom(float newSize, AnimationCurve transitionCurve, float transitionTime) {
         zooming = true;
         zoomTransition.Begin(cam.orthographicSize, newSize, transitionCurve, transitionTime);
-        oldBgScale = background.transform.localScale;
+        for (int i = 0; i < transform.childCount; i++) {
+            oldBgScales[i] = transform.GetChild(i).localScale;
+        }
     }
 
     public void OnZoomFinish() {

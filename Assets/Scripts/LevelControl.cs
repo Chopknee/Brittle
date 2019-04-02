@@ -34,6 +34,8 @@ public class LevelControl : MonoBehaviour {
 
     private void Awake () {
 
+        Tasks t = Tasks.A;
+
         if (instance == null || instance != this) {
             instance = this;
         }

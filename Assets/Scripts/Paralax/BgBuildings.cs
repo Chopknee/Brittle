@@ -56,7 +56,7 @@ public class BgBuildings : MonoBehaviour {
         through.z = ( worldRange.z == 0 ) ? 0 : through.z / worldRange.z;
         
         
-        transform.localPosition = Lerp3(bgPositionStart, bgPositionEnd, through);//Vector3.Lerp(bgPositionStart, bgPositionEnd, 0);//third arg is the percent through the ''box'' created by worldpos
+        transform.localPosition = Lerp3(bgPositionStart, bgPositionEnd, through);
     }
 
 
