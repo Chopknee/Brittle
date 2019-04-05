@@ -91,7 +91,7 @@ public class KieselControl : MonoBehaviour, IPausable {
                 if (jumped || !grounded) {
                     horizontalMultiplier = airHorizontalForce;
                 }
-                rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalMultiplier, 0));
+                rb.AddForce(new Vector2(moveX / Mathf.Abs(moveX) * horizontalMultiplier, 0) * Time.deltaTime);
                 running = true;
             }
 
