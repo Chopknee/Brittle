@@ -35,7 +35,7 @@ public class SpriteHighlight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         if (highlight.running) {
             highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
         }
