@@ -34,8 +34,6 @@ public class LevelControl : MonoBehaviour {
 
     private void Awake () {
 
-        Tasks t = Tasks.A;
-
         if (instance == null || instance != this) {
             instance = this;
         }
@@ -60,9 +58,7 @@ public class LevelControl : MonoBehaviour {
         
         aspectRatio = (float) Screen.width / (float)Screen.height;
 
-        Debug.Log("Aspect ratio: " + aspectRatio);
         MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
-        Debug.Log(MainCameraOrthoSize);
 
         pausables = new List<IPausable>();
         var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();

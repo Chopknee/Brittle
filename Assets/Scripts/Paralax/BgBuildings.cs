@@ -13,7 +13,7 @@ public class BgBuildings : MonoBehaviour {
 
     public bool drawGizmos = false;
 
-    private Vector3 startPos;
+    //private Vector3 startPos;
     private GameObject mainCamera;
     private Vector3 worldRange;
 
@@ -24,21 +24,21 @@ public class BgBuildings : MonoBehaviour {
 
     public Vector3 through;
 
-    private GameObject backdrop;
+    //private GameObject backdrop;
 
     private Vector3 originalbgPositionStart;
     private Vector3 originalbgPositionEnd;
     // Use this for initialization
     void Start () {
         through = new Vector3();
-        startPos = transform.position;
+        //startPos = transform.position;
 
         mainCamera = LevelControl.Instance.MainCamera;
         worldRange = worldPosParalaxStart - worldPosParalaxEnd;
         bgPositionStart = bgPositionStart + transform.localPosition;
         bgPositionEnd = bgPositionEnd + transform.localPosition;
 
-        backdrop = transform.parent.gameObject;
+        //backdrop = transform.parent.gameObject;
 
         originalbgPositionStart = bgPositionStart;
         originalbgPositionEnd = bgPositionEnd;
@@ -49,7 +49,7 @@ public class BgBuildings : MonoBehaviour {
         bgPositionEnd = Vector3.Scale(originalbgPositionEnd, transform.parent.localScale);
         bgPositionStart = Vector3.Scale(originalbgPositionStart, transform.parent.localScale);
 
-        through = LevelControl.Instance.MainCamera.transform.position - worldPosParalaxEnd;
+        through = mainCamera.transform.position - worldPosParalaxEnd;
         //through.x = through.x / worldRange.x;
         through.x = ( worldRange.x == 0 ) ? 0 : through.x / worldRange.x;
         through.y = ( worldRange.y == 0 ) ? 0 : through.y / worldRange.y;

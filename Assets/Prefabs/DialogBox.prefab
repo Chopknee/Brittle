@@ -218,36 +218,56 @@ MonoBehaviour:
   Dialog:
   - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
     Speech: What the heck is that? Roadkill?
-    CharacterDelay: 80
+    CharacterDelay: 65
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1500
+    OnFinishDelay: 1750
   - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
     Speech: It's a new sinkhole that opened up outside the diner. The one with the
       good fries.
-    CharacterDelay: 80
+    CharacterDelay: 65
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1500
+    OnFinishDelay: 1750
   - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
-    Speech: I don't know whats worse; that drawing or the fac that you spend your
+    Speech: I don't know whats worse; that drawing or the fact that you spend your
       time drawing smelly holes now.
-    CharacterDelay: 80
+    CharacterDelay: 65
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1500
+    OnFinishDelay: 1750
   - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
     Speech: What's with all the Vince drawings? It's kinda creepy.
-    CharacterDelay: 80
+    CharacterDelay: 65
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1500
+    OnFinishDelay: 1750
   - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
     Speech: Oh, thats from when I spent an ETERNITY waiting on you this morning.
-    CharacterDelay: 80
+    CharacterDelay: 65
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1500
+    OnFinishDelay: 1750
+  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
+    Speech: Any way, I want to get a better look at the area. Let's find a tree to
+      climb.
+    CharacterDelay: 65
+    periodDelay: 250
+    commaDelay: 170
+    OnFinishDelay: 1750
+  - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
+    Speech: I think there is a big one not too far from here.
+    CharacterDelay: 65
+    periodDelay: 250
+    commaDelay: 170
+    OnFinishDelay: 1750
+  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
+    Speech: Yeah, I think I know which one you are talking about. The hollowed out
+      one. It's dark and full of bugs if I remember right.
+    CharacterDelay: 65
+    periodDelay: 250
+    commaDelay: 170
+    OnFinishDelay: 1750
   CharacterImage: {fileID: 114198045856851326}
   playOnAwake: 1
 --- !u!114 &114345982330504480
@@ -317,8 +337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeechText: 
   scrollVolume: 0.2
-  scrollSound: {fileID: 0}
-  CharacterDelay: 80
+  scrollSound: {fileID: 8300000, guid: dfb483c2d9116cd45b00a2b92196fccd, type: 3}
+  CharacterDelay: 65
   periodDelay: 150
   commaDelay: 125
   onFinishDelay: 100
@@ -348,12 +368,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 79197ecfbc3a4294a89ce589dac02cf2, type: 3}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: 557ace57e749aef4ca841c5c25035c8e, type: 3}
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 44
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -423,7 +443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 147, y: -349}
+  m_AnchoredPosition: {x: 176, y: -406}
   m_SizeDelta: {x: 1017, y: -900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224761422262023570

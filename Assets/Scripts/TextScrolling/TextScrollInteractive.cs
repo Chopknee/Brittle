@@ -55,7 +55,6 @@ public class TextScrollInteractive: MonoBehaviour {
         if (scroll && Time.time > next) {
 
             next = Time.time + (CharacterDelay / 1000);
-            Debug.Log("I AM ACTUALLY RUNNING");
             if (i < scrollTextSplit.Length) {
                 switch (scrollTextSplit[i]) {
                     case ',':
@@ -102,7 +101,6 @@ public class TextScrollInteractive: MonoBehaviour {
         i = 0;
         next = Time.time;
         scroll = true;
-        Debug.Log("Begin scrolling");
     }
 
     public void EndScroll() {

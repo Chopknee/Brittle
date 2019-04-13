@@ -17,12 +17,12 @@ public class Screenshotter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.C)) {
-            string filename = fileName;
+            string fname = fileName;
             if (autoIncrementFileNames) {
-                fileName += "_" + capNum;
+                fname += "_" + capNum;
                 capNum++;
             }
-            ScreenCapture.CaptureScreenshot(fileName + ".png", superSampleMultiplier);
+            ScreenCapture.CaptureScreenshot(fname + ".png", superSampleMultiplier);
         }
 	}
 }

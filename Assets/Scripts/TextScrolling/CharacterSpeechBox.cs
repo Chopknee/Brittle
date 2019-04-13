@@ -11,6 +11,9 @@ public class CharacterSpeechBox : MonoBehaviour {
     public Image CharacterImage;
     public bool playOnAwake = false;
 
+    public delegate void Finished ();
+    public Finished OnFinished;
+
     public int DialogIndex {
         get {
             return dialogIndex;
@@ -77,6 +80,9 @@ public class CharacterSpeechBox : MonoBehaviour {
         dialogIndex++;
         if (dialogIndex >= Dialog.Length || !playing) {
             playing = false;
+            if (OnFinished != null) {
+                OnFinished();
+            }
             return;
         }
 
