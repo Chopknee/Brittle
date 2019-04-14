@@ -66,6 +66,7 @@ public class CutsceneTrigger : MonoBehaviour {
         if (cameraTakeover) {
             //Make sure the camera can be animated.
             LevelControl.Instance.MainCamera.GetComponent<CameraFollow>().enabled = false;
+            LevelControl.Instance.MainCamera.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
         if (dialogCanvas != null) {
