@@ -29,8 +29,8 @@ TagManager:
   - ground
   - player
   - FloatingObject
-  - 
-  - 
+  - Camera
+  - CameraCollider
   - 
   - 
   - 

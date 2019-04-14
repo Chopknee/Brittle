@@ -2,44 +2,51 @@
 
 public class CameraFollow : MonoBehaviour, IPausable {
 
-    public Vector2 minPosition = new Vector2(-10, -10);
-    public Vector2 maxPosition = new Vector2(10, 10);
+    //public Vector2 minPosition = new Vector2(-10, -10);
+    //public Vector2 maxPosition = new Vector2(10, 10);
     public GameObject followTarget;
     public bool drawBoundsGizmo = true;
     [Tooltip("Controls how the camera settles on the target object when it stops moving.")]
     public AnimationCurve followCurve;
-    [Range(0.5f, 4), Tooltip("Controls how far from the center of the camera the target can get.")]
+    [Range(1, 700), Tooltip("Controls how far from the center of the camera the target can get.")]
     public float multiplier = 1;
 
-    private bool boundsTransitioning = false;
-    private float boundsTransitionTime = 0;
-    private Vector2 transitionMinPosition = new Vector2();
-    private Vector2 transitionMaxPosition = new Vector2();
     private float boundsTransitionTimeCount = 0;
 
     
     private Camera cam;
-    //private GameObject[] background;
-    //private Vector3 oldBgScale;
     private Vector3[] oldBgScales;
-    private bool zooming = false;
     SmoothTransition zoomTransition;
+
+    SmoothTransition collisionTransition;
+
+    Rigidbody2D rb;
+    CapsuleCollider2D cc;
 
     private bool paused = false;
     
     // Use this for initialization
     void Start () {
+        rb = GetComponent<Rigidbody2D>();
+        cc = GetComponent<CapsuleCollider2D>();
+
         if (followTarget == null) {
-            followTarget = GameObject.FindGameObjectWithTag("Player");
+            followTarget = LevelControl.Instance.Keisel;
         }
+
         cam = GetComponent<Camera>();
-        //background = transform.child.gameObject;//Always the first child?
+
+        cc.size = LevelControl.Instance.MainCameraOrthoSize;
+
         oldBgScales = new Vector3[transform.childCount];
         for (int i = 0; i < transform.childCount; i++) {
             oldBgScales[i] = transform.GetChild(i).localScale;
         }
+
         zoomTransition = new SmoothTransition(0, 0, null, 0);
         zoomTransition.OnFinish += OnZoomFinish;
+        collisionTransition = new SmoothTransition(0, 0, null, 0);
+        collisionTransition.OnFinish += OnCollisionSizeChangeFinish;
     }
 	
 	// Update is called once per frame
@@ -52,34 +59,17 @@ public class CameraFollow : MonoBehaviour, IPausable {
             //The z should be forced to 0 because we are on a 2d plane
             diff.z = 0;
 
-
             //Take the magnitude (distance from target) and scale it down. We only want the camera to move a portion of the distance from the target.
             //This number grows larger as the distance gets bigger, until the mul is equal to the distance moved by the target since the last frame.
             //Time.deltaTime ensures that this is the same on any framerate
             float mul = followCurve.Evaluate(diff.magnitude) * multiplier * Time.deltaTime;
 
             //This is now applied to the position
-            diff = transform.position + (diff * mul);
+            diff = diff * mul;
+            rb.velocity = diff;
+            //transform.position = new Vector3(diff.x, diff.y, transform.position.z);//Finally we can set the position of the camera!
 
-            //Make sure it is within the current bounds.
-            if (!boundsTransitioning) {
-                diff = Vector2.Max(minPosition, Vector2.Min(maxPosition, diff));
-            } else {
-                Vector2 tmpMin = Vector2.Lerp(minPosition, transitionMinPosition, boundsTransitionTimeCount/boundsTransitionTime);
-                Vector2 tmpMax = Vector2.Lerp(maxPosition, transitionMaxPosition, boundsTransitionTimeCount/boundsTransitionTime);
-                diff = Vector2.Max(tmpMin, Vector2.Min(tmpMax, diff));
-                //Bring the two bounds closer
-                boundsTransitionTimeCount += Time.deltaTime;
-                if (boundsTransitionTimeCount >= boundsTransitionTime) {
-                    boundsTransitioning = false;
-                    minPosition = transitionMinPosition;
-                    maxPosition = transitionMaxPosition;
-                    boundsTransitionTimeCount = 0;
-                }
-            }
-            transform.position = new Vector3(diff.x, diff.y, transform.position.z);//Finally we can set the position of the camera!
-
-            if (zooming) {
+            if (zoomTransition.running) {
                 float cz = zoomTransition.DriveForward();
                 cam.orthographicSize = cz;
                 for (int i = 0; i < transform.childCount; i++) {
@@ -91,48 +81,47 @@ public class CameraFollow : MonoBehaviour, IPausable {
                         );
                 }
             }
+
+            if (collisionTransition.running) {
+                float size = collisionTransition.DriveForward();
+                //Figure out what size to set the two values to
+                cc.size = new Vector2(size * LevelControl.Instance.aspectRatio, size);
+
+            }
         }
 	}
 
-    public void SetBounds(Vector2 min, Vector2 max, float boundsTransitionTime) {
-        transitionMinPosition = min;
-        transitionMaxPosition = max;
-        boundsTransitioning = true;
-        this.boundsTransitionTime = boundsTransitionTime;
-    }
-
     public void SetZoom(float newSize, AnimationCurve transitionCurve, float transitionTime) {
-        zooming = true;
         zoomTransition.Begin(cam.orthographicSize, newSize, transitionCurve, transitionTime);
         for (int i = 0; i < transform.childCount; i++) {
             oldBgScales[i] = transform.GetChild(i).localScale;
         }
     }
 
+    public void SetColliderSize(float newSize, AnimationCurve transitionCurve, float transitionTime) {
+        collisionTransition.Begin(cc.size.y, newSize, transitionCurve, transitionTime);
+    }
+
     public void OnZoomFinish() {
-        zooming = false;
+        //zooming = false;
     }
 
-    private void OnDrawGizmos() {
-        //Visualizes the boundaries of where the camera is able to travel.
-        if (drawBoundsGizmo) {
-            Gizmos.color = new Color(0, 0, 255);
-            //Upper line
-            Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(maxPosition.x, minPosition.y));
-            Gizmos.DrawLine(new Vector2(minPosition.x, maxPosition.y), new Vector2(maxPosition.x, maxPosition.y));
-
-            Gizmos.DrawLine(new Vector2(minPosition.x, minPosition.y), new Vector2(minPosition.x, maxPosition.y));
-            Gizmos.DrawLine(new Vector2(maxPosition.x, minPosition.y), new Vector2(maxPosition.x, maxPosition.y));
-        }
+    public void OnCollisionSizeChangeFinish() {
+        //
     }
+
+    //private void OnDrawGizmos() {
+    //    //Visualizes the boundaries of where the camera is able to travel.
+    //    if (drawBoundsGizmo) {
+    //        Gizmos.color = new Color(0, 0, 255);
+    //    }
+    //}
 
     public void OnPause() {
-        //throw new System.NotImplementedException();
         paused = true;
     }
 
     public void OnUnPause() {
-        //throw new System.NotImplementedException();
         paused = false;
     }
 }

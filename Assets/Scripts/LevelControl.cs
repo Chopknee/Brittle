@@ -25,6 +25,9 @@ public class LevelControl : MonoBehaviour {
     public GameObject PauseMenu;
     private PauseMenu pauseMenuScript;
 
+    public bool drawCameraBoundsColliders = false;
+    public Color CameraBoxColliderColor = new Color(0, 0, 1);
+
     public bool JoystickIsUsed = false;
 
     public Vector2 MainCameraOrthoSize;
@@ -73,7 +76,7 @@ public class LevelControl : MonoBehaviour {
         if (overrideStartPosition) {
             
             if (initialCameraBounds != null) {
-                MainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
+                //MainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
                 MainCamera.GetComponent<CameraFollow>().SetZoom(initialCameraBounds.cameraSize, initialCameraBounds.sizeTransitionCurve, initialCameraBounds.zoomTransitionTime);
             }
             //MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
