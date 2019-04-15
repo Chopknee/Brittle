@@ -14336,7 +14336,7 @@ Prefab:
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[8].CharacterDelay
-      value: 65
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
@@ -14435,6 +14435,46 @@ Prefab:
     - target: {fileID: 1949026657813074, guid: f84c2372b53c9ce47a350e77096045fc, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[0].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[1].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[2].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[3].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[4].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[5].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[6].CharacterDelay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[7].CharacterDelay
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f84c2372b53c9ce47a350e77096045fc, type: 2}

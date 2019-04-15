@@ -88,6 +88,8 @@ public class CutsceneTrigger : MonoBehaviour {
 
     public void Finished() {
 
+        LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(true);
+
         if (animateKeisel) {
             if (moveKeisel) {
                 LevelControl.Instance.Keisel.transform.position = new Vector3(KeiselMoveTo.x + transform.position.x, KeiselMoveTo.y + transform.position.y, LevelControl.Instance.Keisel.transform.position.z);
@@ -103,12 +105,15 @@ public class CutsceneTrigger : MonoBehaviour {
             LevelControl.Instance.MainCamera.GetComponent<CameraFollow>().enabled = true;
         }
 
-        foreach (GameObject g in cutsceneObjects) {
-            g.SetActive(false);
+        if (cutsceneObjects != null) {
+            foreach (GameObject g in cutsceneObjects) {
+                g.SetActive(false);
+            }
         }
-        LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(true);
 
-        director.stopped -= FinishedPlaying;
+        if (directorDependent) {
+            director.stopped -= FinishedPlaying;
+        }
 
         if (dialogCanvas != null) {
             dialogCanvas.SetActive(false);
