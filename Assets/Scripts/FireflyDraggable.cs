@@ -23,7 +23,7 @@ public class FireflyDraggable : MonoBehaviour, IPausable {
     public bool mouseOver = false;
 
     public float highlightRadius = 10f;
-    private float highlightRadiusSquared;
+    public float highlightRadiusSquared;
     public LayerMask playerMask;
 
     public bool lastInside = false;
@@ -31,9 +31,9 @@ public class FireflyDraggable : MonoBehaviour, IPausable {
 
     public float energyRequirement = 0.1f;
 
-    private GameObject player;
+    public GameObject player;
 
-    private MouseSound tinkleSound;
+    public MouseSound tinkleSound;
 
     public bool paused;
 
@@ -41,7 +41,7 @@ public class FireflyDraggable : MonoBehaviour, IPausable {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         if (mainCamera == null) {
-            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            mainCamera = LevelControl.Instance.MainCamera.GetComponent<Camera>();
         }
 
         if (highlightSprite == null) {
@@ -51,7 +51,7 @@ public class FireflyDraggable : MonoBehaviour, IPausable {
         highlight = new SmoothTransition(0, 1, null, highlightTime);
 
         if (player == null) {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = LevelControl.Instance.Keisel;
         }
 
         tinkleSound = GetComponent<MouseSound>();

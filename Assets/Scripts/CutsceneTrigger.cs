@@ -12,10 +12,12 @@ public class CutsceneTrigger : MonoBehaviour {
 
     public bool triggered = false;
     public bool beginOnActivate = false;
-
+    public bool hideFireflies = false;
     public bool animateKeisel = false;
+    public bool hideKeisel = false;
     public bool cameraTakeover = false;
     public bool moveKeisel = true;
+    
     // Use this for initialization
 
     public Vector2 KeiselMoveTo;
@@ -25,7 +27,7 @@ public class CutsceneTrigger : MonoBehaviour {
 	void Start () {
         if (director == null) {
             director = GetComponent<PlayableDirector>();
-            directorDependent = false;
+            directorDependent = director != null;
         }
 
         if (dialogCanvas != null && directorDependent == false) {
@@ -59,7 +61,10 @@ public class CutsceneTrigger : MonoBehaviour {
             director.Play();
         }
         if (animateKeisel) {
-            //Make sure keisel is set to the correct animation state.
+            LevelControl.Instance.Keisel.GetComponent<IPausable>().OnPause();
+        }
+
+        if (hideKeisel) {
             LevelControl.Instance.Keisel.SetActive(false);
         }
 
@@ -73,6 +78,10 @@ public class CutsceneTrigger : MonoBehaviour {
             dialogCanvas.SetActive(true);
         }
 
+        if (hideFireflies) {
+            LevelControl.Instance.Fireflies.SetActive(false);
+        }
+
         triggered = true;
         LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);
     }
@@ -83,6 +92,10 @@ public class CutsceneTrigger : MonoBehaviour {
             if (moveKeisel) {
                 LevelControl.Instance.Keisel.transform.position = new Vector3(KeiselMoveTo.x + transform.position.x, KeiselMoveTo.y + transform.position.y, LevelControl.Instance.Keisel.transform.position.z);
             }
+            LevelControl.Instance.Keisel.GetComponent<IPausable>().OnUnPause();
+        }
+
+        if (hideKeisel) {
             LevelControl.Instance.Keisel.SetActive(true);
         }
 
@@ -99,6 +112,10 @@ public class CutsceneTrigger : MonoBehaviour {
 
         if (dialogCanvas != null) {
             dialogCanvas.SetActive(false);
+        }
+
+        if (hideFireflies) {
+            LevelControl.Instance.Fireflies.SetActive(true);
         }
     }
 

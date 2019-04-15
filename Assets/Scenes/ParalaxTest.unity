@@ -4096,6 +4096,8 @@ MonoBehaviour:
   MainCamera: {fileID: 0}
   Fireflies: {fileID: 0}
   PauseMenu: {fileID: 0}
+  drawCameraBoundsColliders: 0
+  CameraBoxColliderColor: {r: 0, g: 0, b: 1, a: 1}
   JoystickIsUsed: 0
   MainCameraOrthoSize: {x: 0, y: 0}
   aspectRatio: 0
@@ -5275,31 +5277,6 @@ Prefab:
     - target: {fileID: 4123223697016730, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114600201009080694, guid: cab6d03306c33c248b6146c6e7c865cd,
-        type: 2}
-      propertyPath: drawGizmos
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114600201009080694, guid: cab6d03306c33c248b6146c6e7c865cd,
-        type: 2}
-      propertyPath: worldPosParalaxEnd.x
-      value: 180.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114367792969171836, guid: cab6d03306c33c248b6146c6e7c865cd,
-        type: 2}
-      propertyPath: drawGizmos
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114367792969171836, guid: cab6d03306c33c248b6146c6e7c865cd,
-        type: 2}
-      propertyPath: worldPosParalaxEnd.x
-      value: 109.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
-        type: 2}
-      propertyPath: maxPosition.x
-      value: 86.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
