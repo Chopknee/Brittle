@@ -129,7 +129,7 @@ public class FireflyDraggable : MonoBehaviour, IPausable {
 
     public void OnTriggerExit2D ( Collider2D collision ) {
         if (collision.gameObject.tag == "Fireflies") {
-            mouseOver = true;
+            mouseOver = false;
         }
     }
 

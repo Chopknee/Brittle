@@ -603,6 +603,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4123223697016730, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.16
@@ -752,6 +757,106 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1728392872372632, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[2].time
+      value: 0.6904603
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[2].value
+      value: 0.2872767
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[2].inSlope
+      value: -8.209732
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[2].outSlope
+      value: -8.209732
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[2].outWeight
+      value: 0.05550455
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[3].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[3].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[3].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[3].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935802945627820, guid: cab6d03306c33c248b6146c6e7c865cd,
+        type: 2}
+      propertyPath: followCurve.m_Curve.Array.data[1].inWeight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3297,7 +3402,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 339476358}
   drawCameraBoundsColliders: 0
   CameraBoxColliderColor: {r: 0, g: 0.49719, b: 1, a: 0.7137255}
-  JoystickIsUsed: 0
+  JoystickIsUsed: 1
   MainCameraOrthoSize: {x: 8.882576, y: 5}
   aspectRatio: 1.7765151
 --- !u!82 &512657610
@@ -4170,13 +4275,13 @@ GameObject:
   - component: {fileID: 670232102}
   - component: {fileID: 670232101}
   - component: {fileID: 670232103}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LevelPostProcessing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &670232101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4189,7 +4294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: d956969609320804b9d05eb1d2f7b8ba, type: 2}
-  isGlobal: 0
+  isGlobal: 1
   blendDistance: 6.23
   weight: 1
   priority: 0
@@ -17155,6 +17260,21 @@ Prefab:
         type: 2}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 212845905972347592, guid: 936b3b75b0946264593a6c1662f0be19,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -299071967
+      objectReference: {fileID: 0}
+    - target: {fileID: 212845905972347592, guid: 936b3b75b0946264593a6c1662f0be19,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212845905972347592, guid: 936b3b75b0946264593a6c1662f0be19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 936b3b75b0946264593a6c1662f0be19, type: 2}
