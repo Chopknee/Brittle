@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -17,6 +18,8 @@ public class CutsceneTrigger : MonoBehaviour {
     public bool hideKeisel = false;
     public bool cameraTakeover = false;
     public bool moveKeisel = true;
+
+    public bool disabled = false;
     
     // Use this for initialization
 
@@ -25,6 +28,9 @@ public class CutsceneTrigger : MonoBehaviour {
     public GameObject[] cutsceneObjects;
 
 	void Start () {
+        if (disabled) {
+            triggered = true;
+        }
         if (director == null) {
             director = GetComponent<PlayableDirector>();
             directorDependent = director != null;
@@ -39,7 +45,7 @@ public class CutsceneTrigger : MonoBehaviour {
         }
 
 
-        if (beginOnActivate) {
+        if (beginOnActivate && !triggered) {
             Trigger();
             Debug.Log("Triggering cutscene!");
         }

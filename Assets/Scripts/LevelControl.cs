@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+[ExecuteInEditMode]
 public class LevelControl : MonoBehaviour {
 
     public static LevelControl Instance {
@@ -34,40 +35,50 @@ public class LevelControl : MonoBehaviour {
     public float aspectRatio;
 
     public List<IPausable> pausables;
+    public List<CutsceneTrigger> cutSceneTriggers;
 
     private void Awake () {
+        if (Application.isPlaying) {
+            if (instance == null || instance != this) {
+                instance = this;
+            }
 
-        if (instance == null || instance != this) {
-            instance = this;
+            if (Keisel == null) {
+                Keisel = GameObject.FindGameObjectWithTag("Player");
+            }
+
+            if (MainCamera == null) {
+                MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            }
+
+            if (Fireflies == null) {
+                Fireflies = GameObject.FindGameObjectWithTag("Fireflies");
+            }
+
+            if (PauseMenu == null) {
+                PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+            }
+
+            pauseMenuScript = PauseMenu.GetComponent<PauseMenu>();
+            pauseMenuScript.OnPaused += OnPaused;
+
+            aspectRatio = (float)Screen.width / (float)Screen.height;
+
+            MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
+
+            pausables = new List<IPausable>();
+            var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
+            foreach (IPausable p in ps) {
+                pausables.Add(p);
+            }
+        } else {
+            cutSceneTriggers = new List<CutsceneTrigger>();
+            var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
+            foreach (CutsceneTrigger cc in cs) {
+                cutSceneTriggers.Add(cc);
+            }
         }
 
-        if (Keisel == null) {
-            Keisel = GameObject.FindGameObjectWithTag("Player");
-        }
-
-        if (MainCamera == null) {
-            MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }
-
-        if (Fireflies == null) {
-            Fireflies = GameObject.FindGameObjectWithTag("Fireflies");
-        }
-
-        if (PauseMenu == null) {
-            PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        }
-        pauseMenuScript = PauseMenu.GetComponent<PauseMenu>();
-        pauseMenuScript.OnPaused += OnPaused;
-        
-        aspectRatio = (float) Screen.width / (float)Screen.height;
-
-        MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
-
-        pausables = new List<IPausable>();
-        var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
-        foreach (IPausable p in ps) {
-            pausables.Add(p);
-        }
     }
 
     // Use this for initialization
@@ -88,7 +99,15 @@ public class LevelControl : MonoBehaviour {
 	}
 
     public void Update () {
-        MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
+        if (!Application.isPlaying) {
+            cutSceneTriggers = new List<CutsceneTrigger>();
+            var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
+            foreach (CutsceneTrigger cc in cs) {
+                cutSceneTriggers.Add(cc);
+            }
+        } else {
+            MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
+        }
     }
 
     public void OnDrawGizmos() {
