@@ -33,8 +33,8 @@ public class LevelControl : MonoBehaviour {
     public float aspectRatio;
 
     public List<IPausable> pausables;
-    public List<CutsceneTrigger> cutSceneTriggers;
-
+    public bool disableCutscenes = false;
+    public bool constantlyDisableCutscenes = false;
     private void Awake () {
         if (Application.isPlaying) {
             if (instance == null || instance != this) {
@@ -72,10 +72,11 @@ public class LevelControl : MonoBehaviour {
                 pausables.Add(p);
             }
         } else {
-            cutSceneTriggers = new List<CutsceneTrigger>();
-            var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
-            foreach (CutsceneTrigger cc in cs) {
-                cutSceneTriggers.Add(cc);
+            if (constantlyDisableCutscenes) {
+                var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
+                foreach (CutsceneTrigger cc in cs) {
+                    cc.enabled = !disableCutscenes;
+                }
             }
         }
 
@@ -95,10 +96,12 @@ public class LevelControl : MonoBehaviour {
 
     public void Update () {
         if (!Application.isPlaying) {
-            cutSceneTriggers = new List<CutsceneTrigger>();
-            var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
-            foreach (CutsceneTrigger cc in cs) {
-                cutSceneTriggers.Add(cc);
+            if (constantlyDisableCutscenes) {
+                var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
+                foreach (CutsceneTrigger cc in cs) {
+                    cc.enabled = !disableCutscenes;
+                }
+                Debug.Log("Working on enabling/disabling cutscenes!");
             }
         } else {
             MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);

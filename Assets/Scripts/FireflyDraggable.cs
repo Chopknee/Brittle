@@ -58,12 +58,12 @@ public class FireflyDraggable : MonoBehaviour, IPausable {
 	void Update () {
         if (!paused) {
             if (mouseOver) {
-                if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
+                if (Input.GetButtonDown("Interact")) {
                     dragging = true;
                     GetComponent<ParticleSystem>().Play();
                 }
             }
-            if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Interact")) {
+            if (Input.GetButtonUp("Interact")) {
                 dragging = false;
                 GetComponent<ParticleSystem>().Stop();
             }

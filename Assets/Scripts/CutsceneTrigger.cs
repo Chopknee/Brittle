@@ -18,8 +18,6 @@ public class CutsceneTrigger : MonoBehaviour {
     public bool hideKeisel = false;
     public bool cameraTakeover = false;
     public bool moveKeisel = true;
-
-    public bool disabled = false;
     
     // Use this for initialization
 
@@ -27,10 +25,10 @@ public class CutsceneTrigger : MonoBehaviour {
 
     public GameObject[] cutsceneObjects;
 
+    //[SerializeField]
+    //public ITriggerableBehavior[] myTriggerScripts;
+
 	void Start () {
-        if (disabled) {
-            triggered = true;
-        }
         if (director == null) {
             director = GetComponent<PlayableDirector>();
             directorDependent = director != null;
@@ -87,6 +85,10 @@ public class CutsceneTrigger : MonoBehaviour {
         if (hideFireflies) {
             LevelControl.Instance.Fireflies.SetActive(false);
         }
+
+        //foreach (ITriggerableBehavior ts in myTriggerScripts) {
+        //    ts.Trigger(this);
+        //}
 
         triggered = true;
         LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);
