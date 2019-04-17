@@ -109,6 +109,7 @@ public class TextScrollInteractive: MonoBehaviour {
         i = 0;
         next = Time.time;
         scroll = true;
+        GetComponent<AudioSource>().clip = scrollSound;
     }
 
     public void EndScroll() {

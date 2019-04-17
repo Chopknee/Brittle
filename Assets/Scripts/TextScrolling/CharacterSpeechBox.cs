@@ -113,6 +113,9 @@ public class CharacterSpeechBox : MonoBehaviour {
             myTextScrollInteractive.periodDelay = Dialog[dialogIndex].periodDelay;
             myTextScrollInteractive.commaDelay = Dialog[dialogIndex].commaDelay;
             myTextScrollInteractive.onFinishDelay = Dialog[dialogIndex].OnFinishDelay;
+            if (Dialog[dialogIndex].beep != null) {
+                myTextScrollInteractive.scrollSound = Dialog[dialogIndex].beep;
+            }
             if (CharacterImage != null) {
                 CharacterImage.sprite = Dialog[dialogIndex].Character;
             }
@@ -137,5 +140,6 @@ public class CharacterSpeechBox : MonoBehaviour {
         [Range(0, 5000)]
         public float OnFinishDelay = 100;
         public bool WaitforUser = true;
+        public AudioClip beep = null;
     }
 }
