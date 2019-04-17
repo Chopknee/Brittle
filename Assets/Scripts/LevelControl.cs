@@ -17,7 +17,6 @@ public class LevelControl : MonoBehaviour {
     public Vector3 keiselStartPosition;
     public bool overrideStartPosition;
     public bool drawStartPosition;
-    public CameraModifyTrigger initialCameraBounds;
     //Accessible to all objects.
 
     public GameObject Keisel;
@@ -26,7 +25,6 @@ public class LevelControl : MonoBehaviour {
     public GameObject PauseMenu;
     private PauseMenu pauseMenuScript;
 
-    public bool drawCameraBoundsColliders = false;
     public Color CameraBoxColliderColor = new Color(0, 0, 1);
 
     public bool JoystickIsUsed = false;
@@ -87,12 +85,7 @@ public class LevelControl : MonoBehaviour {
     void Start () {
 
         if (overrideStartPosition) {
-            
-            if (initialCameraBounds != null) {
-                //MainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
-                MainCamera.GetComponent<CameraFollow>().SetZoom(initialCameraBounds.cameraSize, initialCameraBounds.sizeTransitionCurve, initialCameraBounds.zoomTransitionTime);
-            }
-            //MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
+            MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
         } else {
             MainCamera.transform.position = new Vector3(keiselStartPosition.x, keiselStartPosition.y, MainCamera.transform.position.z);
             Keisel.transform.position = keiselStartPosition;
