@@ -605,11 +605,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4123223697016730, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 41.35
+      value: -7.16
       objectReference: {fileID: 0}
     - target: {fileID: 4123223697016730, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 10.42
+      value: -12.1
       objectReference: {fileID: 0}
     - target: {fileID: 4123223697016730, guid: cab6d03306c33c248b6146c6e7c865cd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3115,7 +3115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keiselStartPosition: {x: -7.16, y: -12.1, z: 0}
-  overrideStartPosition: 0
+  overrideStartPosition: 1
   drawStartPosition: 1
   Keisel: {fileID: 118160094}
   MainCamera: {fileID: 1637929633}
@@ -14001,7 +14001,7 @@ Prefab:
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224376974694982186, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
@@ -14095,20 +14095,55 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[8].Character
+      propertyPath: Dialog.Array.data[7].Character
       value: 
       objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
         type: 3}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
+      propertyPath: Dialog.Array.data[7].Speech
+      value: I want to find a tall tree so we can get a better look at the area.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[7].CharacterDelay
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[7].periodDelay
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[7].commaDelay
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[7].OnFinishDelay
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[7].WaitforUser
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[8].Character
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
+        type: 3}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
       propertyPath: Dialog.Array.data[8].Speech
-      value: Yeah, I think I know the one. It's hollow dark and full of bugs if I
-        remember right.
+      value: There is a big one not too far from here.
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[8].CharacterDelay
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
@@ -14123,7 +14158,12 @@ Prefab:
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[8].OnFinishDelay
-      value: 1750
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[8].WaitforUser
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
@@ -14133,56 +14173,116 @@ Prefab:
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[1].Speech
-      value: Keisel... what the heck is that? Roadkill?
+      value: 'What the heck...
+
+        Is that roadkill?'
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[1].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
       propertyPath: Dialog.Array.data[2].Speech
-      value: It's a new sinkhole that opened up outside the diner. The one with the
-        good fries.
+      value: No, it's a new sinkhole that opened up outside the diner. The one with
+        the good fries.
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[3].Speech
-      value: I don't know whats worse; that drawing or the fact that you spend your
-        time drawing smelly holes now.
+      value: I don't know what's worse; that drawing or the fact that now, you spend
+        your time drawing smelly holes.
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[4].Speech
-      value: What's with all the Vince drawings? It's kinda creepy.
+      value: 'Also, what''s with all the vince drawings? It''s kinda...
+
+        creepy.'
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[5].Speech
-      value: Oh, thats from when I spent an ETERNITY waiting on you this morning.
+      value: Oh, I had plenty of time to kill, considering the ETERNITY it took you
+        to finally show up.
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: Dialog.Array.data[6].Speech
-      value: Any way, I want to get a better look at the area. Let's find a tree to
-        climb.
+      value: Enough of the banter, we need to get moving while the sun is still shining.
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[7].Speech
-      value: I think there is a big one not too far from here.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[0].Character
+      propertyPath: Dialog.Array.data[9].Character
       value: 
       objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
         type: 3}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[2].Character
+      propertyPath: Dialog.Array.data[9].Speech
+      value: Yeah, I know it. The tree is old and hollow. Probably filled with bees
+        and other creepy crawlies.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[9].CharacterDelay
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[9].periodDelay
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[9].commaDelay
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[9].OnFinishDelay
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[9].WaitforUser
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].Character
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
+        type: 3}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].Speech
+      value: All right, I'll try.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].CharacterDelay
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].periodDelay
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].commaDelay
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].OnFinishDelay
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[10].WaitforUser
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
+        type: 2}
+      propertyPath: Dialog.Array.data[6].Character
       value: 
       objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
         type: 3}
@@ -14194,60 +14294,16 @@ Prefab:
         type: 3}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[6].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].Character
+      propertyPath: Dialog.Array.data[1].Character
       value: 
       objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
         type: 3}
-    - target: {fileID: 1949026657813074, guid: f84c2372b53c9ce47a350e77096045fc, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[0].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[1].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[2].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[3].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[4].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[5].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[6].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].CharacterDelay
-      value: 15
-      objectReference: {fileID: 0}
+      propertyPath: Dialog.Array.data[0].Character
+      value: 
+      objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f84c2372b53c9ce47a350e77096045fc, type: 2}
   m_IsPrefabAsset: 0
@@ -16311,11 +16367,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 145826492}
     m_Modifications:
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 224376974694982186, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -16354,7 +16405,7 @@ Prefab:
     - target: {fileID: 224376974694982186, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224376974694982186, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
@@ -16408,134 +16459,38 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[8].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[8].Speech
-      value: Yeah, I think I know which one you are talking about. The hollowed out
-        one. It's dark and full of bugs if I remember right.
+      propertyPath: Dialog.Array.data[0].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[8].CharacterDelay
-      value: 65
+      propertyPath: Dialog.Array.data[1].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[8].periodDelay
-      value: 250
+      propertyPath: Dialog.Array.data[2].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[8].commaDelay
-      value: 170
+      propertyPath: Dialog.Array.data[3].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[8].OnFinishDelay
-      value: 1750
+      propertyPath: Dialog.Array.data[4].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[0].Speech
-      value: Look out, I see a hive in that tree! I hate those bees, they're jerks.
+      propertyPath: Dialog.Array.data[5].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
         type: 2}
-      propertyPath: Dialog.Array.data[1].Speech
-      value: Don't worry about that hive Samuels. I think it's empty, besides, we
-        have a bigger issue.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[1].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[2].Speech
-      value: How am I going to climb this cliff? My climbing gear is back at home.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[3].Speech
-      value: I could carry you, but the last time I tried, you laughed so hard I dropped
-        you.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[4].Speech
-      value: Sorry, I can't help being so ticklish!
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[5].Speech
-      value: I see a loose branch in the tree, maybe you can pull it down and carry
-        me on it!
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[6].Speech
-      value: All right, I'll try.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].Speech
-      value: I think there is a big one not too far from here.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[0].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[2].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[4].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[6].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].Character
-      value: 
-      objectReference: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65,
-        type: 3}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].CharacterDelay
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].periodDelay
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].commaDelay
-      value: 170
-      objectReference: {fileID: 0}
-    - target: {fileID: 114259403915145544, guid: f84c2372b53c9ce47a350e77096045fc,
-        type: 2}
-      propertyPath: Dialog.Array.data[7].OnFinishDelay
-      value: 1750
+      propertyPath: Dialog.Array.data[6].CharacterDelay
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f84c2372b53c9ce47a350e77096045fc, type: 2}
