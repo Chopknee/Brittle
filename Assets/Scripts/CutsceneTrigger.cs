@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -24,6 +25,9 @@ public class CutsceneTrigger : MonoBehaviour {
 
     public GameObject[] cutsceneObjects;
 
+    //[SerializeField]
+    //public ITriggerableBehavior[] myTriggerScripts;
+
 	void Start () {
         if (director == null) {
             director = GetComponent<PlayableDirector>();
@@ -39,7 +43,7 @@ public class CutsceneTrigger : MonoBehaviour {
         }
 
 
-        if (beginOnActivate) {
+        if (beginOnActivate && !triggered) {
             Trigger();
             Debug.Log("Triggering cutscene!");
         }
@@ -81,6 +85,10 @@ public class CutsceneTrigger : MonoBehaviour {
         if (hideFireflies) {
             LevelControl.Instance.Fireflies.SetActive(false);
         }
+
+        //foreach (ITriggerableBehavior ts in myTriggerScripts) {
+        //    ts.Trigger(this);
+        //}
 
         triggered = true;
         LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);

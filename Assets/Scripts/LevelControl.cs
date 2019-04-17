@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+[ExecuteInEditMode]
 public class LevelControl : MonoBehaviour {
 
     public static LevelControl Instance {
@@ -16,7 +17,6 @@ public class LevelControl : MonoBehaviour {
     public Vector3 keiselStartPosition;
     public bool overrideStartPosition;
     public bool drawStartPosition;
-    public CameraModifyTrigger initialCameraBounds;
     //Accessible to all objects.
 
     public GameObject Keisel;
@@ -25,7 +25,6 @@ public class LevelControl : MonoBehaviour {
     public GameObject PauseMenu;
     private PauseMenu pauseMenuScript;
 
-    public bool drawCameraBoundsColliders = false;
     public Color CameraBoxColliderColor = new Color(0, 0, 1);
 
     public bool JoystickIsUsed = false;
@@ -34,52 +33,60 @@ public class LevelControl : MonoBehaviour {
     public float aspectRatio;
 
     public List<IPausable> pausables;
-
+    public bool disableCutscenes = false;
+    public bool constantlyDisableCutscenes = false;
     private void Awake () {
+        if (Application.isPlaying) {
+            if (instance == null || instance != this) {
+                instance = this;
+            }
 
-        if (instance == null || instance != this) {
-            instance = this;
+            if (Keisel == null) {
+                Keisel = GameObject.FindGameObjectWithTag("Player");
+            }
+
+            if (MainCamera == null) {
+                MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            }
+
+            if (Fireflies == null) {
+                Fireflies = GameObject.FindGameObjectWithTag("Fireflies");
+            }
+
+            if (PauseMenu == null) {
+                PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+            }
+
+            if (PauseMenu != null) {
+                pauseMenuScript = PauseMenu.GetComponent<PauseMenu>();
+                pauseMenuScript.OnPaused += OnPaused;
+            }
+
+            aspectRatio = (float)Screen.width / (float)Screen.height;
+
+            MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
+
+            pausables = new List<IPausable>();
+            var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
+            foreach (IPausable p in ps) {
+                pausables.Add(p);
+            }
+        } else {
+            if (constantlyDisableCutscenes) {
+                var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
+                foreach (CutsceneTrigger cc in cs) {
+                    cc.enabled = !disableCutscenes;
+                }
+            }
         }
 
-        if (Keisel == null) {
-            Keisel = GameObject.FindGameObjectWithTag("Player");
-        }
-
-        if (MainCamera == null) {
-            MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }
-
-        if (Fireflies == null) {
-            Fireflies = GameObject.FindGameObjectWithTag("Fireflies");
-        }
-
-        if (PauseMenu == null) {
-            PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        }
-        pauseMenuScript = PauseMenu.GetComponent<PauseMenu>();
-        pauseMenuScript.OnPaused += OnPaused;
-        
-        aspectRatio = (float) Screen.width / (float)Screen.height;
-
-        MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
-
-        pausables = new List<IPausable>();
-        var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
-        foreach (IPausable p in ps) {
-            pausables.Add(p);
-        }
     }
 
     // Use this for initialization
     void Start () {
 
         if (overrideStartPosition) {
-            
-            if (initialCameraBounds != null) {
-                //MainCamera.GetComponent<CameraFollow>().SetBounds(initialCameraBounds.minPosition, initialCameraBounds.maxPosition, initialCameraBounds.boundsTransitionTime);
-                MainCamera.GetComponent<CameraFollow>().SetZoom(initialCameraBounds.cameraSize, initialCameraBounds.sizeTransitionCurve, initialCameraBounds.zoomTransitionTime);
-            }
-            //MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
+            MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
         } else {
             MainCamera.transform.position = new Vector3(keiselStartPosition.x, keiselStartPosition.y, MainCamera.transform.position.z);
             Keisel.transform.position = keiselStartPosition;
@@ -88,7 +95,17 @@ public class LevelControl : MonoBehaviour {
 	}
 
     public void Update () {
-        MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
+        if (!Application.isPlaying) {
+            if (constantlyDisableCutscenes) {
+                var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
+                foreach (CutsceneTrigger cc in cs) {
+                    cc.enabled = !disableCutscenes;
+                }
+                Debug.Log("Working on enabling/disabling cutscenes!");
+            }
+        } else {
+            MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
+        }
     }
 
     public void OnDrawGizmos() {

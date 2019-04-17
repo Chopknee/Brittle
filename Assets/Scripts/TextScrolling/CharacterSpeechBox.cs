@@ -9,6 +9,7 @@ public class CharacterSpeechBox : MonoBehaviour {
     [SerializeField]
     public ChatBox[] Dialog;
     public Image CharacterImage;
+    public Image nextImage;
     public bool playOnAwake = false;
 
     public delegate void Finished ();
@@ -32,6 +33,8 @@ public class CharacterSpeechBox : MonoBehaviour {
     private int dialogIndex = 0;
 
     private bool canPlay = false;
+    private bool willWaitForUser = false;
+    private bool isWaitingForUser = false;
 
     public bool Playing {
         get {
@@ -44,6 +47,22 @@ public class CharacterSpeechBox : MonoBehaviour {
             } else {
                 myTextScrollInteractive.EndScroll();
             }
+        }
+    }
+
+    public void Update () {
+        if (Playing && isWaitingForUser && Input.GetButton("Interact")) {
+            nextImage.gameObject.SetActive(false);
+            isWaitingForUser = false;
+            if (dialogIndex >= Dialog.Length) {
+                playing = false;
+                if (OnFinished != null) {
+                    OnFinished();
+                }
+                return;
+            }
+            SetCurrentDialog();
+            myTextScrollInteractive.BeginScroll(Dialog[dialogIndex].Speech);
         }
     }
 
@@ -62,7 +81,32 @@ public class CharacterSpeechBox : MonoBehaviour {
         }
 	}
 
-    public void SetCurrentDialog() {
+    public void SpeechFinished() {
+
+        dialogIndex++;
+        if (dialogIndex >= Dialog.Length && !willWaitForUser || !playing) {
+            playing = false;
+            if (OnFinished != null) {
+                OnFinished();
+            }
+            return;
+        }
+        if (!willWaitForUser) {
+            SetCurrentDialog();
+            myTextScrollInteractive.BeginScroll(Dialog[dialogIndex].Speech);
+        } else {
+            isWaitingForUser = true;
+            nextImage.gameObject.SetActive(true);
+        }
+    }
+
+    public void BeginDialog() {
+        playing = true;
+        SetCurrentDialog();
+        myTextScrollInteractive.BeginScroll(Dialog[dialogIndex].Speech); 
+    }
+
+    public void SetCurrentDialog () {
         if (canPlay) {
             myTextScrollInteractive.SpeechText = Dialog[dialogIndex].Speech;
             myTextScrollInteractive.CharacterDelay = Dialog[dialogIndex].CharacterDelay;
@@ -72,29 +116,11 @@ public class CharacterSpeechBox : MonoBehaviour {
             if (CharacterImage != null) {
                 CharacterImage.sprite = Dialog[dialogIndex].Character;
             }
-        }
-    }
-
-    public void SpeechFinished() {
-
-        dialogIndex++;
-        if (dialogIndex >= Dialog.Length || !playing) {
-            playing = false;
-            if (OnFinished != null) {
-                OnFinished();
+            willWaitForUser = Dialog[dialogIndex].WaitforUser;
+            if (willWaitForUser) {
+                myTextScrollInteractive.onFinishDelay = 100;//Fixed value since the user needs to skip it.
             }
-            return;
         }
-
-        SetCurrentDialog();
-        myTextScrollInteractive.BeginScroll(Dialog[dialogIndex].Speech);
-
-    }
-
-    public void BeginDialog() {
-        playing = true;
-        SetCurrentDialog();
-        myTextScrollInteractive.BeginScroll(Dialog[dialogIndex].Speech); 
     }
 
     [Serializable]
@@ -110,5 +136,6 @@ public class CharacterSpeechBox : MonoBehaviour {
         public float commaDelay = 125;
         [Range(0, 5000)]
         public float OnFinishDelay = 100;
+        public bool WaitforUser = true;
     }
 }

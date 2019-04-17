@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838000440046118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.74, y: -8.56, z: -0.17000008}
+  m_LocalPosition: {x: -22.609, y: -1.583, z: -0.17000008}
   m_LocalScale: {x: 0.06302948, y: 0.063029476, z: 0.063029476}
   m_Children:
   - {fileID: 4262042762833558}
@@ -143,7 +143,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1051500441
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!33 &33420739104355136
 MeshFilter:
@@ -531,16 +531,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HorizontalAxis: Horizontal
+  VerticalAxis: Vertical
   JumpButton: Jump
-  horizontalForce: 250
-  airHorizontalForce: 80
+  horizontalForce: 3500
+  airHorizontalForce: 1500
   verticalForce: 500
+  climbSpeedMultiplier: 2
   maxVelocity: {x: 5, y: 10}
   facingRight: 1
   jumping: 0
   falling: 0
   running: 0
+  climbing: 0
   moveX: 0
+  moveY: 0
   groundCheck: {fileID: 4580057633261378}
   groundCheckRadius: 0.36
   whatIsGround:
@@ -553,7 +557,7 @@ MonoBehaviour:
   currentGroundType: 
   ground_physicsMaterial: {fileID: 6200000, guid: 9f5598fb946dc5045bdb5c969217a380,
     type: 2}
-  airborne_physicsMaterial: {fileID: 6200000, guid: 92262a8fae739a8448fb0331f6e9fed3,
+  airborne_physicsMaterial: {fileID: 6200000, guid: d3a35f7f6f171a04eac67158f09fd40a,
     type: 2}
   controlsFrozen: 0
   freezeMovement: 0
@@ -588,6 +592,7 @@ MonoBehaviour:
   falling: 0
   grounded: 0
   jumping: 0
+  climbing: 0
   stateOverride: 0
   timeScale: 1
   runAnimationName: run

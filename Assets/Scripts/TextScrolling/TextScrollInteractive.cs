@@ -52,45 +52,53 @@ public class TextScrollInteractive: MonoBehaviour {
 
     public void Update () {
 
-        if (scroll && Time.time > next) {
+        if (scroll) {
 
-            next = Time.time + (CharacterDelay / 1000);
-            if (i < scrollTextSplit.Length) {
-                switch (scrollTextSplit[i]) {
-                    case ',':
-                        next = Time.time + (commaDelay / 1000);
-                        break;
-                    case '.':
-                        next = Time.time + (periodDelay / 1000);
-                        break;
-                    case '!':
-                        next = Time.time + (periodDelay / 1000);
-                        break;
-                    case '?':
-                        next = Time.time + (periodDelay / 1000);
-                        break;
-                }
-                currentText += scrollTextSplit[i];
-
-                if (scrollSound != null && GetComponent<AudioSource>() != null) {
-                    GetComponent<AudioSource>().Play();
-                }
-                myText.text = currentText;
+            if (i > 5 && Input.GetButton("Interact") && i < scrollTextSplit.Length - 1) {
+                //Skip to the end of the dialog, then add some delay befor the onfinished is run.
+                currentText = SpeechText.Substring(0, SpeechText.Length - 1);
+                i = scrollTextSplit.Length - 1;
             }
 
-            i++;
+            if (Time.time > next) {
 
-            if (i == scrollTextSplit.Length) {
+                next = Time.time + (CharacterDelay / 1000);
+                if (i < scrollTextSplit.Length) {
+                    switch (scrollTextSplit[i]) {
+                        case ',':
+                            next = Time.time + (commaDelay / 1000);
+                            break;
+                        case '.':
+                            next = Time.time + (periodDelay / 1000);
+                            break;
+                        case '!':
+                            next = Time.time + (periodDelay / 1000);
+                            break;
+                        case '?':
+                            next = Time.time + (periodDelay / 1000);
+                            break;
+                    }
+                    currentText += scrollTextSplit[i];
 
-                next = Time.time + (onFinishDelay / 1000);
+                    if (scrollSound != null && GetComponent<AudioSource>() != null) {
+                        GetComponent<AudioSource>().Play();
+                    }
+                    myText.text = currentText;
+                }
 
-            } else if (i > scrollTextSplit.Length) {
-                scroll = false;
-                if (OnFinished != null)
-                    OnFinished();
+                i++;
+
+                if (i == scrollTextSplit.Length) {
+
+                    next = Time.time + (onFinishDelay / 1000);
+
+                } else if (i > scrollTextSplit.Length) {
+                    scroll = false;
+                    if (OnFinished != null)
+                        OnFinished();
+                }
             }
         }
-
     }
 
     public void BeginScroll ( string speechText ) {

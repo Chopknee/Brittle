@@ -13,7 +13,7 @@ public class LogDropActivation : MonoBehaviour {
     public void Update () {
         if (!triggered) {
             if (CanInteract) {
-                if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
+                if (Input.GetButtonDown("Interact")) {
                     GetComponent<PlayableDirector>().stopped += OnFin;
                     GetComponent<PlayableDirector>().Play();
                     if (GetComponent<SpriteHighlight>() != null) {

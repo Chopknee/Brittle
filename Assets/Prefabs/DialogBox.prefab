@@ -11,6 +11,24 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1949026657813074}
   m_IsPrefabAsset: 1
+--- !u!1 &1041338134076416
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224172091551779806}
+  - component: {fileID: 222817240678214824}
+  - component: {fileID: 114509578341113908}
+  - component: {fileID: 95704331272597182}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1094847793012754
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +195,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95704331272597182
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041338134076416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fe3a45f87344ab49b6b6b90d4b7b442, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114198045856851326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,58 +253,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialog:
   - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
-    Speech: What the heck is that? Roadkill?
-    CharacterDelay: 65
+    Speech: Look out, I see a hive in that tree! I hate those bees, they're jerks.
+    CharacterDelay: 30
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1750
+    OnFinishDelay: 1000
+    WaitforUser: 1
   - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
-    Speech: It's a new sinkhole that opened up outside the diner. The one with the
-      good fries.
-    CharacterDelay: 65
+    Speech: Don't worry about that hive Samuels. I think it's empty, besides, we have
+      a bigger issue.
+    CharacterDelay: 30
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1750
+    OnFinishDelay: 1000
+    WaitforUser: 1
+  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
+    Speech: How am I going to climb this cliff? My climbing gear is back at home.
+    CharacterDelay: 30
+    periodDelay: 250
+    commaDelay: 170
+    OnFinishDelay: 1000
+    WaitforUser: 1
   - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
-    Speech: I don't know whats worse; that drawing or the fact that you spend your
-      time drawing smelly holes now.
-    CharacterDelay: 65
+    Speech: I could carry you, but the last time I tried, you laughed so hard I dropped
+      you.
+    CharacterDelay: 30
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1750
+    OnFinishDelay: 1000
+    WaitforUser: 1
+  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
+    Speech: Sorry, I can't help being so ticklish!
+    CharacterDelay: 30
+    periodDelay: 250
+    commaDelay: 170
+    OnFinishDelay: 1000
+    WaitforUser: 1
+  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
+    Speech: I see a loose branch in the tree, maybe you can pull it down and carry
+      me on it!
+    CharacterDelay: 30
+    periodDelay: 250
+    commaDelay: 170
+    OnFinishDelay: 1000
+    WaitforUser: 1
   - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
-    Speech: What's with all the Vince drawings? It's kinda creepy.
-    CharacterDelay: 65
+    Speech: All right, I'll try.
+    CharacterDelay: 30
     periodDelay: 250
     commaDelay: 170
-    OnFinishDelay: 1750
-  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
-    Speech: Oh, thats from when I spent an ETERNITY waiting on you this morning.
-    CharacterDelay: 65
-    periodDelay: 250
-    commaDelay: 170
-    OnFinishDelay: 1750
-  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
-    Speech: Any way, I want to get a better look at the area. Let's find a tree to
-      climb.
-    CharacterDelay: 65
-    periodDelay: 250
-    commaDelay: 170
-    OnFinishDelay: 1750
-  - Character: {fileID: 21300000, guid: 5b4ce5f3df2dfc5498f46461a845ef65, type: 3}
-    Speech: I think there is a big one not too far from here.
-    CharacterDelay: 65
-    periodDelay: 250
-    commaDelay: 170
-    OnFinishDelay: 1750
-  - Character: {fileID: 21300000, guid: de286c655bc54c1489925460c1be4153, type: 3}
-    Speech: Yeah, I think I know which one you are talking about. The hollowed out
-      one. It's dark and full of bugs if I remember right.
-    CharacterDelay: 65
-    periodDelay: 250
-    commaDelay: 170
-    OnFinishDelay: 1750
+    OnFinishDelay: 1000
+    WaitforUser: 1
   CharacterImage: {fileID: 114198045856851326}
+  nextImage: {fileID: 114509578341113908}
   playOnAwake: 1
 --- !u!114 &114345982330504480
 MonoBehaviour:
@@ -291,6 +328,33 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: f00eb546fb682c54087a08a0b79848db, type: 3}
   m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &114509578341113908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041338134076416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: a1299b196f1f0bf40889332dd3819187, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -409,6 +473,13 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303413613119902}
   m_CullTransparentMesh: 0
+--- !u!222 &222817240678214824
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041338134076416}
+  m_CullTransparentMesh: 0
 --- !u!224 &224140397858703584
 RectTransform:
   m_ObjectHideFlags: 1
@@ -426,6 +497,24 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -101.5, y: -11}
   m_SizeDelta: {x: -356.6, y: -141.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224172091551779806
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041338134076416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224774011486078916}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 302.5, y: -57.1}
+  m_SizeDelta: {x: 44.9, y: 30.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224376974694982186
 RectTransform:
@@ -476,6 +565,7 @@ RectTransform:
   m_Children:
   - {fileID: 224140397858703584}
   - {fileID: 224761422262023570}
+  - {fileID: 224172091551779806}
   m_Father: {fileID: 224376974694982186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.027}
