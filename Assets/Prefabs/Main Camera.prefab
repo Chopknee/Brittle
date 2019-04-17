@@ -42,7 +42,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1248680091780344
 GameObject:
   m_ObjectHideFlags: 1
@@ -122,7 +122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1382708120213056
 GameObject:
   m_ObjectHideFlags: 1
@@ -313,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1750229110501456
 GameObject:
   m_ObjectHideFlags: 1
@@ -456,7 +456,9 @@ GameObject:
   - component: {fileID: 20643465675353782}
   - component: {fileID: 114399954666755068}
   - component: {fileID: 95678353731479878}
-  m_Layer: 0
+  - component: {fileID: 50404776086653632}
+  - component: {fileID: 70284651358475118}
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -538,7 +540,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1969454814752652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 11.31, z: -1.51}
+  m_LocalPosition: {x: -7.16, y: -9.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4172677246825624}
@@ -924,6 +926,41 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!50 &50404776086653632
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969454814752652}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: d3a35f7f6f171a04eac67158f09fd40a, type: 2}
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!70 &70284651358475118
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969454814752652}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d3a35f7f6f171a04eac67158f09fd40a, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 16, y: 9}
+  m_Direction: 1
 --- !u!81 &81487938549771700
 AudioListener:
   m_ObjectHideFlags: 1
@@ -979,9 +1016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgPositionStart: {x: -37.47, y: 0, z: 0}
   bgPositionEnd: {x: -8.63, y: 0, z: 0}
-  worldPosParalaxStart: {x: 5.57, y: 0, z: 0}
-  worldPosParalaxEnd: {x: 72.61, y: 0, z: 0}
-  drawGizmos: 0
+  worldPosParalaxStart: {x: 62.2, y: 0, z: 0}
+  worldPosParalaxEnd: {x: 183.3, y: 0, z: 0}
+  drawGizmos: 1
   through: {x: 0, y: 0, z: 0}
 --- !u!114 &114399954666755068
 MonoBehaviour:
@@ -1055,9 +1092,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgPositionStart: {x: -37.47, y: 0, z: 0}
   bgPositionEnd: {x: -8.63, y: 0, z: 0}
-  worldPosParalaxStart: {x: 1.8, y: 0, z: 0}
-  worldPosParalaxEnd: {x: 142.78, y: 0, z: 0}
-  drawGizmos: 0
+  worldPosParalaxStart: {x: 62.2, y: 0, z: 0}
+  worldPosParalaxEnd: {x: 202.07, y: 0, z: 0}
+  drawGizmos: 1
   through: {x: 0, y: 0, z: 0}
 --- !u!114 &114632844126600722
 MonoBehaviour:
@@ -1071,8 +1108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites: []
-  fadeStart: 5.88
-  fadeEnd: 26.54
+  fadeStart: 57.1
+  fadeEnd: 77.91
   fadeOut: 0
 --- !u!114 &114929965522897180
 MonoBehaviour:
@@ -1102,8 +1139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8eda62f239bc940a39b7eedf687052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPosition: {x: -27, y: 1.68}
-  maxPosition: {x: 67.07, y: 9.99}
   followTarget: {fileID: 0}
   drawBoundsGizmo: 1
   followCurve:
@@ -1116,8 +1151,8 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
@@ -1125,12 +1160,12 @@ MonoBehaviour:
       outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  multiplier: 2
+  multiplier: 128
 --- !u!114 &114963767401289754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,8 +1178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites: []
-  fadeStart: 5.88
-  fadeEnd: 26.54
+  fadeStart: 57.1
+  fadeEnd: 77.91
   fadeOut: 1
 --- !u!212 &212124037100829800
 SpriteRenderer:

@@ -59,8 +59,10 @@ public class LevelControl : MonoBehaviour {
                 PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
             }
 
-            pauseMenuScript = PauseMenu.GetComponent<PauseMenu>();
-            pauseMenuScript.OnPaused += OnPaused;
+            if (PauseMenu != null) {
+                pauseMenuScript = PauseMenu.GetComponent<PauseMenu>();
+                pauseMenuScript.OnPaused += OnPaused;
+            }
 
             aspectRatio = (float)Screen.width / (float)Screen.height;
 

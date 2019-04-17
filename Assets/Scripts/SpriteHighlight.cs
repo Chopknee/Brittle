@@ -40,7 +40,8 @@ public class SpriteHighlight : MonoBehaviour {
             highlightSprite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, highlight.DriveForward());
         }
 
-        bool currentInside = ( transform.position - player.transform.position ).sqrMagnitude < highlightRadiusSquared;
+        Vector2 dst = ( transform.position - LevelControl.Instance.Fireflies.transform.position );
+        bool currentInside = ( dst ).sqrMagnitude < highlightRadiusSquared;
         if (currentInside != lastInside) {
             lastInside = currentInside;
             if (currentInside) {
