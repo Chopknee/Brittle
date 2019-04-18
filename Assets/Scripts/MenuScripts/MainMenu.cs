@@ -11,10 +11,10 @@ public class MainMenu : MonoBehaviour {
     public Button btnStart;
     public Button btnOptions;
     public Button btnExit;
+    public Button btnCloseOptions;
 
-    private Animator backgroundObjectsAnimator;
     private Animator CanvasAnimator;
-
+    private bool locked = false;
     // Use this for initialization
     void Start () {
 
@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour {
         btnStart.onClick.AddListener(StartLoading);
         btnExit.onClick.AddListener(Exit);
         btnOptions.onClick.AddListener(OpenOptions);
-        backgroundObjectsAnimator = BackgroundObjectsFade.GetComponent<Animator>();
+        btnCloseOptions.onClick.AddListener(CloseOptions);
         CanvasAnimator = GetComponent<Animator>();
     }
 
@@ -36,13 +36,31 @@ public class MainMenu : MonoBehaviour {
     }
 
     private void StartLoading () {
-        backgroundObjectsAnimator.SetTrigger("StartLoading");
-        CanvasAnimator.SetTrigger("StartLoading");
-        StartCoroutine(LoadLevelOne());
+        if (!locked) {
+            CanvasAnimator.SetTrigger("Load");
+            StartCoroutine(LoadLevelOne());
+            locked = true;
+        }
     }
 
     private void OpenOptions () {
+        if (!locked) {
+            CanvasAnimator.SetTrigger("OpenOptions");
+            locked = true;
+            Invoke("Unlock", 2);
+        }
+    }
 
+    private void CloseOptions() {
+        if (!locked) {
+            CanvasAnimator.SetTrigger("CloseOptions");
+            locked = true;
+            Invoke("Unlock", 2);
+        }
+    }
+
+    private void Unlock() {
+        locked = false;
     }
 
     IEnumerator LoadLevelOne() {
@@ -51,7 +69,7 @@ public class MainMenu : MonoBehaviour {
         AsyncOperation async = SceneManager.LoadSceneAsync("levelOne");
         async.allowSceneActivation = false;
         while (!async.isDone) {
-            CanvasAnimator.SetTrigger("FadeToBlack");
+            CanvasAnimator.SetTrigger("Finished");
             yield return new WaitForSeconds(2f);
             async.allowSceneActivation = true;
             yield return null;
