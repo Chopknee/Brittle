@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -14,6 +16,9 @@ public class PauseMenu : MonoBehaviour {
 
     private bool canwork = true;
 
+    public Button resume;
+    public Button quit;
+
 	// Use this for initialization
 	void Start () {
 		if (BookPanel == null) {
@@ -22,13 +27,15 @@ public class PauseMenu : MonoBehaviour {
         }
         bookPanelAnimator = BookPanel.GetComponent<Animator>();
         canwork = true;
+
+        resume.onClick.AddListener(Resume);
+        quit.onClick.AddListener(Quit);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (canwork) {
             if (Input.GetButtonDown("Cancel")) {
-                Debug.Log("Pause Presed!");
                 Paused = !Paused;
                 canwork = false;
                 if (Paused) {
@@ -55,5 +62,22 @@ public class PauseMenu : MonoBehaviour {
 
     public void SetCanPause(bool canPause) {
         canwork = canPause;
+    }
+
+    public void Resume() {
+        Debug.Log("Resume clicked!");
+        if (canwork) {
+            Paused = !Paused;
+            bookPanelAnimator.SetTrigger("Close");
+            if (OnPaused != null) {
+                OnPaused(Paused);
+            }
+            canwork = false;
+            Invoke("UnUnwork", 2);
+        }
+    }
+
+    public void Quit() {
+        SceneManager.LoadScene("MainMenu");
     }
 }

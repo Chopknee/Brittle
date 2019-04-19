@@ -7,7 +7,6 @@ public class BookAnimationStateControl : MonoBehaviour {
 
     private SkeletonGraphic skel;
     public float AnimationSpeed = 0;
-    private float AnimationDirection = 0;
     public enum KAnimState { IDLE, OPEN, CLOSE };
     public KAnimState currentAnimation;
     public bool looping = false;
@@ -30,9 +29,9 @@ public class BookAnimationStateControl : MonoBehaviour {
                 skel.AnimationState.SetAnimation(0, getAnimationName(currentAnimation), looping);
                 lastAnim = currentAnimation;
             }
-            if (lastSpd != AnimationSpeed * AnimationDirection) {
-                skel.timeScale = AnimationSpeed * AnimationDirection;
-                lastSpd = AnimationSpeed * AnimationDirection;
+            if (lastSpd != AnimationSpeed) {
+                skel.timeScale = AnimationSpeed;
+                lastSpd = AnimationSpeed;
             }
         }
 	}
@@ -41,16 +40,13 @@ public class BookAnimationStateControl : MonoBehaviour {
         string state = "";
         switch (k) {
             case KAnimState.IDLE:
-                state = "animation";
-                AnimationDirection = 1;
+                state = "close";
                 break;
             case KAnimState.OPEN:
-                state = "animation";
-                AnimationDirection = 1;
+                state = "open";
                 break;
             case KAnimState.CLOSE:
-                state = "animation";
-                AnimationDirection = -1;
+                state = "close";
                 break;
         }
         return state;

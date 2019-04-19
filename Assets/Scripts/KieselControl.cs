@@ -165,9 +165,11 @@ public class KieselControl : MonoBehaviour, IPausable {
         //throw new System.NotImplementedException();
         controlsFrozen = true;
         freezeMovement = true;
-        oldVel = rb.velocity;
-        rb.isKinematic = true;
-        rb.velocity = Vector3.zero;
+        if (rb != null) {
+            oldVel = rb.velocity;
+            rb.isKinematic = true;
+            rb.velocity = Vector3.zero;
+        }
     }
 
     public void OnUnPause() {

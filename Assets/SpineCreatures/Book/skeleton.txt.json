@@ -1,9 +1,10 @@
 {
-"skeleton": { "hash": "vNfRRp+2OCUBntBQEgV1c4Gn5oA", "spine": "3.6.53", "width": 2068, "height": 1483.16, "images": "" },
+"skeleton": { "hash": "OcUuKzUdUK6AjNiKS8GkbRZv1Ww", "spine": "3.6.53", "width": 2068, "height": 1483.16, "images": "" },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
+	{ "name": "pages_0004_Layer-6", "bone": "root", "attachment": "pages_0004_Layer-6" },
 	{ "name": "pages_0005_Layer-1", "bone": "root", "attachment": "pages_0005_Layer-1" },
 	{ "name": "pages_0003_Layer-5", "bone": "root", "attachment": "pages_0003_Layer-5" }
 ],
@@ -21,6 +22,18 @@
 				"height": 1475
 			}
 		},
+		"pages_0004_Layer-6": {
+			"pages_0004_Layer-6": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 884.95, -609.73, 100.95, -609.73, 100.95, 826.27, 884.95, 826.27 ],
+				"hull": 4,
+				"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+				"width": 784,
+				"height": 1436
+			}
+		},
 		"pages_0005_Layer-1": {
 			"pages_0005_Layer-1": {
 				"type": "mesh",
@@ -36,7 +49,77 @@
 	}
 },
 "animations": {
-	"animation": {
+	"close": {
+		"slots": {
+			"pages_0003_Layer-5": {
+				"attachment": [
+					{ "time": 0, "name": "pages_0003_Layer-5" },
+					{ "time": 0.5, "name": "pages_0003_Layer-5" }
+				]
+			},
+			"pages_0005_Layer-1": {
+				"attachment": [
+					{ "time": 0, "name": "pages_0005_Layer-1" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			}
+		},
+		"deform": {
+			"default": {
+				"pages_0003_Layer-5": {
+					"pages_0003_Layer-5": [
+						{
+							"time": 0.2333,
+							"vertices": [ -898.93823, 0, -179.9779, 0, -179.9779, 0, -898.93823 ]
+						},
+						{ "time": 0.5 }
+					]
+				},
+				"pages_0005_Layer-1": {
+					"pages_0005_Layer-1": [
+						{
+							"time": 0,
+							"offset": 14,
+							"vertices": [ 8.23584, 4.11792 ]
+						},
+						{
+							"time": 0.2333,
+							"offset": 4,
+							"vertices": [ 852.4259, 0, 951.6001, 0, 857.5199, 0, 857.5199, 0, 951.6001, 0, 852.4259, 8.23596 ]
+						},
+						{
+							"time": 0.5,
+							"offset": 4,
+							"vertices": [ 873.016, 0, 1038.5518, 0, 1038.5518, 0, 1038.5518, 0, 1038.5518, 0, 873.016 ]
+						}
+					]
+				}
+			}
+		},
+		"drawOrder": [
+			{
+				"time": 0,
+				"offsets": [
+					{ "slot": "pages_0005_Layer-1", "offset": 1 }
+				]
+			},
+			{ "time": 0.2333 },
+			{ "time": 0.5 }
+		]
+	},
+	"open": {
 		"slots": {
 			"pages_0003_Layer-5": {
 				"attachment": [
@@ -105,6 +188,60 @@
 				"time": 0.2,
 				"offsets": [
 					{ "slot": "pages_0005_Layer-1", "offset": 1 }
+				]
+			}
+		]
+	},
+	"pageflip": {
+		"bones": {
+			"root": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.1667, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			}
+		},
+		"deform": {
+			"default": {
+				"pages_0004_Layer-6": {
+					"pages_0004_Layer-6": [
+						{
+							"time": 0,
+							"vertices": [ 11.23804, 0, 11.23804, 0, 11.23804, 0, 11.23804 ]
+						},
+						{
+							"time": 0.1667,
+							"vertices": [ -575.01483, -22.47586, -31.83686, -22.47586, -31.83686, -22.47586, -575.01483, -22.47586 ]
+						},
+						{
+							"time": 0.2667,
+							"vertices": [ -934.37915, -44.95169, -58.3103, -22.47586, -58.3103, -22.47586, -934.37915, -44.95169 ]
+						},
+						{
+							"time": 0.3667,
+							"vertices": [ -1181.7377, -52.4437, -174.3135, -3.74582, -174.3135, -3.74582, -1181.7377, -52.4437 ]
+						},
+						{
+							"time": 0.5,
+							"vertices": [ -1839.5483, -48.69766, -348.11487, 2.1E-4, -348.11487, 2.1E-4, -1839.5483, -48.69766 ]
+						}
+					]
+				}
+			}
+		},
+		"drawOrder": [
+			{
+				"time": 0,
+				"offsets": [
+					{ "slot": "pages_0004_Layer-6", "offset": 2 },
+					{ "slot": "pages_0005_Layer-1", "offset": 0 }
 				]
 			}
 		]

@@ -1,6 +1,6 @@
 
 skeleton.png
-size: 3101,1479
+size: 3887,1479
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -9,6 +9,13 @@ pages_0003_Layer-5
   xy: 2072, 2
   size: 1027, 1475
   orig: 1027, 1475
+  offset: 0, 0
+  index: -1
+pages_0004_Layer-6
+  rotate: false
+  xy: 3101, 41
+  size: 784, 1436
+  orig: 784, 1436
   offset: 0, 0
   index: -1
 pages_0005_Layer-1
