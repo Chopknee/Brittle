@@ -750,8 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36657e21422aa64098f9f08739370e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {r: 0, g: 0.5, b: 1, a: 0.75}
-  show: 1
 --- !u!1001 &881259661
 Prefab:
   m_ObjectHideFlags: 0
@@ -853,11 +851,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4489059902447994, guid: c7b1edfb906620c4aa812b36c4f355f3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -24.73
+      value: -30.33
       objectReference: {fileID: 0}
     - target: {fileID: 4489059902447994, guid: c7b1edfb906620c4aa812b36c4f355f3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 4489059902447994, guid: c7b1edfb906620c4aa812b36c4f355f3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1171,11 +1169,16 @@ MonoBehaviour:
   Fireflies: {fileID: 0}
   PauseMenu: {fileID: 0}
   CameraBoxColliderColor: {r: 0, g: 0, b: 1, a: 1}
+  CameraCollidersVisible: 1
+  CutsceneTriggersColor: {r: 0, g: 0, b: 1, a: 1}
+  CutsceneTriggersVisible: 1
   JoystickIsUsed: 0
   MainCameraOrthoSize: {x: 0, y: 0}
   aspectRatio: 0
   disableCutscenes: 0
+  disableDialogs: 0
   constantlyDisableCutscenes: 0
+  FreezeKeiselOnLoad: 0
 --- !u!4 &1270486075
 Transform:
   m_ObjectHideFlags: 0

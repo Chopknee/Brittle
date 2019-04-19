@@ -6,6 +6,12 @@ using System.Linq;
 [ExecuteInEditMode]
 public class LevelControl : MonoBehaviour {
 
+    public static Color cameraColliderColor = new Color(0, 0, 1);
+    public static bool showCameraColliders = true;
+
+    public static Color cutsceneTriggerColor = new Color(1, 0, 1);
+    public static bool showCutsceneTriggers = true;
+
     public static LevelControl Instance {
         get {
             return instance;
@@ -26,6 +32,10 @@ public class LevelControl : MonoBehaviour {
     private PauseMenu pauseMenuScript;
 
     public Color CameraBoxColliderColor = new Color(0, 0, 1);
+    public bool CameraCollidersVisible = true;
+
+    public Color CutsceneTriggersColor = new Color(0, 0, 1);
+    public bool CutsceneTriggersVisible = true;
 
     public bool JoystickIsUsed = false;
 
@@ -34,7 +44,11 @@ public class LevelControl : MonoBehaviour {
 
     public List<IPausable> pausables;
     public bool disableCutscenes = false;
+    public bool disableDialogs = false;
     public bool constantlyDisableCutscenes = false;
+
+    public bool FreezeKeiselOnLoad = false;
+
     private void Awake () {
         if (Application.isPlaying) {
             if (instance == null || instance != this) {
@@ -67,16 +81,12 @@ public class LevelControl : MonoBehaviour {
             MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
 
             pausables = new List<IPausable>();
+            if (FreezeKeiselOnLoad) {
+                Keisel.GetComponent<KieselControl>().OnPause();
+            }
             var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
             foreach (IPausable p in ps) {
                 pausables.Add(p);
-            }
-        } else {
-            if (constantlyDisableCutscenes) {
-                var cs = FindObjectsOfType<MonoBehaviour>().OfType<CutsceneTrigger>();
-                foreach (CutsceneTrigger cc in cs) {
-                    cc.enabled = !disableCutscenes;
-                }
             }
         }
 
@@ -94,6 +104,8 @@ public class LevelControl : MonoBehaviour {
         }
 	}
 
+    float dt = 0;
+
     public void Update () {
         if (!Application.isPlaying) {
             if (constantlyDisableCutscenes) {
@@ -101,8 +113,16 @@ public class LevelControl : MonoBehaviour {
                 foreach (CutsceneTrigger cc in cs) {
                     cc.enabled = !disableCutscenes;
                 }
-                Debug.Log("Working on enabling/disabling cutscenes!");
+
+                var ds = FindObjectsOfType<MonoBehaviour>().OfType<DialogTrigger>();
+                foreach (DialogTrigger cc in ds) {
+                    cc.enabled = !disableDialogs;
+                }
             }
+            cameraColliderColor = CameraBoxColliderColor;
+            showCameraColliders = CameraCollidersVisible;
+            showCutsceneTriggers = CutsceneTriggersVisible;
+            cutsceneTriggerColor = CutsceneTriggersColor;
         } else {
             MainCameraOrthoSize = new Vector2(MainCamera.GetComponent<Camera>().orthographicSize * aspectRatio, MainCamera.GetComponent<Camera>().orthographicSize);
         }

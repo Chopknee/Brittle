@@ -114,6 +114,11 @@ public class KieselControl : MonoBehaviour, IPausable {
                 kam.verticalSpeed = rb.velocity.y;
             }
 
+            kam.falling = falling;
+            kam.jumping = jumping;
+            kam.running = running;
+            kam.climbing = climbing;
+
         }
     }
 

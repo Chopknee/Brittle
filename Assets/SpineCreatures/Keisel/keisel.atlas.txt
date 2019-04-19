@@ -1,89 +1,166 @@
 
-keisel.png, 
-size: 1998,3328
+keisel.png
+size: 6353,2056
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+back/back_0000_Layer-3
+  rotate: true
+  xy: 4674, 1060
+  size: 994, 1052
+  orig: 994, 1052
+  offset: 0, 0
+  index: -1
+back/back_0001_keisel-(1)_0001_Layer-13
+  rotate: false
+  xy: 4768, 574
+  size: 547, 484
+  orig: 547, 484
+  offset: 0, 0
+  index: -1
+back/back_0002_Layer-13
+  rotate: true
+  xy: 5728, 1395
+  size: 659, 623
+  orig: 659, 623
+  offset: 0, 0
+  index: -1
+back/back_0003_Layer-12
+  rotate: false
+  xy: 2, 802
+  size: 1159, 1252
+  orig: 1159, 1252
+  offset: 0, 0
+  index: -1
+back/back_0004_Layer-11
+  rotate: false
+  xy: 3499, 1042
+  size: 1173, 1012
+  orig: 1173, 1012
+  offset: 0, 0
+  index: -1
+back/back_0005_Layer-10
+  rotate: false
+  xy: 1343, 402
+  size: 1014, 398
+  orig: 1014, 398
+  offset: 0, 0
+  index: -1
+back/back_0006_Layer-9
+  rotate: false
+  xy: 679, 36
+  size: 662, 764
+  orig: 662, 764
+  offset: 0, 0
+  index: -1
+back/back_0007_Layer-8
+  rotate: true
+  xy: 5317, 608
+  size: 450, 277
+  orig: 450, 277
+  offset: 0, 0
+  index: -1
+back/back_0008_Layer-7
+  rotate: false
+  xy: 3887, 269
+  size: 451, 771
+  orig: 451, 771
+  offset: 0, 0
+  index: -1
+back/back_0009_Layer-6
+  rotate: false
+  xy: 4765, 12
+  size: 533, 282
+  orig: 533, 282
+  offset: 0, 0
+  index: -1
+back/back_0011_Layer-4
+  rotate: true
+  xy: 5851, 74
+  size: 523, 488
+  orig: 523, 488
+  offset: 0, 0
+  index: -1
 keisel-(1)_0000_Layer-12
   rotate: false
-  xy: 2, 2074
+  xy: 1163, 802
   size: 1159, 1252
   orig: 1159, 1252
   offset: 0, 0
   index: -1
 keisel-(1)_0000_keisel-(1)_0001_Layer-13
   rotate: true
-  xy: 1163, 2074
+  xy: 5728, 907
   size: 486, 555
   orig: 486, 555
   offset: 0, 0
   index: -1
 keisel-(1)_0001_Layer-13
-  rotate: true
-  xy: 1021, 584
+  rotate: false
+  xy: 4340, 326
   size: 426, 714
   orig: 426, 714
   offset: 0, 0
   index: -1
 keisel-(1)_0002_Layer-11
-  rotate: true
-  xy: 2, 899
+  rotate: false
+  xy: 2324, 1037
   size: 1173, 1017
   orig: 1173, 1017
   offset: 0, 0
   index: -1
 keisel-(1)_0003_Layer-10
   rotate: false
-  xy: 2, 499
+  xy: 1343, 2
   size: 1014, 398
   orig: 1014, 398
   offset: 0, 0
   index: -1
 keisel-(1)_0004_Layer-9
   rotate: false
-  xy: 1163, 2562
+  xy: 2, 36
   size: 675, 764
   orig: 675, 764
   offset: 0, 0
   index: -1
 keisel-(1)_0005_Layer-8
-  rotate: true
-  xy: 1720, 2137
+  rotate: false
+  xy: 4340, 48
   size: 423, 276
   orig: 423, 276
   offset: 0, 0
   index: -1
 keisel-(1)_0006_Layer-7
-  rotate: true
-  xy: 2, 33
+  rotate: false
+  xy: 3421, 263
   size: 464, 772
   orig: 464, 772
   offset: 0, 0
   index: -1
 keisel-(1)_0007_Layer-6
-  rotate: true
-  xy: 1612, 29
+  rotate: false
+  xy: 4768, 296
   size: 553, 276
   orig: 553, 276
   offset: 0, 0
   index: -1
 keisel-(1)_0009_Layer-4
   rotate: false
-  xy: 776, 2
+  xy: 5323, 102
   size: 526, 495
   orig: 526, 495
   offset: 0, 0
   index: -1
 keisel-(1)_0009_Layer-5
-  rotate: false
-  xy: 1304, 20
+  rotate: true
+  xy: 5596, 599
   size: 306, 562
   orig: 306, 562
   offset: 0, 0
   index: -1
 keisel-(1)_0010_Layer-3
-  rotate: false
-  xy: 1021, 1012
+  rotate: true
+  xy: 2359, 107
   size: 928, 1060
   orig: 928, 1060
   offset: 0, 0
