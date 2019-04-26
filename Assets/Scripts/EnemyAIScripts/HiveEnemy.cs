@@ -13,6 +13,20 @@ public class HiveEnemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         AudioSource = GetComponent<AudioSource>();
+        if (target == null) {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+        if (hive == null) {
+            hive = GameObject.FindGameObjectWithTag("hive").transform;
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("hive")) {
+                float a = Vector2.SqrMagnitude(transform.position - hive.position);
+                float b = Vector2.SqrMagnitude(transform.position - go.transform.position);
+                if (b < a) {
+                    hive = go.transform;
+                }
+            }
+        }
 	}
 	
 	// Update is called once per frame
