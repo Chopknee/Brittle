@@ -9,9 +9,11 @@ public class MouseSound: MonoBehaviour {
     [Range(0, 1)]
     public float targetVolume;
     SmoothTransition transition;
-    bool transitioning = false;
     public AnimationCurve fadeCurve;
     public bool canInteract = false;
+    public float vol = 0;
+
+
     void Start () {
         audioSource = GetComponent<AudioSource>();
         //audioSource.Play();
@@ -24,36 +26,33 @@ public class MouseSound: MonoBehaviour {
         if (canInteract) {
             if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact")) {
                 audioSource.Play();
-                transitioning = true;
                 transition.Begin(0, targetVolume, fadeCurve, fadeTime);
             }
         }
+
         if (Input.GetMouseButtonUp(0) || Input.GetButtonUp("Interact")) {
-            if (!transitioning && audioSource.volume != 0) {
-                transitioning = true;
-                transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+            if (audioSource.isPlaying && audioSource.volume != 0) {
+                transition.Begin(audioSource.volume, 0, fadeCurve, fadeTime);
             }
         }
 
-        if (transitioning) {
+        if (transition.running) {
             audioSource.volume = transition.DriveForward();
         }
+        vol = transition.outNumber;
     }
 
     void OnTransitionEnd () {
-
-        transitioning = false;
-
-        if (audioSource.volume == 0) {
+        if (transition.end == 0) {
             audioSource.Stop();
         }
     }
 
     public void ForceStop () {
-        transitioning = true;
-        transition.Begin(targetVolume, 0, fadeCurve, fadeTime);
+        transition.Begin(audioSource.volume, 0, fadeCurve, fadeTime);
     }
 
+    //Checks if the mouse/fireflies are inside.
     public void OnTriggerEnter2D ( Collider2D collision ) {
         if (collision.gameObject.tag == "Fireflies") {
             canInteract = true;
