@@ -18,6 +18,7 @@ public class DialogTrigger : MonoBehaviour {
     public float triggerDelay = 0;
 
     public bool deactivateCanvasOnEnd = true;
+    public bool disablePause = true;
     // Use this for initialization
 
     public bool activated = false;
@@ -67,7 +68,10 @@ public class DialogTrigger : MonoBehaviour {
         }
 
         activated = true;
-        LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);
+
+        if (disablePause) {
+            LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(false);
+        }
     }
 
     private float t = 0;
@@ -83,8 +87,9 @@ public class DialogTrigger : MonoBehaviour {
     }
 
     public void Finished() {
-
-        LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(true);
+        if (disablePause) {
+            LevelControl.Instance.PauseMenu.GetComponent<PauseMenu>().SetCanPause(true);
+        }
 
         if (freezeKeisel) {
             LevelControl.Instance.Keisel.GetComponent<IPausable>().OnUnPause();
@@ -101,9 +106,5 @@ public class DialogTrigger : MonoBehaviour {
         if (hideFireflies) {
             LevelControl.Instance.Fireflies.SetActive(true);
         }
-    }
-
-    public void FinishedPlaying(PlayableDirector dir) {
-        Finished();
     }
 }

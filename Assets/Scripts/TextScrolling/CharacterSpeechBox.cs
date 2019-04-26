@@ -51,7 +51,7 @@ public class CharacterSpeechBox : MonoBehaviour {
     }
 
     public void Update () {
-        if (Playing && isWaitingForUser && Input.GetButton("Interact")) {
+        if (Playing && isWaitingForUser && (Input.GetButton("Interact") || Input.GetButton("Submit"))) {
             nextImage.gameObject.SetActive(false);
             isWaitingForUser = false;
             if (dialogIndex >= Dialog.Length) {

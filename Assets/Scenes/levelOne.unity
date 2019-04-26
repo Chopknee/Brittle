@@ -7664,7 +7664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &840975002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17845,6 +17845,7 @@ MonoBehaviour:
   hideKeisel: 0
   triggerDelay: 0
   deactivateCanvasOnEnd: 0
+  disablePause: 0
   activated: 0
   triggered: 0
 --- !u!1 &1449005430
@@ -27001,6 +27002,7 @@ MonoBehaviour:
   hideKeisel: 0
   triggerDelay: 2
   deactivateCanvasOnEnd: 1
+  disablePause: 1
   activated: 0
   triggered: 0
 --- !u!4 &1862102269
@@ -28347,6 +28349,7 @@ MonoBehaviour:
   hideKeisel: 0
   triggerDelay: 2
   deactivateCanvasOnEnd: 1
+  disablePause: 1
   activated: 0
   triggered: 0
 --- !u!61 &2044714245
@@ -28720,8 +28723,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: b99116f7524021f48b0bdca2c1573342, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29092,6 +29094,7 @@ MonoBehaviour:
   hideKeisel: 0
   triggerDelay: 0.25
   deactivateCanvasOnEnd: 1
+  disablePause: 1
   activated: 0
   triggered: 0
 --- !u!61 &2116051404
