@@ -25,10 +25,13 @@ public class MainMenu : MonoBehaviour {
         }
 
         btnStart.onClick.AddListener(StartLoading);
+        
         btnExit.onClick.AddListener(Exit);
         btnOptions.onClick.AddListener(OpenOptions);
         btnCloseOptions.onClick.AddListener(CloseOptions);
         CanvasAnimator = GetComponent<Animator>();
+
+        btnStart.Select();
     }
 
     private void Exit () {
@@ -48,6 +51,7 @@ public class MainMenu : MonoBehaviour {
             CanvasAnimator.SetTrigger("OpenOptions");
             locked = true;
             Invoke("Unlock", 2);
+            btnCloseOptions.Select();
         }
     }
 
@@ -56,6 +60,7 @@ public class MainMenu : MonoBehaviour {
             CanvasAnimator.SetTrigger("CloseOptions");
             locked = true;
             Invoke("Unlock", 2);
+            btnOptions.Select();
         }
     }
 

@@ -37,7 +37,7 @@ public class LevelControl : MonoBehaviour {
     public Color CutsceneTriggersColor = new Color(0, 0, 1);
     public bool CutsceneTriggersVisible = true;
 
-    public bool JoystickIsUsed = false;
+    //public bool JoystickIsUsed = false;
 
     public Vector2 MainCameraOrthoSize;
     public float aspectRatio;
@@ -102,6 +102,8 @@ public class LevelControl : MonoBehaviour {
             Keisel.transform.position = keiselStartPosition;
             
         }
+
+        //JoystickIsUsed = Globals.Instance.joystickUsed;
 	}
 
     float dt = 0;

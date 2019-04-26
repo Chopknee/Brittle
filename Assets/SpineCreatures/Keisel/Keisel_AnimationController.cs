@@ -40,8 +40,6 @@ public class Keisel_AnimationController : MonoBehaviour, IPausable {
 
         skeletonAnimation.AnimationState.Complete += AnimationEnded;
 
-        //skeletonAnimation.initialSkinName = "front";
-
 	}
 	
 	void Update () {

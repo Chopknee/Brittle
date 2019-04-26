@@ -4,6 +4,7 @@ using UnityEngine;
 using Spine.Unity;
 
 public class KieselControl : MonoBehaviour, IPausable {
+
     public string HorizontalAxis = "Horizontal";
     public string VerticalAxis = "Vertical";
     public string JumpButton = "Jump";
@@ -26,7 +27,6 @@ public class KieselControl : MonoBehaviour, IPausable {
     private Rigidbody2D rb;
     private Collider2D coll;
     public bool drawGroundCheckGizmo;
-    //Animator kam;
     Keisel_AnimationController kam;
     public string currentGroundType;
 
@@ -41,7 +41,6 @@ public class KieselControl : MonoBehaviour, IPausable {
     public void Start() {
         
         rb = GetComponent<Rigidbody2D>();
-        //kam = GetComponentInChildren<Animator>();
         kam = GetComponent<Keisel_AnimationController>();
         coll = GetComponent<Collider2D>();
     }
@@ -123,6 +122,7 @@ public class KieselControl : MonoBehaviour, IPausable {
     }
 
     public void FixedUpdate() {
+
         //Checking if the character is on the ground
         foreach (LayerMask groundMask in whatIsGround) {
             Collider2D result;
@@ -143,7 +143,6 @@ public class KieselControl : MonoBehaviour, IPausable {
         }
 
         if (kam.gameObject.activeSelf) {
-            //kam.SetBool("Grounded", grounded);
             kam.grounded = grounded;
         }
 
@@ -162,7 +161,6 @@ public class KieselControl : MonoBehaviour, IPausable {
     Vector3 oldVel = new Vector3();
 
     public void OnPause() {
-        //throw new System.NotImplementedException();
         controlsFrozen = true;
         freezeMovement = true;
         if (rb != null) {
@@ -173,7 +171,6 @@ public class KieselControl : MonoBehaviour, IPausable {
     }
 
     public void OnUnPause() {
-        //throw new System.NotImplementedException();
         controlsFrozen = false;
         freezeMovement = false;
         rb.isKinematic = false;
@@ -181,7 +178,6 @@ public class KieselControl : MonoBehaviour, IPausable {
     }
 
     public void OnTriggerEnter2D ( Collider2D collision ) {
-        //
         if (collision.tag == "WallVines") {
             BeginClimbing(collision.gameObject);
         }
@@ -189,7 +185,6 @@ public class KieselControl : MonoBehaviour, IPausable {
 
     public void OnTriggerExit2D ( Collider2D collision ) {
         if (collision.tag == "WallVines") {
-            //Eh?
             if (climbing) {
                 StopClimbing();
             }
@@ -197,6 +192,7 @@ public class KieselControl : MonoBehaviour, IPausable {
     }
 
     private float grav = 0;
+
     public void BeginClimbing(GameObject vine) {
         climbing = true;
         grav = rb.gravityScale;

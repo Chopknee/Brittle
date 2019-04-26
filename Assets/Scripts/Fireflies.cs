@@ -29,7 +29,7 @@ public class Fireflies: MonoBehaviour {
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
@@ -38,7 +38,7 @@ public class Fireflies: MonoBehaviour {
 
         particles = GetComponent<ParticleSystem>();
 
-        if (LevelControl.Instance.JoystickIsUsed) {
+        if (Globals.Instance.joystickUsed) {
             //Recenter the fireflies to the camera
             transform.position = new Vector3(LevelControl.Instance.MainCamera.transform.position.x, LevelControl.Instance.MainCamera.transform.position.y, transform.position.z);
         }
@@ -46,7 +46,7 @@ public class Fireflies: MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!LevelControl.Instance.JoystickIsUsed) {
+        if (!Globals.Instance.joystickUsed) {
             //Move based on mouse
             if (convertToWorldSpace) {
                 //Basically, converts the screen coordinates to world coordinates. Puts the cursor at that point.

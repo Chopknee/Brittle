@@ -48,11 +48,10 @@ public class CameraFollow : MonoBehaviour, IPausable {
         collisionTransition = new SmoothTransition(0, 0, null, 0);
         collisionTransition.OnFinish += OnCollisionSizeChangeFinish;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if (followTarget != null || !paused) {
-            
+
+    void FixedUpdate() {
+        if (followTarget != null && !paused) {
+
             //get the difference between the camera and player
             Vector3 diff = followTarget.transform.position - transform.position;
 
@@ -68,7 +67,12 @@ public class CameraFollow : MonoBehaviour, IPausable {
             diff = diff * mul;
             rb.velocity = diff;
             //transform.position = new Vector3(diff.x, diff.y, transform.position.z);//Finally we can set the position of the camera!
-
+        }
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		if (followTarget != null && !paused) {
             if (zoomTransition.running) {
                 float cz = zoomTransition.DriveForward();
                 cam.orthographicSize = cz;

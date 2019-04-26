@@ -30,6 +30,7 @@ public class PauseMenu : MonoBehaviour {
 
         resume.onClick.AddListener(Resume);
         quit.onClick.AddListener(Quit);
+        resume.Select();
 	}
 	
 	// Update is called once per frame
