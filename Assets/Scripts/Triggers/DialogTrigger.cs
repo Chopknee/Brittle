@@ -16,10 +16,13 @@ public class DialogTrigger : MonoBehaviour {
     public bool hideKeisel = false;
 
     public float triggerDelay = 0;
+
+    public bool deactivateCanvasOnEnd = true;
     // Use this for initialization
 
     public bool activated = false;
     public bool triggered = false;
+    
 
     void Start () {
 
@@ -91,7 +94,7 @@ public class DialogTrigger : MonoBehaviour {
             LevelControl.Instance.Keisel.SetActive(true);
         }
 
-        if (dialogCanvas != null) {
+        if (dialogCanvas != null && deactivateCanvasOnEnd) {
             dialogCanvas.SetActive(false);
         }
 
