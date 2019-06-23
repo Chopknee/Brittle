@@ -11,6 +11,8 @@ public class Globals : MonoBehaviour {
     private static Globals inst;
 
     public bool joystickUsed = false;
+    public bool cursorHidden = false;
+
 
     public float volume {
         get {
@@ -23,6 +25,7 @@ public class Globals : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        //Cursor.visible = false;
 		if (inst == null) {
             inst = this;
             DontDestroyOnLoad(this.gameObject);
@@ -31,4 +34,8 @@ public class Globals : MonoBehaviour {
             enabled = false;
         }
 	}
+
+    private void Update () {
+        Cursor.visible = !cursorHidden;
+    }
 }

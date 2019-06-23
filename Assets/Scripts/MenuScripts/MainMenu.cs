@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour {
     public Button btnExit;
     public Button btnCloseOptions;
 
-    private Animator CanvasAnimator;
+    //private Animator CanvasAnimator;
     private bool locked = false;
     // Use this for initialization
     void Start () {
@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour {
         btnExit.onClick.AddListener(Exit);
         btnOptions.onClick.AddListener(OpenOptions);
         btnCloseOptions.onClick.AddListener(CloseOptions);
-        CanvasAnimator = GetComponent<Animator>();
+        //CanvasAnimator = GetComponent<Animator>();
 
         btnStart.Select();
     }
@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviour {
 
     private void StartLoading () {
         if (!locked) {
-            CanvasAnimator.SetTrigger("Load");
+            //CanvasAnimator.SetTrigger("Load");
             StartCoroutine(LoadLevelOne());
             locked = true;
         }
@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour {
 
     private void OpenOptions () {
         if (!locked) {
-            CanvasAnimator.SetTrigger("OpenOptions");
+            //CanvasAnimator.SetTrigger("OpenOptions");
             locked = true;
             Invoke("Unlock", 2);
             btnCloseOptions.Select();
@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour {
 
     private void CloseOptions() {
         if (!locked) {
-            CanvasAnimator.SetTrigger("CloseOptions");
+            //CanvasAnimator.SetTrigger("CloseOptions");
             locked = true;
             Invoke("Unlock", 2);
             btnOptions.Select();
@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviour {
         AsyncOperation async = SceneManager.LoadSceneAsync("levelOne");
         async.allowSceneActivation = false;
         while (!async.isDone) {
-            CanvasAnimator.SetTrigger("Finished");
+            //CanvasAnimator.SetTrigger("Finished");
             yield return new WaitForSeconds(2f);
             async.allowSceneActivation = true;
             yield return null;

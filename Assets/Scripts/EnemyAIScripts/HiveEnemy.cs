@@ -43,7 +43,7 @@ public class HiveEnemy : MonoBehaviour {
 
             transform.Translate(Vector3.up * Time.deltaTime * speed);
 
-            AudioSource.Play();
+            //AudioSource.Play();
         }
 
         else

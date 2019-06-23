@@ -84,7 +84,8 @@ public class LevelControl : MonoBehaviour {
             if (FreezeKeiselOnLoad) {
                 Keisel.GetComponent<KieselControl>().OnPause();
             }
-            var ps = FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
+            var ps = 
+                FindObjectsOfType<MonoBehaviour>().OfType<IPausable>();
             foreach (IPausable p in ps) {
                 pausables.Add(p);
             }
@@ -96,11 +97,12 @@ public class LevelControl : MonoBehaviour {
     void Start () {
 
         if (overrideStartPosition) {
-            MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
+            if (MainCamera != null) {
+                MainCamera.transform.position = new Vector3(Keisel.transform.position.x, Keisel.transform.position.y, MainCamera.transform.position.z);
+            }
         } else {
             MainCamera.transform.position = new Vector3(keiselStartPosition.x, keiselStartPosition.y, MainCamera.transform.position.z);
             Keisel.transform.position = keiselStartPosition;
-            
         }
 
         //JoystickIsUsed = Globals.Instance.joystickUsed;
